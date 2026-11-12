@@ -38,6 +38,16 @@ Three engineering students from Montevideo, Uruguay:
 NASA datasets, research publications, and other resources
 used in the project will be documented here.
 
+### Research guide
+
+Spanish-language study guide covering microgravity combustion, NASA experiments,
+scientific literature, available data, and AI approaches for the challenge.
+Prepared with AI assistance as background research; source links and limitations
+are included in the guide.
+
+- [Read the PDF](docs/research/Flame_in_Freefall_guia_tecnica.pdf)
+- [Read or edit the Markdown version](docs/research/Flame_in_Freefall_guia_tecnica.md)
+
 ## License
 
 Licensed under the Apache License 2.0.
