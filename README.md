@@ -29,9 +29,42 @@ A decision-support tool for **the engineer who designs the materials and ventila
 
 ## What the data already shows
 
+<p align="center">
+  <img src="docs/img/gravity-curve.svg" alt="Chart: lowest oxygen concentration that burned for Mylar, Ultem and Nomex in microgravity, Moon, Mars and Earth gravity. Mylar and Ultem have their lowest limit at lunar gravity; Mylar's limit is about 5.75 points lower on the Moon than on Earth." width="820">
+</p>
+
+<sub>Generated from <code>data/curva_gravedad.json</code> with <code>scripts/plot_gravity_curve.py</code>. Source: Olson &amp; Ferkul (2012), Table I, p. 6.</sub>
+
 - **It depends on the material.** In NASA drop-tower tests, **Mylar burned in lunar gravity with ~5.75 points less oxygen than in Earth gravity** (Olson & Ferkul 2012, Table I). Nomex HT90-40 had its worst case at Martian gravity instead.
 - At the planned habitat pressure (8.2 psi), **PMMA, P-213 tape and a cotton T-shirt were more flammable in lunar gravity**, while **polycarbonate and Nomex Velcro were less flammable** (Urban et al., ICES-2025-392).
 - **No test has yet measured flame spread or limits in partial gravity at the exact habitat atmosphere** (34% O₂, 8.2 psi). That is precisely what FM2 is designed to answer.
+
+## How it works
+
+```mermaid
+flowchart LR
+    A["NASA fire tests<br/>drop towers · aircraft · rocket<br/>ISS · Earth labs"] --> B["Evidence extraction<br/>value · unit · conditions<br/>source + page"]
+    B --> C{"Verified against<br/>the original document?"}
+    C -- yes --> D[("Evidence data<br/>data/*.json · *.csv")]
+    C -- no --> E["Labeled secondary<br/>or unverified"] --> D
+    D --> F["App for the lunar<br/>habitat engineer"]
+    F --> G["Gravity curve<br/>Material cards<br/>Similar tests"]
+    D --> H["Dated prediction<br/>before FM2"]
+    H -.->|"checked when FM2 results are published"| I(["FM2: first fires<br/>on the Moon"])
+```
+
+## Limitations
+
+We state these openly. The tool is only as good as the evidence behind it.
+
+- **Short tests.** Most partial-gravity data comes from ~5 s drop-tower tests or ~20–25 s aircraft parabolas. A flame that survives 5 s may still go out later, and the reverse.
+- **Different criteria.** Reduced-gravity limits use a 5.18 s drop criterion, while Earth limits use the NASA-STD-6001 Test 1 burn-length criterion. The source authors note that they are not equivalent.
+- **Simulated gravity.** Centrifuges and rotating rockets create Coriolis effects that real lunar gravity does not have.
+- **Not the habitat atmosphere.** No partial-gravity test has measured spread or limits at 34% O₂ and 8.2 psi. The three-material gravity curve uses 70.3 kPa or 101.3 kPa.
+- **Few materials, few repeats.** Limits are bracketed in 1% O₂ steps, usually without reported replicates.
+- **Some values are secondary.** Lunar and 0 g values in the gravity curve come from Ferkul & Olson (2011) as reproduced in a 2012 paper; we could not access the 2011 original. Paywalled papers we could not read are marked as unverified.
+- **Disagreements in the literature.** Sources disagree on whether flame spread peaks near lunar or Martian gravity. We show both rather than picking one.
+- **Not a certification tool.** Results describe past tests. They do not certify any material for flight.
 
 ## Principles
 
@@ -58,6 +91,7 @@ The full list, with evidence levels, is in [docs/sources.md](docs/sources.md).
 | [`docs/research/`](docs/research/) | Research notes: partial-gravity evidence, FM2, competitor analysis, NASA resources, and the team's technical study guide |
 | [`docs/challenge/`](docs/challenge/) | Challenge description, rules, judging criteria |
 | [`docs/decisions.md`](docs/decisions.md) · [`docs/INDEX.md`](docs/INDEX.md) | Decision log and index of the team workspace |
+| [`scripts/`](scripts/) | Reproducible figures (`plot_gravity_curve.py`) |
 | [`CLAUDE.md`](CLAUDE.md) | Instructions for AI coding assistants working on this repo |
 
 Team documentation is written in Spanish. The app and the submission are in English.
@@ -73,6 +107,10 @@ Three engineering students from Montevideo, Uruguay:
 ## Use of AI
 
 This project uses AI assistants (Claude, ChatGPT) for literature search, data extraction, documentation and coding support. Every number used in the app is checked against the original NASA document, or labeled as secondary or unverified. Details are logged in [docs/sources.md](docs/sources.md).
+
+## How to cite
+
+If you use this work, please cite it using the metadata in [`CITATION.cff`](CITATION.cff) (GitHub shows a **"Cite this repository"** button in the sidebar). Please also cite the original NASA sources listed in [docs/sources.md](docs/sources.md).
 
 ## Disclaimer
 

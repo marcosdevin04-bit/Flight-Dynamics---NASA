@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below, and also cite the original NASA sources listed in docs/sources.md."
+title: "Before the First Fire on the Moon: evidence on how spacecraft materials burn in partial gravity"
+abstract: >-
+  A decision-support tool and curated evidence set built for the NASA Space Apps
+  Challenge 2026 (Flame in Freefall). It compiles NASA flammability tests in
+  microgravity, partial gravity and Earth gravity, with every value traced to its
+  source document and page, to show which materials may behave differently on the
+  Moon ahead of NASA's FM2 (Flammability of Materials on the Moon) experiment.
+type: software
+authors:
+  - given-names: Marcos
+    family-names: Devincenzi
+  - given-names: Juan
+    family-names: Benitez
+  - given-names: Facundo
+    family-names: Díaz
+repository-code: "https://github.com/marcosdevin04-bit/Flight-Dynamics---NASA"
+license: Apache-2.0
+date-released: "2026-11-14"
+keywords:
+  - NASA Space Apps Challenge
+  - microgravity combustion
+  - partial gravity
+  - lunar habitat
+  - material flammability
+  - fire safety
