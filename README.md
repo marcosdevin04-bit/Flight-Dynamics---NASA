@@ -1,5 +1,10 @@
 # Before the First Fire on the Moon
 
+<p align="center">
+  <img src="docs/img/saffire-vi-flame-growth.gif" alt="Real NASA footage, sped up 5x: a fire grows in microgravity inside the Cygnus cargo spacecraft during the Saffire-VI experiment, from a thin line of flame to a large fire across an acrylic (PMMA) sample." width="720">
+</p>
+<p align="center"><sub>A real fire in microgravity, sped up 5×. Video: NASA, <a href="https://images.nasa.gov/details/Saf-VI%20S8C3+C4%201-sided%20PMMA_unmapped_jpeg-20x%20no%20text">Saffire-VI experiment inside Northrop Grumman's Cygnus spacecraft</a> (2024).</sub></p>
+
 **NASA approves spacecraft materials by testing them on Earth. Before the first fire on the Moon, we show which materials might behave differently there, and what the evidence actually says.**
 
 Built for the **NASA Space Apps Challenge 2026** · Challenge: *Flame in Freefall: AI-Powered Fire Safety Insights from Microgravity Combustion Data* · Team from Montevideo, Uruguay.
