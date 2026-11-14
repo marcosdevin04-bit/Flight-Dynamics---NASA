@@ -21,8 +21,9 @@ export function evidenceGuide(host,matches,query){
  a.href=r.source.ntrs;a.target='_blank';a.rel='noopener';p.append(a);body.append(p);
  }
  }
- const fact=r=>`${r.result} at ${r.oxygen}% oxygen.`;
- if(citedDemo(records,query)){
+ const fact=r=>r.result+(Number.isFinite(r.oxygen)?' · '+r.oxygen+'% O₂ recorded.':'');
+ const cached=citedDemo(records,query);
+ if(cached){
  const [higher,lower]=expectedDemo.map(([id])=>records.find(r=>r.id===id));
  show([{r:lower,claim:'At the same airflow as your query, the reused fabric did not ignite at 17.2% oxygen.'},
  {r:higher,claim:'At 18.2%, the reused fabric showed a flame on one side. The two trials bracket your 18% query, but neither measured its outcome. They do not establish an ignition threshold.'}],'AI interpretation · cached demo (Codex)');
@@ -53,4 +54,6 @@ export function evidenceGuide(host,matches,query){
  }catch{status.textContent='The model response could not be verified. The original evidence comparison is still shown.';}
  finally{session?.destroy();button.disabled=false;}
  };
+ if(!cached && globalThis.LanguageModel){setTimeout(async()=>{try{if(host.isConnected && !button.disabled && await globalThis.LanguageModel.availability()==='available' && host.isConnected)button.click();}catch{/* No live model: keep the cited observations. */}},450);}
+
 }

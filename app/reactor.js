@@ -2,14 +2,17 @@
 // The transported scalars and reaction rate are normalized, not calibrated chemistry.
 export const nx=33, ny=29, nz=23, layer=nx*ny, count=layer*nz, dx=.65, dt=.024;
 const field=()=>new Float32Array(count), clip=(v,a,b)=>Math.max(a,Math.min(b,v));
-export function chamber({gravity,flow,pressure,oxygen}){
+export function chamber({gravity,flow,pressure,oxygen,shape='point'}){
  const t=field(), f=field(), o=field(), rate=field(), u=field(), v=field(), w=field(), div=field(), p=field(), q=field();
  const a=field(), b=field(), c=field(), d=field(), e=field(), h=field();
  const ambient=oxygen/100, inlet=flow/dx, diff=.062*101.3/pressure; o.fill(ambient);u.fill(inlet);
+ const widths=shape==='sheet'?[1.5,1,4.5]:shape==='rod'?[1.35,2.3,1.35]:shape==='pool'?[3.2,.72,3.2]:[2.12,1.26,2.12];
  const seed=field(); let time=0;
  for(let z=1;z<nz-1;z++)for(let y=1;y<ny-1;y++)for(let x=1;x<nx-1;x++){
-  const i=x+nx*y+layer*z;seed[i]=Math.exp(-((x-12)**2+(z-11)**2)/4.5-(y-3)**2/1.6);
+  const i=x+nx*y+layer*z;seed[i]=Math.exp(-(((x-12)/widths[0])**2)-((z-11)/widths[2])**2-((y-3)/widths[1])**2);
  }
+ // Equal integrated source strength isolates geometry from chemistry.
+ const norm=seed.reduce((sum,n)=>sum+n,0);for(let i=0;i<count;i++)seed[i]*=31.6/norm;
  function step(){
   for(let z=1;z<nz-1;z++)for(let y=1;y<ny-1;y++)for(let x=1;x<nx-1;x++){
    const i=x+nx*y+layer*z,X=clip(x-dt*u[i],0,nx-1.001),Y=clip(y-dt*v[i],0,ny-1.001),Z=clip(z-dt*w[i],0,nz-1.001);
