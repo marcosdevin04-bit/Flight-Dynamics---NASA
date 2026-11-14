@@ -13,7 +13,10 @@ Registro de todas las fuentes consultadas. Las referencias [1]–[29] de la guí
 | Guía técnica Flame in Freefall (PDF local) | síntesis del equipo | `#verificado` (sus fuentes) | 2026-11-14 | [Ciencia base](research/ciencia-base.md) |
 | División del equipo (PDF local) | interno | — | 2026-11-14 | [07 Equipo](team.md) |
 | https://spacedata.swapniltamse.com/challenges/flame-in-freefall/ | ficha no oficial | `#verificado` (secundaria) | 2026-11-14 | [Consigna](challenge/consigna.md) |
-| https://www.spaceappschallenge.org/2026/challenges/flame-in-freefall/ | oficial | `#pendiente` (falla SSL) | — | — |
+| https://www.spaceappschallenge.org/2026/challenges/flame-in-freefall/ (Details + Resources) | oficial | `#verificado` | 2026-11-14 | [Consigna](challenge/consigna.md) · [Recursos NASA y datos](research/recursos-nasa-y-datos.md) |
+| PSI: tablas experimentales de PSI-25 (doi 10.60555/4qc4-de67), PSI-26 (10.60555/58h4-dy80), PSI-98 (10.60555/0t15-1z43), PSI-99 (10.60555/2chp-m469), PSI-100 (10.60555/040q-4h36), PSI-20 y PSI-22 · https://psi.nasa.gov/physci/repo/search?q=combustion | NASA (oficial del desafío) | `#verificado` (archivos originales) | 2026-11-14 | [PSI - datos oficiales](research/psi-datos-oficiales.md) |
+| https://www.spaceappschallenge.org/resources/judging-awards-guide/ | oficial | `#verificado` | 2026-11-14 | [Reglas y entrega](challenge/reglas-y-entrega.md) |
+| https://www.spaceappschallenge.org/resources/project-submission-guide/ | oficial | `#verificado` | 2026-11-14 | [Reglas y entrega](challenge/reglas-y-entrega.md) |
 | https://www.nasa.gov/learning-resources/stem-engagement-at-nasa/nasa-announces-2025-international-space-apps-challenge-global-winners/ | NASA | `#verificado` | 2026-11-14 | [Ganadores previos](research/ganadores-previos.md) |
 | https://ntrs.nasa.gov/citations/20210022403 | NASA (Decadal) | `#verificado` (registro) | 2026-11-14 | [Recursos NASA y datos](research/recursos-nasa-y-datos.md) |
 | https://science.data.nasa.gov/blog/indus-sde-language-model | NASA | `#verificado` | 2026-11-14 | [Recursos NASA y datos](research/recursos-nasa-y-datos.md) |
@@ -41,11 +44,17 @@ Registro de todas las fuentes consultadas. Las referencias [1]–[29] de la guí
 | Schechter et al. 2025, póster de Nomex para FM2, NTRS 20250010975 | NASA | `#verificado` | 2026-11-14 | [Gravedad parcial - evidencia](research/gravedad-parcial-evidencia.md) |
 | Olson et al. 2021, informe resumen de BASS-II, NASA/TM-20210011385 | NASA | `#verificado` (tabla 7.1 y p. 95 leídas) | 2026-11-14 | [Gravedad parcial - evidencia](research/gravedad-parcial-evidencia.md) |
 | Ferkul et al. 2025, LUCI, NTRS 20250010653 · Sacksteder et al. 2003, NTRS 20040053567 · Feier et al. 2001, NTRS 20010059376 · Urban et al. 2024, Saffire VI, NTRS 20240002981 · Ferkul et al. 2017, Saffire-I, NTRS 20170008805 · Zayac et al. 2024, póster FM2, NTRS 20240015307 · Link et al. 2018, Sci. Rep. 8:120 | NASA y académicas | `#autodeclarado` (leídas por Claude Science, sin revisión manual) | 2026-11-14 | [Gravedad parcial - evidencia](research/gravedad-parcial-evidencia.md) |
+| Video NASA "Saffire-VI inside Northrop Grumman's Cygnus spacecraft" (images.nasa.gov, ID "Saf-VI S8C3+C4 1-sided PMMA_unmapped_jpeg-20x no text", 2024-01-09): https://images.nasa.gov/details/Saf-VI%20S8C3+C4%201-sided%20PMMA_unmapped_jpeg-20x%20no%20text | NASA (dominio público, con crédito) | `#verificado` | 2026-11-14 | GIF del README |
+| Video NASA Glenn "Saffire-V Experiment January 2021" (images.nasa.gov, GRC-2021-CN-00008): https://images.nasa.gov/details/GRC-2021-CN-00008 | NASA (dominio público, con crédito) | `#verificado` | 2026-11-14 | GIF del README |
 | https://en.wikipedia.org/wiki/Artigas_Base | enciclopedia | `#verificado` (secundaria) | 2026-11-14 | [Uruguay y Antártida](research/uruguay-y-antartida.md) |
 
 ## Uso de IA (para el campo "Use of Super Intelligence")
 Registrar acá cada uso relevante: herramienta, para qué, y qué revisó una persona.
 - 2026-11-14 · Claude Code (Opus 5.5): investigación de la competencia, ganadores y ángulo local; armado de esta bitácora; propuesta del spec. Revisión humana: `#pendiente`
 - 2026-11-14 · Claude Science: R1, tabla de evidencia en gravedad parcial (45 filas) y resumen de vacíos, a partir de PDFs de NTRS. Revisión: Claude Code verificó contra los PDFs originales las tablas de Olson y Ferkul 2012, ICES-2025, el póster de Nomex y BASS-II 7.1. Revisión humana: `#pendiente`
+- 2026-11-14 · Claude Code (Opus 5.5): README del repo en inglés, gráfico de la curva de gravedad (script reproducible), diagrama, Limitations y CITATION.cff. Commits y push: Facundo.
 - 2026-11-14 · Claude Code (Opus 5.5): plan de trabajo y biblioteca de prompts de investigación. Revisión humana: `#pendiente`
+- 2026-11-14 · Claude Code (Opus 5.5): lectura de la consigna oficial y de la pestaña Resources con el navegador integrado; comparación con lo que usó R1. Revisión humana: `#pendiente`
+- 2026-11-14 · Claude Code (Opus 5.5): lectura de las guías oficiales de jurado y de entrega; redacción del prompt R11 (uso de PSI) para Claude Science. Revisión humana: `#pendiente`
+- 2026-11-14 · Claude Code (Opus 5.5): R11. Descarga de las tablas experimentales de PSI, armado de `psi_bounds_evidence.csv` (159 filas) y nota [PSI - datos oficiales](research/psi-datos-oficiales.md). Antes intentó, sin éxito, aprobar a distancia el permiso de red de Claude Science. Revisión humana: `#pendiente`
 - 2026-11-14 · Claude Code (Opus 5.5): deck de kickoff de 10 slides (interno, no es la demo de la entrega). Revisión humana: `#pendiente`

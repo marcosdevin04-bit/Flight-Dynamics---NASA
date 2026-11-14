@@ -1,0 +1,305 @@
+{
+ "_meta": {
+  "generated": "2026-11-14",
+  "level": "verified against PSI experimental tables (downloaded 2026-11-14)",
+  "sources": [
+   {
+    "psi": "PSI-25",
+    "title": "Burning and Suppression of Solids II (BASS-II)",
+    "doi": "10.60555/4qc4-de67",
+    "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+   },
+   {
+    "psi": "PSI-26",
+    "title": "Burning and Suppression of Solids (BASS)",
+    "doi": "10.60555/58h4-dy80",
+    "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+   },
+   {
+    "psi": "PSI-98",
+    "title": "Spacecraft Fire Safety Experiment I (Saffire-I)",
+    "doi": "10.60555/0t15-1z43",
+    "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-98"
+   },
+   {
+    "psi": "PSI-99",
+    "title": "Spacecraft Fire Experiment II (Saffire-II)",
+    "doi": "10.60555/2chp-m469",
+    "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-99"
+   },
+   {
+    "psi": "PSI-100",
+    "title": "Spacecraft Fire Experiment III (Saffire-III)",
+    "doi": "10.60555/040q-4h36",
+    "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-100"
+   }
+  ],
+  "warnings": [
+   "PSI tables for BASS and BASS-II have no outcome column; \"outcomes_reported\" counts operator notes (ext, blowoff, no ign) only.",
+   "PSI has no partial-gravity combustion data (challenge statement). Lunar values in the gravity curve come from NTRS, not PSI.",
+   "Two BASS-II final O2 readings (P22b 39.1%, T28b 40.4%) are sensor errors; only initial O2 is used."
+  ]
+ },
+ "o2_ceiling": {
+  "max_initial_o2_pct_solids": 22.2,
+  "tests_at_max": [
+   "B1",
+   "B2",
+   "B3",
+   "B4",
+   "B7",
+   "B12",
+   "F1",
+   "M1",
+   "M2",
+   "M5",
+   "M14",
+   "O1",
+   "O2"
+  ],
+  "saffire_I_o2_pct": "21.5 - 21.7",
+  "saffire_II_o2_pct": "~21.5 - 22.1",
+  "lunar_habitat_reference": {
+   "challenge_text": "30% or greater, 10.2 psi or less",
+   "planned_value": "34% O2 at 8.2 psi (Fortenberry et al., NASA fire detection white paper)"
+  },
+  "message": "No solid sample in the PSI tables of BASS-II or Saffire I-III was tested above 22.2% oxygen."
+ },
+ "coverage": {
+  "pmma": {
+   "label": "PMMA",
+   "microgravity_tests_in_psi": 96,
+   "o2_initial_min_pct": 13.6,
+   "o2_initial_max_pct": 22.2,
+   "investigations": [
+    "PSI-25",
+    "PSI-99"
+   ],
+   "outcomes_reported": 26,
+   "o2_range_basis": "numeric initial O2 from BASS-II only; Saffire I-II report ~21.5-22.1% as text",
+   "note": "Counts samples labeled PMMA, film or rod. Three BASS-II rows without an explicit material (B5, T3, T7) are excluded."
+  },
+  "sibal": {
+   "label": "SIBAL fabric",
+   "microgravity_tests_in_psi": 45,
+   "o2_initial_min_pct": 16.4,
+   "o2_initial_max_pct": 20.8,
+   "investigations": [
+    "PSI-100",
+    "PSI-25",
+    "PSI-26",
+    "PSI-98",
+    "PSI-99"
+   ],
+   "outcomes_reported": 4,
+   "o2_range_basis": "numeric initial O2 from BASS-II only; Saffire I-II report ~21.5-22.1% as text"
+  },
+  "nomex": {
+   "label": "Nomex (Nomex III in PSI; our curve uses Nomex HT90-40)",
+   "microgravity_tests_in_psi": 10,
+   "o2_initial_min_pct": 21.0,
+   "o2_initial_max_pct": 22.2,
+   "investigations": [
+    "PSI-25",
+    "PSI-26",
+    "PSI-99"
+   ],
+   "outcomes_reported": 1,
+   "note": "Different Nomex product than the one in the gravity curve",
+   "o2_range_basis": "numeric initial O2 from BASS-II only; Saffire I-II report ~21.5-22.1% as text"
+  },
+  "ultem": {
+   "label": "Ultem",
+   "microgravity_tests_in_psi": 2,
+   "o2_initial_min_pct": null,
+   "o2_initial_max_pct": null,
+   "investigations": [
+    "PSI-26"
+   ],
+   "outcomes_reported": 0,
+   "note": "2 BASS tests (\"ultem sheet\"); oxygen and outcome not reported in the PSI table"
+  },
+  "mylar": {
+   "label": "Mylar G",
+   "microgravity_tests_in_psi": 0,
+   "o2_initial_min_pct": null,
+   "o2_initial_max_pct": null,
+   "investigations": [],
+   "outcomes_reported": 0,
+   "note": "Not found in the PSI experimental tables of BASS, BASS-II or Saffire I-III"
+  },
+  "policarbonato": {
+   "label": "Polycarbonate",
+   "microgravity_tests_in_psi": 0,
+   "o2_initial_min_pct": null,
+   "o2_initial_max_pct": null,
+   "investigations": [],
+   "outcomes_reported": 0,
+   "note": "Not found in the PSI experimental tables of BASS, BASS-II or Saffire I-III"
+  },
+  "p213": {
+   "label": "P-213 tape",
+   "microgravity_tests_in_psi": 0,
+   "o2_initial_min_pct": null,
+   "o2_initial_max_pct": null,
+   "investigations": [],
+   "outcomes_reported": 0,
+   "note": "Not found in the PSI experimental tables of BASS, BASS-II or Saffire I-III"
+  },
+  "remera-algodon": {
+   "label": "Cotton T-shirt",
+   "microgravity_tests_in_psi": 0,
+   "o2_initial_min_pct": null,
+   "o2_initial_max_pct": null,
+   "investigations": [],
+   "outcomes_reported": 0,
+   "note": "Not found in the PSI experimental tables of BASS, BASS-II or Saffire I-III"
+  }
+ },
+ "saffire2_bounds": [
+  {
+   "sample": "2-1",
+   "material": "Silicone",
+   "thickness": "0.27 mm",
+   "o2_pct": "~ 21.5",
+   "airflow": "20 cm/s",
+   "flow_direction": "Concurrent",
+   "microgravity": "burn length ~ 0",
+   "earth_1g": "burn length Complete; spread rate Acceleratory",
+   "source": {
+    "psi": "PSI-99",
+    "doi": "10.60555/2chp-m469",
+    "file": "PSI-99_Experimental_table_SAFFIRE-2.csv",
+    "row": 2
+   }
+  },
+  {
+   "sample": "2-2",
+   "material": "Silicone",
+   "thickness": "0.61 mm",
+   "o2_pct": "~ 22.1",
+   "airflow": "20 cm/s",
+   "flow_direction": "Concurrent",
+   "microgravity": "burn length ~ 0",
+   "earth_1g": "burn length 7.6 cm; spread rate 1.2 mm/s",
+   "source": {
+    "psi": "PSI-99",
+    "doi": "10.60555/2chp-m469",
+    "file": "PSI-99_Experimental_table_SAFFIRE-2.csv",
+    "row": 3
+   }
+  },
+  {
+   "sample": "2-3",
+   "material": "Silicone",
+   "thickness": "1.03 mm",
+   "o2_pct": "~ 22.1",
+   "airflow": "20 cm/s",
+   "flow_direction": "Concurrent",
+   "microgravity": "burn length ~ 0",
+   "earth_1g": "burn length ~ 0; spread rate n/a",
+   "source": {
+    "psi": "PSI-99",
+    "doi": "10.60555/2chp-m469",
+    "file": "PSI-99_Experimental_table_SAFFIRE-2.csv",
+    "row": 4
+   }
+  },
+  {
+   "sample": "2-4",
+   "material": "Silicone",
+   "thickness": "037 mm",
+   "o2_pct": "~ 22.1",
+   "airflow": "20 cm/s",
+   "flow_direction": "Opposed",
+   "microgravity": "burn length ~ 0",
+   "earth_1g": "burn length Complete; spread rate 0.6 mm/s",
+   "source": {
+    "psi": "PSI-99",
+    "doi": "10.60555/2chp-m469",
+    "file": "PSI-99_Experimental_table_SAFFIRE-2.csv",
+    "row": 5
+   }
+  },
+  {
+   "sample": "2-5",
+   "material": "SIBAL",
+   "thickness": "037 mm; 29 cm x 5 cm",
+   "o2_pct": "~ 22.1",
+   "airflow": "20 cm/s",
+   "flow_direction": "Concurrent",
+   "microgravity": "burn length 29 cm; spread rate 2.1 mm/s; burn time 145 s",
+   "earth_1g": "burn length Complete; spread rate Acceleratory",
+   "source": {
+    "psi": "PSI-99",
+    "doi": "10.60555/2chp-m469",
+    "file": "PSI-99_Experimental_table_SAFFIRE-2.csv",
+    "row": 6
+   }
+  },
+  {
+   "sample": "2-6",
+   "material": "SIBAL (material inferred from table layout)",
+   "thickness": "037 mm; 29 cm x 5 cm",
+   "o2_pct": "~ 22.1",
+   "airflow": "20 cm/s",
+   "flow_direction": "Concurrent",
+   "microgravity": "burn length 29 cm; spread rate 2.6 mm/s; burn time 115 s",
+   "earth_1g": "burn length Complete; spread rate Acceleratory",
+   "source": {
+    "psi": "PSI-99",
+    "doi": "10.60555/2chp-m469",
+    "file": "PSI-99_Experimental_table_SAFFIRE-2.csv",
+    "row": 7
+   }
+  },
+  {
+   "sample": "2-7",
+   "material": "PMMA + Nomex",
+   "thickness": "0.85 and 0.37 mm; 5 and 24 cm x 5 cm",
+   "o2_pct": "~ 22.1",
+   "airflow": "20 cm/s",
+   "flow_direction": "Concurrent",
+   "microgravity": "burn length 5 cm & 0 (note 2); spread rate n/a (Nomex); burn time 140 s",
+   "earth_1g": "burn length ~ 0 (Nomex); spread rate n/a (Nomex)",
+   "source": {
+    "psi": "PSI-99",
+    "doi": "10.60555/2chp-m469",
+    "file": "PSI-99_Experimental_table_SAFFIRE-2.csv",
+    "row": 8
+   }
+  },
+  {
+   "sample": "2-8",
+   "material": "PMMA",
+   "thickness": "See Fig. 5; 29 cm x 5 cm",
+   "o2_pct": "22.1 to 22.0",
+   "airflow": "20 cm/s",
+   "flow_direction": "Concurrent",
+   "microgravity": "burn length ~ 10 cm (note 3); spread rate Note 4; burn time 600 s",
+   "earth_1g": "burn length Complete; spread rate Acceleratory",
+   "source": {
+    "psi": "PSI-99",
+    "doi": "10.60555/2chp-m469",
+    "file": "PSI-99_Experimental_table_SAFFIRE-2.csv",
+    "row": 9
+   }
+  },
+  {
+   "sample": "2-9",
+   "material": "PMMA (material inferred from table layout)",
+   "thickness": "1 cm; 29 cm x 5 cm",
+   "o2_pct": "22.0 to 21.9",
+   "airflow": "20 cm/s",
+   "flow_direction": "Concurrent",
+   "microgravity": "burn length ~ 10 cm (note 4); spread rate Note 4; burn time 900 s",
+   "earth_1g": "burn length Complete; spread rate Acceleratory",
+   "source": {
+    "psi": "PSI-99",
+    "doi": "10.60555/2chp-m469",
+    "file": "PSI-99_Experimental_table_SAFFIRE-2.csv",
+    "row": 10
+   }
+  }
+ ]
+}

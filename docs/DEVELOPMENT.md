@@ -1,6 +1,6 @@
 ---
 tipo: producto
-estado: tanda 1
+estado: tanda 2
 actualizado: 2026-11-14
 ---
 
@@ -78,6 +78,9 @@ Contexto completo: [FM2 - fuego en la Luna](research/fm2-fuego-en-la-luna.md) ·
 | `data/curva_gravedad.json` | **Usar este para la app.** Datos limpios y verificados de P1, P2 y P3 | `#verificado` |
 | `data/partial_gravity_flammability_evidence.csv` | Tabla completa de Claude Science (45 filas, columnas abajo) | mixto; mirar la columna `verification` |
 | `data/partial_gravity_gaps_summary.md` | Vacíos y discrepancias | — |
+| `data/psi_coverage.json` | **Tanda 2.** Datos de PSI listos para la pantalla P6 | `#verificado` |
+| `data/psi_bounds_evidence.csv` | Los 159 ensayos de PSI con nuestros materiales, fila por fila | `#verificado` |
+| `data/psi/` | Tablas originales de PSI (no modificar) | original |
 
 **Columnas del CSV:**
 `row_id, study, platform, gravity_g, test_duration_s, material_thickness, O2_pct, pressure_kPa, airflow_cm_s_direction, outcome, source_page, value_status, verification, notes`
@@ -150,3 +153,32 @@ Si te falta un dato, anotalo abajo en "Pedidos de Marcos" y Facundo lo prioriza 
 - `curva_gravedad.json` con: 3 materiales × 4 gravedades (verificado) + 5 materiales a 8,2 psi (verificado, solo la dirección del efecto) + Nomex a 8,2 psi (aproximado) + 5 ensayos de SIBAL (verificado, con advertencia).
 - CSV completo de 45 filas y resumen de vacíos.
 - Pendiente para las próximas tandas: estado y material de FM2 (R2), lista de materiales reales de una base lunar (R4), texto de la apuesta para FM2, y valores lunares numéricos de ICES-2025 (si se digitalizan).
+
+### Tanda 2 · sáb 14/11 · PSI (el recurso oficial del desafío)
+**Por qué es prioridad:** la consigna dice que PSI es "the source of the data upon which the NASA Space App is to be based", y el criterio de jurado Relevance premia usar datos de NASA "as a core component". Hoy la app solo usa NTRS. Contexto: [PSI - datos oficiales](research/psi-datos-oficiales.md) · D14.
+
+**Datos:** `data/psi_coverage.json` (generado de las tablas originales de PSI). Tiene tres bloques:
+- `o2_ceiling`: el techo de oxígeno ensayado (22,2 %) frente a la base lunar (≥30 %).
+- `coverage`: por material de la curva, cuántos ensayos hay en PSI, el rango de O₂ y las investigaciones.
+- `saffire2_bounds`: 9 muestras de Saffire-II con resultado en **microgravedad y en 1 g**.
+
+**Pantalla nueva P6 · "What NASA's PSI database covers"** (pestaña propia o sección arriba de la curva):
+1. **Barra de oxígeno** (horizontal, 0–40 %): sombrear lo ensayado con sólidos en PSI (13,6–22,2 %) y marcar con una línea la base lunar ("30% or greater" y 34 %). Texto: "No solid sample in the PSI tables of BASS-II or Saffire I–III was tested above 22.2% oxygen. The planned lunar habitat is at 30% or more." Fuente a un clic: los DOI de `_meta.sources`.
+2. **Tabla de cobertura** por material (de `coverage`): material · ensayos en PSI · rango de O₂ · investigaciones. Los materiales con 0 ensayos muestran "Not found in the PSI tables we reviewed" (nunca "never tested"). Mostrar `note` si existe (por ejemplo, que el Nomex de PSI no es el HT90-40 de la curva).
+3. **Tarjeta "Bounding the Moon"** (de `saffire2_bounds`): por muestra, dos columnas, **Microgravity** y **Earth (1 g)**, con el resultado. Texto: "The challenge suggests microgravity and Earth results can bound what happens in between. Where both agree (SIBAL burns in both), lunar gravity likely behaves the same; where they disagree (thin silicone), the Moon is an open question — the kind FM2 is designed to answer."
+4. **En la ficha de material (P2)**: agregar una línea "PSI tests: N (O₂ X–Y%) · see PSI" con link a la investigación.
+
+**Reglas (además de las de la sección 4):**
+- Los datos de PSI son **microgravedad o 1 g**, nunca Luna. No ponerlos como puntos de la curva de gravedad.
+- BASS y BASS-II **no traen columna de resultado**. Si se muestran ensayos sueltos, el resultado es "not reported" salvo las notas del operador, que se rotulan como "operator note".
+- Usar solo el O₂ **inicial**. Hay dos O₂ finales que son errores de sensor (P22b y T28b).
+- Toda cifra de PSI lleva su DOI. PSI pide citar así cada colección.
+
+**Pruebas de aceptación nuevas:**
+6. La barra de oxígeno muestra 22,2 % como máximo ensayado y la base lunar a 30 % o más, con link a PSI-25.
+7. Elegir Mylar en la ficha dice "Not found in the PSI tables we reviewed".
+8. La tarjeta de Saffire-II muestra que SIBAL (2-5) quemó en microgravedad (29 cm, 2,1 mm/s) y en 1 g (completo), citando PSI-99, doi 10.60555/2chp-m469.
+9. Ningún texto de la app dice que PSI tiene datos lunares.
+
+**Para el README y la entrega:** el texto del campo "NASA Data" está en [PSI - datos oficiales](research/psi-datos-oficiales.md).
+

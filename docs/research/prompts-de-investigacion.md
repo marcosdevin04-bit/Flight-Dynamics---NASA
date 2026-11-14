@@ -85,6 +85,29 @@ Para cada material:
 Quiero una lista de 5 a 10 materiales para una demo, con la mejor fuente para cada uno.
 ```
 
+### R11 · Usar PSI, el recurso oficial del desafío (prioridad máxima)
+Por qué: la guía de entrega exige "at least one NASA data or resource" para premios globales, y el criterio de Relevancia premia usar datos de NASA "as a core component [...] rather than a superficial addition". La pestaña Resources del desafío pone a PSI como "source of the data upon which the NASA Space App is to be based". Hoy nuestra evidencia sale de NTRS, no de PSI → [Recursos NASA y datos](recursos-nasa-y-datos.md).
+```
+Tarea: incorporar datos del repositorio NASA Physical Sciences Informatics (PSI) a nuestro producto, que es el recurso central que da el desafío. Punto de partida oficial: https://psi.nasa.gov/physci/repo/search?q=combustion
+
+La consigna oficial dice textualmente: "there is currently no partial-gravity combustion data available in PSI" y "Microgravity and normal-gravity results could bound what occurs at intermediate gravity levels". Queremos usar PSI justamente así: los datos de microgravedad (µg) y de 1 g como las dos cotas entre las que cae la gravedad lunar.
+
+1. Inventario. Para cada investigación de PSI relevante a sólidos y seguridad contra incendios (prioridad: BASS, BASS-II, Saffire-I/II/III y siguientes; después ACME-BRE, FLEX/FLEX-2, SAME/SAME-R y E-FIELD Flames, que según la consigna imita la gravedad parcial): número PSI, nombre, URL exacta de la página de la investigación, qué archivos de datos tiene (nombre, formato, tamaño), si piden registro o login para descargar, y qué columnas trae cada archivo. Si no podés abrir un archivo, decilo y dame la URL directa para que lo bajemos a mano.
+
+2. Cruce con nuestros materiales. Nuestra curva de gravedad (Olson y Ferkul 2012, NTRS 20130010991, tabla I; Urban et al., ICES-2025-392, NTRS 20250002114, tabla 2) cubre: Mylar G, Ultem 1000, Nomex HT90-40, PMMA, policarbonato, Nomex Velcro, cinta P-213, algodón y SIBAL. Para cada uno: ¿hay ensayos en PSI con ese material (o uno equivalente)? Devolvé una fila por ensayo: investigación PSI | ID del ensayo | material, espesor y geometría | O2 (%) | presión (kPa) | flujo (cm/s) | gravedad (µg o 1 g) | resultado (propagó / se extinguió / no encendió; velocidad o límite si hay) | archivo y fila/columna de PSI de donde sale.
+
+3. Cotas para la Luna. Con eso, para cada material donde se pueda: límite o comportamiento en µg (desde PSI) y en 1 g (desde PSI o desde la norma), y si nuestro valor lunar de NTRS cae entre esas dos cotas o no. Si no cae, marcalo: es un hallazgo.
+
+4. Alta concentración de O2. Confirmá o refutá contra PSI: "ningún sólido se ensayó en vuelo por encima de 22,2 % de O2" (dato de otro equipo, sin verificar). ¿Cuál es el máximo de O2 con sólidos en PSI y en qué ensayo? Comparalo con la atmósfera lunar de la consigna (O2 "30% or greater", "10.2 psi or less").
+
+5. Uso mínimo garantizado. Si casi nada de lo anterior se puede bajar, proponé el uso de PSI más chico pero honesto que podamos mostrar en la demo (por ejemplo, una tabla de ensayos de BASS-II en µg para los materiales de nuestra curva, con link a PSI).
+
+Entregables:
+- Tabla del punto 2 en CSV (columnas en inglés, sin celdas inventadas: "not reported" si falta) → nombre sugerido: psi_bounds_evidence.csv
+- Resumen de 1 página: qué investigaciones de PSI usamos, para qué, y cómo citarlas (DOI o URL de PSI) en el campo "NASA Data" de la entrega.
+- Lista de archivos que tenemos que bajar a mano, con URL exacta.
+```
+
 ### P-EXTRAER · De un paper a una ficha de hallazgo
 ```
 Te paso un paper o un informe técnico (adjunto o pegado). Extraé cada resultado experimental en este formato, uno por bloque. No mezcles resultados de ensayos distintos:

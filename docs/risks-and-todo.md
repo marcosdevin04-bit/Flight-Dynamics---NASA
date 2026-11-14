@@ -7,10 +7,13 @@ actualizado: 2026-11-14
 
 ## Pendientes (por prioridad)
 - [ ] Validar el spec con el equipo y registrar D1 y D2 en [Registro de decisiones](decisions.md)
-- [ ] Leer la consigna oficial y la pestaña **Resources** en la plataforma (no pude acceder por SSL) → [Consigna](challenge/consigna.md)
-- [ ] Confirmar el título exacto (¿"SI-Powered" o "AI-Powered"?)
-- [ ] Descargar PSI-25 (BASS-II), PSI-69 (FLEX) y Saffire, y validar las columnas
-- [ ] **Verificar el dato "ningún sólido por encima de 22,2 % de O₂ en vuelo"** contra PSI (hoy es `#autodeclarado`, de SPICA)
+- [x] Leer la consigna oficial y la pestaña **Resources** → [Consigna](challenge/consigna.md) · [Recursos NASA y datos](research/recursos-nasa-y-datos.md) (2026-11-14)
+- [x] Confirmar el título exacto → "SI-Powered"
+- [ ] **Escribir la apuesta antes de FM2** (material, dirección esperada y regla de comparación, con fecha): la vista FM2 de la app está vacía y es la mitad del diferencial
+- [ ] Mergear `feature/lunar-evidence-dashboard` a main (o linkear la rama) para que quien mire el repo vea la app
+- [x] **Usar al menos un dataset de PSI** → bajados BASS, BASS-II y Saffire I–III ([PSI - datos oficiales](research/psi-datos-oficiales.md)). Falta: que Marcos los muestre en la app (panel de cobertura + Saffire-II µg/1 g) (el recurso central de Resources) en el producto: hoy la evidencia sale de NTRS, no de PSI. Opción mínima: los puntos de 1 g y 0 g de BASS-II o Saffire desde PSI como "cotas" (la consigna dice que µg y 1 g "could bound" la gravedad intermedia)
+- [x] Descargar PSI-25 (BASS-II) y Saffire, y validar las columnas (FLEX no hace falta: son gotas)
+- [x] Verificar "ningún sólido por encima de 22,2 % de O₂" → `#verificado` para BASS-II y Saffire I–III ([PSI - datos oficiales](research/psi-datos-oficiales.md))
 - [x] Encontrar la fuente NASA de la atmósfera de exploración (34 % O₂ / 8,2 psi) → white paper de Fortenberry et al., p. 2 y 4 (ver [Detección de incendios en naves](research/deteccion-de-incendios.md))
 - [ ] Decidir D8 (Modo alerta) con el equipo
 - [ ] Evaluar la idea de Marcos frente a D9 ("Antes del primer fuego en la Luna") y elegir producto
@@ -20,6 +23,8 @@ actualizado: 2026-11-14
 - [ ] Bajar a mano el dataset de Rojas-Alva y Jomaas (Mendeley) a `Documentos/`
 - [ ] Digitalizar las figs. 7–12 de ICES-2025 para tener los límites lunares numéricos (marcarlos como "derivados")
 - [ ] Resolver dónde está el pico (¿Luna o Marte?) leyendo Sacksteder y T'ien 1994
+- [ ] Escribir `PREDICTION.md` (la apuesta pre-registrada para FM2) y sumarla al README: tanda de las 23:00. Opcional: DOI en Zenodo
+- [ ] Revisar en GitHub que el diagrama Mermaid del README se vea bien (no se pudo validar localmente)
 - [ ] Actualizar FM2: el póster de 2025 dice "next few years" y material Synergy Pro, contra "fines de 2026" del abstract
 - [ ] Averiguar si alguien del equipo puede correr NIST FDS. Si no, el CFD queda como un modelo 2D simple marcado como ilustrativo
 - [ ] Verificar si FM2 ya se lanzó (estaba planificado para fines de 2026)
