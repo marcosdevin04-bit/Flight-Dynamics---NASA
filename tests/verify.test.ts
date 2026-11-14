@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { loadEvidence, rank } from "../lib/evidence/rank";
+import { FM2_NOTE, NO_MATCH_MESSAGE, WEIGHTS, loadEvidence, rank } from "../lib/evidence/rank";
 import {
   extractCitations,
   extractNumbers,
@@ -73,6 +73,26 @@ describe("numbers", () => {
     // 18.2 belongs to GMT190-T24, not to GMT190-T23
     expect(kinds("The reused sample did not ignite at 18.2% O2 [GMT190-T23].")).toContain("number_not_in_cited_record");
   });
+  it("page numbers, years and NTRS ids are not citable values", () => {
+    // 33 is only a slide page of the LUCI source; 2025 only its year
+    expect(kinds("SIBAL spread at 33 mm/s in lunar gravity [csv-1].")).toContain("number_not_in_cited_record");
+    expect(kinds("SIBAL spread at 2025 mm/s in lunar gravity [csv-1].")).toContain("number_not_in_cited_record");
+  });
+  it("source references in the sentence are not checked as values", () => {
+    const moon = rank({ material: "Mylar", o2_pct: 15.6, pressure_kPa: 70.3, flow_cm_s: 0 });
+    const recs = moon.results.map((x) => x.record);
+    const t = "Olson & Ferkul 2012 (Table I, p. 6; NTRS 20130010991) report a lunar ULOI of 15.6% O2 [mylar-g@luna].";
+    expect(verifyExplanation(t, recs, { allRecords: all }).errors).toEqual([]);
+  });
+  it("a percentage must match an oxygen value, not any number in the record", () => {
+    const moon = rank({ material: "Mylar", o2_pct: 15.6, pressure_kPa: 70.3, flow_cm_s: 0 });
+    const recs = moon.results.map((x) => x.record);
+    // 30 exists in the record (30 cm/s flow warning) but not as an O2 value
+    const r = verifyExplanation("Mylar's lunar limit was 30% O2 [mylar-g@luna].", recs, { allRecords: all });
+    expect(r.errors.map((e) => e.kind)).toContain("number_not_in_cited_record");
+    // the same 30 as a flow is fine
+    expect(verifyExplanation("The 0 g point used 30 cm/s of forced flow [mylar-g@luna].", recs, { allRecords: all }).ok).toBe(true);
+  });
   it("rejects an uncited number that is not a scenario or reference value", () => {
     expect(kinds("SIBAL burns at 19.4% O2 [csv-1]. It would extinguish at 12% O2.")).toContain("uncited_number");
   });
@@ -111,5 +131,21 @@ describe("forbidden words", () => {
 describe("sentence splitting", () => {
   it("does not split decimals or 'p. 6'", () => {
     expect(splitSentences("ULOI 15.6% (Table I, p. 6) [mylar-g@luna]. Next sentence.")).toHaveLength(2);
+  });
+});
+
+describe("PLAN §8 acceptance 5: no forbidden words in any English text the response can carry", () => {
+  it("record texts (outcome, warnings, display, gravity label)", () => {
+    const hits: string[] = [];
+    for (const r of all) {
+      const texts = [r.resultado_en, r.gravity_label, ...r.warnings_en, ...Object.values(r.display)];
+      for (const t of texts) for (const w of findForbidden(t)) hits.push(`${r.id}: "${w}" in "${t.slice(0, 80)}"`);
+    }
+    expect(hits).toEqual([]);
+  });
+  it("weights, the no-match message and the FM2 note", () => {
+    expect(findForbidden(JSON.stringify(WEIGHTS))).toEqual([]);
+    expect(findForbidden(NO_MATCH_MESSAGE)).toEqual([]);
+    expect(findForbidden(FM2_NOTE)).toEqual([]);
   });
 });

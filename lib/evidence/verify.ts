@@ -6,11 +6,14 @@
  *      (a CSV alias of a retrieved record counts as that record);
  *   2. every number in a sentence with citations appears in one of the records
  *      cited in that sentence (rounding allowed: 15.6 may be written 16);
+ *      a percentage must match an O2 value of that record, not any number;
+ *      source references (pages, tables, years, NTRS ids) are not values;
  *   3. numbers in sentences without citations are only the user's scenario
  *      values or the fixed reference values in ALLOWED_REFERENCE_NUMBERS;
  *   4. it never uses the forbidden words ("safe", "certified", "never tested"...).
  *   5. if records were retrieved, it cites at least one of them.
  */
+import { stripSourceRefs, yearsIn } from "./parse";
 import type { EvidenceRecord } from "./types";
 
 export type VerifyErrorKind =
@@ -95,18 +98,27 @@ export interface CitedNumber {
   value: number;
   decimals: number;
   text: string;
+  /** Written as a percentage ("21%", or "18" in "18–20%"). */
+  percent: boolean;
+  /** Followed by a physical unit ("2025 mm/s"): a value, so never accepted as a citation year. */
+  hasUnit: boolean;
 }
 
 /** Numbers stated in a sentence, ignoring citations and identifiers. */
 export function extractNumbers(sentence: string): CitedNumber[] {
+  // Identifiers first ("ICES-2025-392" must not leave "392" behind), then source references.
   let s = sentence.replace(CITATION_RE, " ");
   for (const re of IDENTIFIER_PATTERNS) s = s.replace(re, " ");
+  s = stripSourceRefs(s, true);
   const out: CitedNumber[] = [];
   // Units glued to a number ("0.92mm", "1g") still count as a stated number.
   for (const m of s.matchAll(/(?<![\w.])(\d{1,3}(?:,\d{3})+(?!\d)|\d+)(?:\.(\d+))?/g)) {
     const intPart = m[1].replace(/,/g, "");
     const dec = m[2] ?? "";
-    out.push({ value: Number(dec ? `${intPart}.${dec}` : intPart), decimals: dec.length, text: m[0] });
+    const after = s.slice((m.index ?? 0) + m[0].length);
+    const percent = /^(?:\s*(?:[-–]|to)\s*\d+(?:\.\d+)?)?\s*%/.test(after);
+    const hasUnit = percent || /^\s*(?:mm|cm|m|s|kPa|Pa|psia?|atm|g|W|kW|mg|mil|RPM|°)\b/.test(after);
+    out.push({ value: Number(dec ? `${intPart}.${dec}` : intPart), decimals: dec.length, text: m[0], percent, hasUnit });
   }
   return out;
 }
@@ -158,10 +170,16 @@ export function verifyExplanation(text: string, retrieved: EvidenceRecord[], opt
     for (const n of extractNumbers(sentence)) {
       checked++;
       if (free.some((v) => numberMatches(n, v))) continue;
-      if (cited.some((r) => r.numbers.some((v) => numberMatches(n, v)))) continue;
+      if (cited.some((r) => (n.percent ? r.o2_numbers : r.numbers).some((v) => numberMatches(n, v)))) continue;
+      // A year is fine only if it is the year of a cited source ("Olson & Ferkul 2012").
+      if (!n.hasUnit && n.decimals === 0 && cited.some((r) => yearsIn(r.fuente.cita).includes(n.value))) continue;
       errors.push(
         cited.length
-          ? { kind: "number_not_in_cited_record", detail: `${n.text} is not in ${cited.map((r) => `[${r.id}]`).join(", ")}`, sentence }
+          ? {
+              kind: "number_not_in_cited_record",
+              detail: `${n.text}${n.percent ? "%" : ""} is not ${n.percent ? "an O2 value " : ""}in ${cited.map((r) => `[${r.id}]`).join(", ")}`,
+              sentence,
+            }
           : { kind: "uncited_number", detail: `${n.text} has no citation`, sentence },
       );
     }

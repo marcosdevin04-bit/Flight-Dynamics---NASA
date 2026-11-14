@@ -71,8 +71,10 @@ export interface EvidenceRecord {
   warnings_en: string[];
   display: { o2: string; pressure: string; flow: string; gravity: string; thickness: string };
   not_reported: string[];
-  /** Every number that can be cited from this record (used by verify.ts). */
+  /** Every number that can be cited from this record (used by verify.ts). Excludes pages, years and ids. */
   numbers: number[];
+  /** Numbers that can be cited as an O2 percentage (values, limits, shifts, and "N %" in the texts). */
+  o2_numbers: number[];
   dataset: string;
   source_path: string;
   /** Other citable IDs that hold the same datum (e.g. a CSV row duplicated in the JSON). */

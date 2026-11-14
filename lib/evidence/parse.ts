@@ -130,8 +130,41 @@ export function parseNtrs(text: string): string | null {
   return m ? `https://ntrs.nasa.gov/citations/${m[1]}` : null;
 }
 
-/** All numbers in a string (for the citable-number set of a record). */
+/**
+ * Source references are not values: page/slide/table/figure numbers, years,
+ * NTRS ids, DOIs, equation numbers. Removed before collecting or checking numbers.
+ */
+const SOURCE_REFS: RegExp[] = [
+  /\b(?:PDF\s+)?pp?\.\s*\d+(?:\s*[-–,]\s*\d+)*/gi,
+  /\b(?:Tables?|Tabla|Figs?|Figures?|Figuras?|slides?|Eq)\.?\s*(?:[IVX]+\b|\d+(?:\.\d+)?)(?:\s*(?:[-–,]|and)\s*\d+(?:\.\d+)?)*/gi,
+  /\bNTRS\s*\d+/gi,
+  /\bdoi:\s*\S+|\b10\.\d{4,}\/\S+/gi,
+];
+const YEAR = /\b(?:19|20)\d{2}\b/g;
+/** keepYears: verify.ts keeps years in LLM text and checks them against the cited sources. */
+export function stripSourceRefs(text: string, keepYears = false): string {
+  let s = text;
+  for (const re of SOURCE_REFS) s = s.replace(re, " ");
+  return keepYears ? s : s.replace(YEAR, " ");
+}
+export function yearsIn(text: string): number[] {
+  return [...text.matchAll(YEAR)].map((m) => Number(m[0]));
+}
+
+/** All numbers in a string, ignoring source references (for the citable-number set of a record). */
 export function numbersIn(text: string | null | undefined): number[] {
   if (!text) return [];
-  return [...String(text).matchAll(/\d+(?:\.\d+)?/g)].map((m) => Number(m[0]));
+  return [...stripSourceRefs(String(text)).matchAll(/\d+(?:\.\d+)?/g)].map((m) => Number(m[0]));
+}
+
+/** Numbers written as percentages ("21%", "14.1–15.6 %"), ignoring source references. */
+export function percentNumbersIn(text: string | null | undefined): number[] {
+  if (!text) return [];
+  const s = stripSourceRefs(String(text));
+  const out: number[] = [];
+  for (const m of s.matchAll(/(\d+(?:\.\d+)?)(?:\s*(?:[-–]|to)\s*(\d+(?:\.\d+)?))?\s*%/g)) {
+    out.push(Number(m[1]));
+    if (m[2]) out.push(Number(m[2]));
+  }
+  return out;
 }

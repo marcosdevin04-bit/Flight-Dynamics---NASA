@@ -22,6 +22,7 @@ import {
   gravedadLabel,
   numbersIn,
   parseFlow,
+  percentNumbersIn,
   parseGravity,
   parseNtrs,
   parseO2,
@@ -195,6 +196,8 @@ interface Partial0 {
   dataset: string;
   source_path: string;
   extraText: string[];
+  /** Raw O2 cell (CSV), for the O2-citable numbers. */
+  o2Text?: string;
 }
 
 function finalize(p: Partial0): EvidenceRecord {
@@ -240,6 +243,7 @@ function finalize(p: Partial0): EvidenceRecord {
     },
     not_reported: [],
     numbers: [],
+    o2_numbers: [],
     dataset: p.dataset,
     source_path: p.source_path,
     aliases: [],
@@ -250,7 +254,14 @@ function finalize(p: Partial0): EvidenceRecord {
   rec.numbers = uniqNumbers(
     [rec.espesor_mm, rec.g, rec.o2, rec.presion_kPa, rec.flow_cm_s, rec.delta_o2_vs_1g, p.limits?.uloi, p.limits?.moc],
     rec.g_levels ?? [], rec.g_range ?? [], rec.o2_range ?? [], rec.presion_range ?? [], rec.flow_range ?? [],
-    ...[p.material, p.flujo, p.resultado, p.resultado_en, p.advertencia, p.platform, p.duration, p.fuente.cita, p.fuente.ubicacion, ...p.warnings_en, ...p.extraText].map(numbersIn),
+    // fuente.cita and fuente.ubicacion are references (years, pages, NTRS ids), not values.
+    ...[p.material, p.flujo, p.resultado, p.resultado_en, p.advertencia, p.platform, p.duration, ...p.warnings_en, ...p.extraText].map(numbersIn),
+  );
+  rec.o2_numbers = uniqNumbers(
+    [rec.o2, p.limits?.uloi, p.limits?.moc, rec.delta_o2_vs_1g],
+    rec.o2_range ?? [],
+    numbersIn(p.o2Text),
+    ...[p.resultado, p.resultado_en, p.advertencia, ...p.warnings_en, ...p.extraText].map(percentNumbersIn),
   );
   return rec;
 }
@@ -452,6 +463,7 @@ function fromCsvRow(r: CsvRow): Partial0 {
     dataset: CSV_FILE,
     source_path: `data/${CSV_FILE} → row_id ${r.row_id}`,
     extraText: [r.O2_pct, r.pressure_kPa, r.gravity_g, r.value_status, r.notes],
+    o2Text: r.O2_pct,
   };
 }
 
@@ -527,6 +539,7 @@ function enrich(primary: EvidenceRecord, twin: EvidenceRecord): EvidenceRecord {
   };
   r.not_reported = notReported(r);
   r.numbers = uniqNumbers(primary.numbers, twin.numbers);
+  r.o2_numbers = uniqNumbers(primary.o2_numbers, twin.o2_numbers);
   r.aliases = [...r.aliases, twin.id];
   return r;
 }

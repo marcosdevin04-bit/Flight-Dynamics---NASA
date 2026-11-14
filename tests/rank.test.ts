@@ -22,7 +22,7 @@ function fixture(over: Partial<EvidenceRecord>): EvidenceRecord {
     gravity_regime: "1g", gravity_label: "tested in 1 g", nivel_label: "verified", material_key: "testium", platform: null,
     g_levels: null, g_range: null, o2_range: null, o2_approx: false, limits: null, delta_o2_vs_1g: null, presion_range: null,
     flow_cm_s: 0, flow_range: null, duration: null, resultado_en: "", warnings_en: [],
-    display: { o2: "", pressure: "", flow: "", gravity: "", thickness: "" }, not_reported: [], numbers: [],
+    display: { o2: "", pressure: "", flow: "", gravity: "", thickness: "" }, not_reported: [], numbers: [], o2_numbers: [],
     dataset: "fixture", source_path: "fixture", aliases: [], duplicate_of: null, rankable: true,
     ...over,
   };
