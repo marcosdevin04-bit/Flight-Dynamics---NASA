@@ -1,0 +1,102 @@
+{
+  "_meta": {
+    "descripcion": "Límites de oxígeno por gravedad, verificados contra la fuente primaria. Tanda 1 (14/11/2026).",
+    "unidad_o2": "% O2 en volumen",
+    "definiciones": {
+      "uloi": "Oxígeno mínimo con el que el material ardió (1 g: pasa el criterio de Test 1 ~50 % de las veces; gravedad reducida: ardió toda la caída)",
+      "moc": "Oxígeno máximo con el que el material se autoextinguió"
+    },
+    "advertencias_globales": [
+      "El criterio en gravedad reducida (5,18 s de caída) no es el mismo que en 1 g (15,2 cm de llama, NASA-STD-6001 Test 1).",
+      "Los valores lunares y de 0 g vienen de Ferkul y Olson 2011, reproducidos en Olson y Ferkul 2012 (el original de 2011 no se leyó).",
+      "El punto de 0 g es con flujo forzado de 30 cm/s, no con aire quieto.",
+      "Escalones de 1 % de O2, sin réplicas reportadas.",
+      "Presiones de 70,3 o 101,3 kPa, no la del hábitat lunar (56,5 kPa)."
+    ],
+    "fuente": {
+      "cita": "Olson, S. L. & Ferkul, P. V. (2012). Evaluating Material Flammability in Microgravity and Martian Gravity Compared to the NASA Standard Normal Gravity Test. AIAA 2012-3492.",
+      "ntrs": "https://ntrs.nasa.gov/citations/20130010991",
+      "ubicacion": "Tabla I, p. 6"
+    },
+    "nivel": "verificado"
+  },
+  "materiales": [
+    {
+      "id": "mylar-g",
+      "nombre": "Mylar G (film de PET)",
+      "espesor_mm": 0.127,
+      "presion_kPa": 70.3,
+      "puntos": [
+        {"gravedad": "1 g", "g": 1.0, "uloi": 21.2, "moc": 20.0, "plataforma": "NASA WSTF, Test 1 modificado", "flujo": "sin flujo forzado, hacia arriba"},
+        {"gravedad": "Marte", "g": 0.38, "uloi": 18.0, "moc": 17.0, "plataforma": "Torre de caída de NASA GRC con centrífuga (5,18 s)", "flujo": "flotación (centrífuga), hacia arriba"},
+        {"gravedad": "Luna", "g": 0.16, "uloi": 15.6, "moc": 14.1, "plataforma": "Torre de caída de NASA GRC con centrífuga", "flujo": "flotación (centrífuga), hacia arriba", "nota": "valor de g exacto no indicado en la fuente leída"},
+        {"gravedad": "0 g", "g": 0.0, "uloi": 17.0, "moc": 16.0, "plataforma": "Torre de caída (microgravedad)", "flujo": "forzado, concurrente, 30 cm/s"}
+      ],
+      "delta_o2_vs_1g": {"Marte": -3.1, "Luna": -5.75, "0 g": -4.1},
+      "peor_caso": "Luna"
+    },
+    {
+      "id": "ultem-1000",
+      "nombre": "Ultem 1000 (film de PEI)",
+      "espesor_mm": 0.254,
+      "presion_kPa": 70.3,
+      "puntos": [
+        {"gravedad": "1 g", "g": 1.0, "uloi": 23.5, "moc": 23.0, "plataforma": "NASA WSTF, Test 1 modificado", "flujo": "sin flujo forzado, hacia arriba"},
+        {"gravedad": "Marte", "g": 0.38, "uloi": 22.0, "moc": 21.1, "plataforma": "Torre de caída de NASA GRC con centrífuga (5,18 s)", "flujo": "flotación (centrífuga), hacia arriba"},
+        {"gravedad": "Luna", "g": 0.16, "uloi": 21.0, "moc": 19.9, "plataforma": "Torre de caída de NASA GRC con centrífuga", "flujo": "flotación (centrífuga), hacia arriba"},
+        {"gravedad": "0 g", "g": 0.0, "uloi": 24.0, "moc": 23.0, "plataforma": "Torre de caída (microgravedad)", "flujo": "forzado, concurrente, 30 cm/s"}
+      ],
+      "delta_o2_vs_1g": {"Marte": -1.7, "Luna": -2.8, "0 g": 0.25},
+      "peor_caso": "Luna"
+    },
+    {
+      "id": "nomex-ht90-40",
+      "nombre": "Nomex HT90-40 (tela)",
+      "espesor_mm": 0.305,
+      "presion_kPa": 101.3,
+      "puntos": [
+        {"gravedad": "1 g", "g": 1.0, "uloi": 23.5, "moc": 22.1, "plataforma": "NASA WSTF, Test 1 modificado", "flujo": "sin flujo forzado, hacia arriba"},
+        {"gravedad": "Marte", "g": 0.38, "uloi": 19.9, "moc": 19.0, "plataforma": "Torre de caída de NASA GRC con centrífuga (5,18 s)", "flujo": "flotación (centrífuga), hacia arriba"},
+        {"gravedad": "Luna", "g": 0.16, "uloi": 21.0, "moc": 19.9, "plataforma": "Torre de caída de NASA GRC con centrífuga", "flujo": "flotación (centrífuga), hacia arriba"},
+        {"gravedad": "0 g", "g": 0.0, "uloi": 23.0, "moc": 22.0, "plataforma": "Torre de caída (microgravedad)", "flujo": "forzado, concurrente, 30 cm/s"}
+      ],
+      "delta_o2_vs_1g": {"Marte": -3.35, "Luna": -2.35, "0 g": -0.3},
+      "peor_caso": "Marte"
+    }
+  ],
+  "habitat_lunar_8_2_psi": {
+    "_meta": {
+      "descripcion": "Dirección del efecto de la gravedad lunar frente a 1 g, a 8,2 psi (56,5 kPa). Los valores numéricos del límite lunar solo están en figuras (no digitalizados).",
+      "fuente": {"cita": "Urban et al. (2025). Solid Fuel Ignition Testing for Lunar Applications, Theory and Experimental Results. ICES-2025-392.", "ntrs": "https://ntrs.nasa.gov/citations/20250002114", "ubicacion": "p. 8–11, figs. 7–12, tabla 2"},
+      "nivel": "verificado"
+    },
+    "materiales": [
+      {"id": "pmma", "nombre": "PMMA (acrílico) 0,8 mm", "test1_aire": "falla", "efecto_luna": "más inflamable (arde con menos O2 que lo extrapolado de 1 g)", "correccion_conservadora_o2": 1.9},
+      {"id": "p213", "nombre": "Cinta P-213 (fibra de vidrio, adhesivo acrílico)", "test1_aire": "falla", "efecto_luna": "más inflamable", "correccion_conservadora_o2": 1.4},
+      {"id": "remera-algodon", "nombre": "Remera de algodón (Beefy-T)", "test1_aire": "falla", "efecto_luna": "más inflamable (también la combustión lenta, sin llama)", "correccion_conservadora_o2": 0.82},
+      {"id": "policarbonato", "nombre": "Policarbonato", "test1_aire": "pasa", "efecto_luna": "menos inflamable (se extingue con bastante más O2)", "correccion_conservadora_o2": 2.3},
+      {"id": "nomex-velcro", "nombre": "Velcro de Nomex", "test1_aire": "pasa", "efecto_luna": "menos inflamable (se extingue con bastante más O2)", "correccion_conservadora_o2": 0.32}
+    ],
+    "nomex_ht90_40_poster": {
+      "fuente": {"cita": "Schechter et al. (2025). Characterizing the Flammability of Nomex Fabric for the Preparation of FM2 (póster).", "ntrs": "https://ntrs.nasa.gov/citations/20250010975"},
+      "nivel": "verificado (valores aproximados del póster)",
+      "limite_o2_aprox": {"1 g": 23, "Luna": 29, "0 g": 38},
+      "nota": "A 8,2 psi la Luna es MENOS inflamable que 1 g: lo contrario del resultado a 14,7 psi (Olson y Ferkul 2012)."
+    }
+  },
+  "ejemplo_sibal_microgravedad": {
+    "_meta": {
+      "descripcion": "Ejemplo de 'casos intermedios' (idea de Marcos). SIBAL, 2,2 cm de ancho, 10 cm/s de flujo concurrente, en la ISS (0 g).",
+      "fuente": {"cita": "Olson et al. (2021). BASS-II Summary Report, NASA/TM-20210011385.", "ntrs": "https://ntrs.nasa.gov/citations/20210011385", "ubicacion": "Tabla 7.1, p. 96; advertencia en p. 95"},
+      "nivel": "verificado",
+      "advertencia": "Son muestras REUTILIZADAS. El informe aclara que 'provided less quantitative data, thus will not be discussed'. Es microgravedad, no gravedad lunar."
+    },
+    "ensayos": [
+      {"test": "GMT175-T9", "ancho_cm": 2.2, "flujo_cm_s": "10", "o2": 16.4, "resultado": "No encendió"},
+      {"test": "GMT190-T23", "ancho_cm": 2.2, "flujo_cm_s": "10", "o2": 17.2, "resultado": "Reutilizada, no encendió"},
+      {"test": "GMT190-T24", "ancho_cm": 2.2, "flujo_cm_s": "10", "o2": 18.2, "resultado": "Reutilizada, llama de un solo lado"},
+      {"test": "GMT45-T1", "ancho_cm": 2.2, "flujo_cm_s": "10", "o2": 18.5, "resultado": "Sin comentario (lectura de O2 posiblemente inexacta)"},
+      {"test": "GMT96-T7", "ancho_cm": 2.2, "flujo_cm_s": "10", "o2": 21.0, "resultado": "Ardió (BASS)"}
+    ]
+  }
+}

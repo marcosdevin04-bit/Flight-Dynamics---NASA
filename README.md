@@ -38,6 +38,15 @@ Three engineering students from Montevideo, Uruguay:
 NASA datasets, research publications, and other resources
 used in the project will be documented here.
 
+### Project documentation (team workspace, in Spanish)
+
+- **[Development brief](docs/DEVELOPMENT.md)**: screens, data contract, rules and acceptance tests. Start here.
+- [Data](data/): verified partial-gravity flammability data (`curva_gravedad.json`), the full evidence table (CSV) and the gaps summary.
+- [Research notes](docs/research/): partial-gravity evidence, the FM2 lunar fire experiment, competitor analysis, NASA resources.
+- [Challenge rules](docs/challenge/) · [Decisions](docs/decisions.md) · [Sources](docs/sources.md) · [Index](docs/INDEX.md)
+
+Every number in `data/` cites its NASA source (document, table or page) and an evidence level.
+
 ### Research guide
 
 Spanish-language study guide covering microgravity combustion, NASA experiments,
