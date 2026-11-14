@@ -30,7 +30,7 @@ A decision-support tool for **the engineer who designs the materials and ventila
 | **Material cards** | Which materials become *more* flammable in lunar gravity and which become *less*, with the source for each result |
 | **Similar tests** | Pick oxygen, airflow and gravity: the tool finds the closest NASA tests, explains what matches and what differs, and says plainly when **no matching test exists in the data we reviewed** |
 | **Our bet before FM2** | A dated, falsifiable prediction written *before* FM2 results, to be checked when NASA publishes them |
-| **Simulation** *(optional)* | Heat transport around a sample under different gravity and ventilation, clearly labeled as a simulation |
+| **Simulation** *(optional)* | Orbitable 3D reacting-flow chamber with gravity, ventilation, oxygen and pressure controls; illustrative, unvalidated |
 
 ## What the data already shows
 
@@ -109,7 +109,11 @@ Three engineering students from Montevideo, Uruguay:
 - **Juan Benitez:** Systems Engineering student
 - **Facundo Díaz:** AI & Data Science student · research
 
+Open the [live dashboard](https://flight-dynamics-lunar-evidence.martindevin26.chatgpt.site/#gravity) or the [3D flame chamber](https://flight-dynamics-lunar-evidence.martindevin26.chatgpt.site/#simulation). The chamber uses a generic fuel source; it cannot predict whether a selected NASA material will ignite. Run `node scripts/check-chamber.mjs` to check the numerical response.
+
 ## Use of AI
+
+In Similar tests, deterministic filters retrieve matching records. The ISS fabric example has a cached AI explanation checked against two cited SIBAL trials. On browsers with an available local language model, the user can also ask it to select the most informative records; the app validates the selected IDs and displays values from the JSON. The chamber uses numerical equations, not AI.
 
 This project uses AI assistants (Claude, ChatGPT) for literature search, data extraction, documentation and coding support. Every number used in the app is checked against the original NASA document, or labeled as secondary or unverified. Details are logged in [docs/sources.md](docs/sources.md).
 
