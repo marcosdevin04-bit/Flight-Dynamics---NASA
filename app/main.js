@@ -1,3 +1,5 @@
+import {luciPanel} from './luci.js';
+import {evidenceGuide} from './interpretation.js';
 const view = document.querySelector('#view');
 const escape = value => String(value ?? 'Not reported').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 const fmt = value => typeof value === 'number' && Number.isFinite(value) ? String(value) : 'Not reported';
@@ -104,7 +106,11 @@ function compareRecords(query){
 }
 function tests(){
  const mats=[{id:'sibal',nombre:'SIBAL fabric'},...data.materiales,...data.habitat_lunar_8_2_psi.materiales];
- view.innerHTML=title('Similar tests','Set the conditions of your design to find measured outcomes. Leave airflow or pressure blank to compare all reported values.')+`<div class="controls"><label>Material<select id="mat">${mats.map(m=>option(m.id,name(m),searchState.mat)).join('')}</select></label><label>Oxygen (%)<input required id="oxygen" type="number" min="0" max="100" step="any"></label><label>Airflow (cm/s)<input id="flow" type="number" min="0" step="any" placeholder="Any"></label><label>Gravity<select id="gravity">${[['0','Microgravity'],['0.16','Moon'],['0.38','Mars'],['1','Earth']].map(([v,s])=>option(v,s,searchState.gravity)).join('')}</select></label><label>Pressure (kPa)<input id="pressure" type="number" min="0.01" step="any" placeholder="Any"></label></div><div class="actions"><button id="sibal">ISS fabric example</button><button id="habitat">Lunar habitat scenario</button></div><div id="results" aria-live="polite"></div><details class="notice"><summary>How tests are ranked</summary><p>Material and gravity must match. Each requested variable has equal weight. Distance is the mean absolute difference divided by its comparison scale: oxygen 2 percentage points, airflow 10 cm/s, gravity 0.16 g, pressure 5 kPa. A known difference beyond its scale excludes the record; a missing requested value adds one unit of distance and prevents an exact match. These are search settings, not physical limits.</p></details>`;
+ view.innerHTML=title('Similar tests','Start with the gravity environment, then select a material and test conditions. Leave airflow or pressure blank to compare all reported values.')+`<div class="controls"><label>Gravity<select id="gravity">${[['0','Microgravity'],['0.16','Moon'],['0.38','Mars'],['1','Earth']].map(([v,s])=>option(v,s,searchState.gravity)).join('')}</select></label><label>Material<select id="mat">${mats.map(m=>option(m.id,name(m),searchState.mat)).join('')}</select></label><label>Oxygen (%)<input required id="oxygen" type="number" min="0" max="100" step="any"></label><label>Airflow (cm/s)<input id="flow" type="number" min="0" step="any" placeholder="Any"></label><label>Pressure (kPa)<input id="pressure" type="number" min="0.01" step="any" placeholder="Any"></label></div><div class="actions"><button id="sibal">ISS fabric example</button><button id="habitat">Lunar habitat scenario</button></div><div id="results" aria-live="polite"></div><details class="notice"><summary>How tests are ranked</summary><p>Material and gravity must match. Each requested variable has equal weight. Distance is the mean absolute difference divided by its comparison scale: oxygen 2 percentage points, airflow 10 cm/s, gravity 0.16 g, pressure 5 kPa. A known difference beyond its scale excludes the record; a missing requested value adds one unit of distance and prevents an exact match. These are search settings, not physical limits.</p></details>`;
+ const step=document.createElement('section');
+ step.className='notice';
+ luciPanel(step,searchState.mat);
+ view.querySelector('#results').before(step);
  function refresh(){
  const results=view.querySelector('#results');
  const fields=['oxygen','flow','pressure'];
@@ -120,6 +126,8 @@ function tests(){
  results.innerHTML=`<section class="result"><h3>${exact.length?'Exact match for the conditions entered':'Similar tests, ranked by distance'}</h3><p class="muted">Only the conditions you entered are compared. Each result describes its own experiment.</p></section>`+
  (query.mat==='sibal'?'<p class="notice">The T23 and T24 samples were reused. Their outcomes do not establish an ignition threshold between the two oxygen levels.</p>':'')+
  matches.map(({r,reasons,total})=>`<article class="card result"><span class="tag">${escape(r.level)}</span><h3>${escape(r.id)} · ${escape(r.result)}</h3><p>${escape(reasons.join(' · '))}</p><small>Normalized distance ${total.toFixed(3)}</small><br>${source(r.source)}</article>`).join('');
+ const host=document.createElement('section');results.querySelector('.result').after(host);
+ evidenceGuide(host,matches,query);
  }
  for(const key of ['mat','oxygen','flow','gravity','pressure']){
  const input=view.querySelector('#'+key);input.value=searchState[key];
