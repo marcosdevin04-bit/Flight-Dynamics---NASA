@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-15T13:15:02.295Z",
+  "generated_at": "2026-11-15T14:35:31.828Z",
   "inputs": [
     "data/curva_gravedad.json",
     "data/partial_gravity_flammability_evidence.csv",
@@ -1271,7 +1271,7 @@
       "flow_cm_s": 0,
       "flow_range": null,
       "duration": "5.2 (drop); 5-s extinction criterion",
-      "resultado_en": "LIMIT: lunar-g limit LOWER than any extrapolation of the 1-g WSTF data (enhanced flammability). Numeric lunar-g limit only plotted (Fig.7). Paper's conservative 1-g->lunar correction (95% CI, 35 cm/s->0) = 1.9 % O2. NASA-STD-6001 Test 1 in air: fails Test 1 in air",
+      "resultado_en": "LIMIT: lunar-g limit LOWER than any extrapolation of the 1-g WSTF data (enhanced flammability). Numeric lunar-g limit only plotted (Fig.7). Paper's conservative 1-g->lunar correction (one-tailed 95% confidence-interval slope extrapolated from the presumed 1-g buoyant velocity of 35 cm/s to zero flow; Table 2, p. 11) = 1.9 % O2. NASA-STD-6001 Test 1 in air: fails Test 1 in air",
       "warnings_en": [
         "Direction of the lunar-gravity effect only: the numeric lunar limit is plotted in a figure and was not digitized (not reported as a number).",
         "Values: lunar limit: measured but NOT REPORTED numerically (figure only); correction factor derived by authors.",
@@ -1356,7 +1356,7 @@
       "flow_cm_s": 0,
       "flow_range": null,
       "duration": "5.2 (drop); 5-s extinction criterion",
-      "resultado_en": "LIMIT: lunar-g limit LOWER than extrapolated 1-g data (enhanced flammability). Numeric lunar-g limit only plotted (Fig.8). Paper's conservative 1-g->lunar correction (95% CI, 35 cm/s->0) = 1.4 % O2. NASA-STD-6001 Test 1 in air: fails Test 1 in air",
+      "resultado_en": "LIMIT: lunar-g limit LOWER than extrapolated 1-g data (enhanced flammability). Numeric lunar-g limit only plotted (Fig.8). Paper's conservative 1-g->lunar correction (one-tailed 95% confidence-interval slope extrapolated from the presumed 1-g buoyant velocity of 35 cm/s to zero flow; Table 2, p. 11) = 1.4 % O2. NASA-STD-6001 Test 1 in air: fails Test 1 in air",
       "warnings_en": [
         "Direction of the lunar-gravity effect only: the numeric lunar limit is plotted in a figure and was not digitized (not reported as a number).",
         "Values: lunar limit: measured but NOT REPORTED numerically (figure only); correction factor derived by authors.",
@@ -1442,7 +1442,7 @@
       "flow_cm_s": 0,
       "flow_range": null,
       "duration": "5.2 (drop); 5-s extinction criterion",
-      "resultado_en": "LIMIT: flaming: lunar-g limit LOWER than extrapolated 1-g data; smolder limit shows similar flow dependence (smolder dO2 1.8). Numeric lunar-g limit only plotted (Figs.9-10). Paper's conservative 1-g->lunar correction (95% CI, 35 cm/s->0) = 0.82 % O2. NASA-STD-6001 Test 1 in air: fails Test 1 in air",
+      "resultado_en": "LIMIT: flaming: lunar-g limit LOWER than extrapolated 1-g data; smolder limit shows similar flow dependence (smolder dO2 1.8). Numeric lunar-g limit only plotted (Figs.9-10). Paper's conservative 1-g->lunar correction (one-tailed 95% confidence-interval slope extrapolated from the presumed 1-g buoyant velocity of 35 cm/s to zero flow; Table 2, p. 11) = 0.82 % O2. NASA-STD-6001 Test 1 in air: fails Test 1 in air",
       "warnings_en": [
         "Direction of the lunar-gravity effect only: the numeric lunar limit is plotted in a figure and was not digitized (not reported as a number).",
         "Values: lunar limit: measured but NOT REPORTED numerically (figure only); correction factor derived by authors.",
@@ -1528,7 +1528,7 @@
       "flow_cm_s": 0,
       "flow_range": null,
       "duration": "5.2 (drop); 5-s extinction criterion",
-      "resultado_en": "LIMIT: lunar-g extinction at SUBSTANTIALLY HIGHER O2 than 1-g WSTF data (less flammable; possibly quench branch). Numeric lunar-g limit only plotted (Fig.11). Paper's conservative 1-g->lunar correction (95% CI, 35 cm/s->0) = 2.3 % O2. NASA-STD-6001 Test 1 in air: passes Test 1 in air",
+      "resultado_en": "LIMIT: lunar-g extinction at SUBSTANTIALLY HIGHER O2 than 1-g WSTF data (less flammable; possibly quench branch). Numeric lunar-g limit only plotted (Fig.11). Paper's conservative 1-g->lunar correction (one-tailed 95% confidence-interval slope extrapolated from the presumed 1-g buoyant velocity of 35 cm/s to zero flow; Table 2, p. 11) = 2.3 % O2. NASA-STD-6001 Test 1 in air: passes Test 1 in air",
       "warnings_en": [
         "Direction of the lunar-gravity effect only: the numeric lunar limit is plotted in a figure and was not digitized (not reported as a number).",
         "Values: lunar limit: measured but NOT REPORTED numerically (figure only); correction factor derived by authors.",
@@ -1613,7 +1613,7 @@
       "flow_cm_s": 0,
       "flow_range": null,
       "duration": "5.2 (drop); 5-s extinction criterion",
-      "resultado_en": "LIMIT: lunar-g extinction at SUBSTANTIALLY HIGHER O2 than 1-g WSTF data (less flammable). Numeric lunar-g limit only plotted (Fig.12). Paper's conservative 1-g->lunar correction (95% CI, 35 cm/s->0) = 0.32 % O2. NASA-STD-6001 Test 1 in air: passes Test 1 in air",
+      "resultado_en": "LIMIT: lunar-g extinction at SUBSTANTIALLY HIGHER O2 than 1-g WSTF data (less flammable). Numeric lunar-g limit only plotted (Fig.12). Paper's conservative 1-g->lunar correction (one-tailed 95% confidence-interval slope extrapolated from the presumed 1-g buoyant velocity of 35 cm/s to zero flow; Table 2, p. 11) = 0.32 % O2. NASA-STD-6001 Test 1 in air: passes Test 1 in air",
       "warnings_en": [
         "Direction of the lunar-gravity effect only: the numeric lunar limit is plotted in a figure and was not digitized (not reported as a number).",
         "Values: lunar limit: measured but NOT REPORTED numerically (figure only); correction factor derived by authors.",
@@ -3559,7 +3559,7 @@
       "o2": null,
       "presion_kPa": 56.5,
       "flujo": "no forced flow during drop; buoyant concurrent (upward); ignition with ~30 cm/s O2-enriched (+5-10%) jet",
-      "resultado": "LIMIT: lunar-g limit LOWER than any extrapolation of the 1-g WSTF data (enhanced flammability). Numeric lunar-g limit only plotted (Fig.7). Paper's conservative 1-g->lunar correction (95% CI, 35 cm/s->0) = 1.9 % O2. NASA-STD-6001 Test 1 in air: fails Test 1 in air",
+      "resultado": "LIMIT: lunar-g limit LOWER than any extrapolation of the 1-g WSTF data (enhanced flammability). Numeric lunar-g limit only plotted (Fig.7). Paper's conservative 1-g->lunar correction (one-tailed 95% confidence-interval slope extrapolated from the presumed 1-g buoyant velocity of 35 cm/s to zero flow; Table 2, p. 11) = 1.9 % O2. NASA-STD-6001 Test 1 in air: fails Test 1 in air",
       "fuente": {
         "cita": "Urban et al. 2025, ICES-2025-392 'Solid Fuel Ignition Testing for Lunar Applications', NTRS 20250002114",
         "ntrs": "https://ntrs.nasa.gov/citations/20250002114",
@@ -3583,7 +3583,7 @@
       "flow_cm_s": 0,
       "flow_range": null,
       "duration": "5.2 (drop); 5-s extinction criterion",
-      "resultado_en": "LIMIT: lunar-g limit LOWER than any extrapolation of the 1-g WSTF data (enhanced flammability). Numeric lunar-g limit only plotted (Fig.7). Paper's conservative 1-g->lunar correction (95% CI, 35 cm/s->0) = 1.9 % O2. NASA-STD-6001 Test 1 in air: fails Test 1 in air",
+      "resultado_en": "LIMIT: lunar-g limit LOWER than any extrapolation of the 1-g WSTF data (enhanced flammability). Numeric lunar-g limit only plotted (Fig.7). Paper's conservative 1-g->lunar correction (one-tailed 95% confidence-interval slope extrapolated from the presumed 1-g buoyant velocity of 35 cm/s to zero flow; Table 2, p. 11) = 1.9 % O2. NASA-STD-6001 Test 1 in air: fails Test 1 in air",
       "warnings_en": [
         "Values: lunar limit: measured but NOT REPORTED numerically (figure only); correction factor derived by authors.",
         "Authors flag unexplained mismatch with 1-g UHOI data (p.9). 1-g comparison = WSTF upward high-flow oxygen index at 57 kPa, 60-144 cm/s forced flow (figure only)."
@@ -3641,7 +3641,7 @@
       "o2": null,
       "presion_kPa": 56.5,
       "flujo": "no forced flow during drop; buoyant concurrent (upward); ignition with ~30 cm/s O2-enriched (+5-10%) jet",
-      "resultado": "LIMIT: lunar-g limit LOWER than extrapolated 1-g data (enhanced flammability). Numeric lunar-g limit only plotted (Fig.8). Paper's conservative 1-g->lunar correction (95% CI, 35 cm/s->0) = 1.4 % O2. NASA-STD-6001 Test 1 in air: fails Test 1 in air",
+      "resultado": "LIMIT: lunar-g limit LOWER than extrapolated 1-g data (enhanced flammability). Numeric lunar-g limit only plotted (Fig.8). Paper's conservative 1-g->lunar correction (one-tailed 95% confidence-interval slope extrapolated from the presumed 1-g buoyant velocity of 35 cm/s to zero flow; Table 2, p. 11) = 1.4 % O2. NASA-STD-6001 Test 1 in air: fails Test 1 in air",
       "fuente": {
         "cita": "Urban et al. 2025, ICES-2025-392 'Solid Fuel Ignition Testing for Lunar Applications', NTRS 20250002114",
         "ntrs": "https://ntrs.nasa.gov/citations/20250002114",
@@ -3665,7 +3665,7 @@
       "flow_cm_s": 0,
       "flow_range": null,
       "duration": "5.2 (drop); 5-s extinction criterion",
-      "resultado_en": "LIMIT: lunar-g limit LOWER than extrapolated 1-g data (enhanced flammability). Numeric lunar-g limit only plotted (Fig.8). Paper's conservative 1-g->lunar correction (95% CI, 35 cm/s->0) = 1.4 % O2. NASA-STD-6001 Test 1 in air: fails Test 1 in air",
+      "resultado_en": "LIMIT: lunar-g limit LOWER than extrapolated 1-g data (enhanced flammability). Numeric lunar-g limit only plotted (Fig.8). Paper's conservative 1-g->lunar correction (one-tailed 95% confidence-interval slope extrapolated from the presumed 1-g buoyant velocity of 35 cm/s to zero flow; Table 2, p. 11) = 1.4 % O2. NASA-STD-6001 Test 1 in air: fails Test 1 in air",
       "warnings_en": [
         "Values: lunar limit: measured but NOT REPORTED numerically (figure only); correction factor derived by authors.",
         "Authors flag unexplained mismatch with 1-g UHOI data (p.9). 1-g comparison = WSTF upward high-flow oxygen index at 57 kPa, 60-144 cm/s forced flow (figure only)."
@@ -3724,7 +3724,7 @@
       "o2": null,
       "presion_kPa": 56.5,
       "flujo": "no forced flow during drop; buoyant concurrent (upward); ignition with ~30 cm/s O2-enriched (+5-10%) jet",
-      "resultado": "LIMIT: flaming: lunar-g limit LOWER than extrapolated 1-g data; smolder limit shows similar flow dependence (smolder dO2 1.8). Numeric lunar-g limit only plotted (Figs.9-10). Paper's conservative 1-g->lunar correction (95% CI, 35 cm/s->0) = 0.82 % O2. NASA-STD-6001 Test 1 in air: fails Test 1 in air",
+      "resultado": "LIMIT: flaming: lunar-g limit LOWER than extrapolated 1-g data; smolder limit shows similar flow dependence (smolder dO2 1.8). Numeric lunar-g limit only plotted (Figs.9-10). Paper's conservative 1-g->lunar correction (one-tailed 95% confidence-interval slope extrapolated from the presumed 1-g buoyant velocity of 35 cm/s to zero flow; Table 2, p. 11) = 0.82 % O2. NASA-STD-6001 Test 1 in air: fails Test 1 in air",
       "fuente": {
         "cita": "Urban et al. 2025, ICES-2025-392 'Solid Fuel Ignition Testing for Lunar Applications', NTRS 20250002114",
         "ntrs": "https://ntrs.nasa.gov/citations/20250002114",
@@ -3748,7 +3748,7 @@
       "flow_cm_s": 0,
       "flow_range": null,
       "duration": "5.2 (drop); 5-s extinction criterion",
-      "resultado_en": "LIMIT: flaming: lunar-g limit LOWER than extrapolated 1-g data; smolder limit shows similar flow dependence (smolder dO2 1.8). Numeric lunar-g limit only plotted (Figs.9-10). Paper's conservative 1-g->lunar correction (95% CI, 35 cm/s->0) = 0.82 % O2. NASA-STD-6001 Test 1 in air: fails Test 1 in air",
+      "resultado_en": "LIMIT: flaming: lunar-g limit LOWER than extrapolated 1-g data; smolder limit shows similar flow dependence (smolder dO2 1.8). Numeric lunar-g limit only plotted (Figs.9-10). Paper's conservative 1-g->lunar correction (one-tailed 95% confidence-interval slope extrapolated from the presumed 1-g buoyant velocity of 35 cm/s to zero flow; Table 2, p. 11) = 0.82 % O2. NASA-STD-6001 Test 1 in air: fails Test 1 in air",
       "warnings_en": [
         "Values: lunar limit: measured but NOT REPORTED numerically (figure only); correction factor derived by authors.",
         "Authors flag unexplained mismatch with 1-g UHOI data (p.9). 1-g comparison = WSTF upward high-flow oxygen index at 57 kPa, 60-144 cm/s forced flow (figure only)."
@@ -3807,7 +3807,7 @@
       "o2": null,
       "presion_kPa": 56.5,
       "flujo": "no forced flow during drop; buoyant concurrent (upward); ignition with ~30 cm/s O2-enriched (+5-10%) jet",
-      "resultado": "LIMIT: lunar-g extinction at SUBSTANTIALLY HIGHER O2 than 1-g WSTF data (less flammable; possibly quench branch). Numeric lunar-g limit only plotted (Fig.11). Paper's conservative 1-g->lunar correction (95% CI, 35 cm/s->0) = 2.3 % O2. NASA-STD-6001 Test 1 in air: passes Test 1 in air",
+      "resultado": "LIMIT: lunar-g extinction at SUBSTANTIALLY HIGHER O2 than 1-g WSTF data (less flammable; possibly quench branch). Numeric lunar-g limit only plotted (Fig.11). Paper's conservative 1-g->lunar correction (one-tailed 95% confidence-interval slope extrapolated from the presumed 1-g buoyant velocity of 35 cm/s to zero flow; Table 2, p. 11) = 2.3 % O2. NASA-STD-6001 Test 1 in air: passes Test 1 in air",
       "fuente": {
         "cita": "Urban et al. 2025, ICES-2025-392 'Solid Fuel Ignition Testing for Lunar Applications', NTRS 20250002114",
         "ntrs": "https://ntrs.nasa.gov/citations/20250002114",
@@ -3831,7 +3831,7 @@
       "flow_cm_s": 0,
       "flow_range": null,
       "duration": "5.2 (drop); 5-s extinction criterion",
-      "resultado_en": "LIMIT: lunar-g extinction at SUBSTANTIALLY HIGHER O2 than 1-g WSTF data (less flammable; possibly quench branch). Numeric lunar-g limit only plotted (Fig.11). Paper's conservative 1-g->lunar correction (95% CI, 35 cm/s->0) = 2.3 % O2. NASA-STD-6001 Test 1 in air: passes Test 1 in air",
+      "resultado_en": "LIMIT: lunar-g extinction at SUBSTANTIALLY HIGHER O2 than 1-g WSTF data (less flammable; possibly quench branch). Numeric lunar-g limit only plotted (Fig.11). Paper's conservative 1-g->lunar correction (one-tailed 95% confidence-interval slope extrapolated from the presumed 1-g buoyant velocity of 35 cm/s to zero flow; Table 2, p. 11) = 2.3 % O2. NASA-STD-6001 Test 1 in air: passes Test 1 in air",
       "warnings_en": [
         "Values: lunar limit: measured but NOT REPORTED numerically (figure only); correction factor derived by authors.",
         "Authors flag unexplained mismatch with 1-g UHOI data (p.9). 1-g comparison = WSTF upward high-flow oxygen index at 57 kPa, 60-144 cm/s forced flow (figure only)."
@@ -3889,7 +3889,7 @@
       "o2": null,
       "presion_kPa": 56.5,
       "flujo": "no forced flow during drop; buoyant concurrent (upward); ignition with ~30 cm/s O2-enriched (+5-10%) jet",
-      "resultado": "LIMIT: lunar-g extinction at SUBSTANTIALLY HIGHER O2 than 1-g WSTF data (less flammable). Numeric lunar-g limit only plotted (Fig.12). Paper's conservative 1-g->lunar correction (95% CI, 35 cm/s->0) = 0.32 % O2. NASA-STD-6001 Test 1 in air: passes Test 1 in air",
+      "resultado": "LIMIT: lunar-g extinction at SUBSTANTIALLY HIGHER O2 than 1-g WSTF data (less flammable). Numeric lunar-g limit only plotted (Fig.12). Paper's conservative 1-g->lunar correction (one-tailed 95% confidence-interval slope extrapolated from the presumed 1-g buoyant velocity of 35 cm/s to zero flow; Table 2, p. 11) = 0.32 % O2. NASA-STD-6001 Test 1 in air: passes Test 1 in air",
       "fuente": {
         "cita": "Urban et al. 2025, ICES-2025-392 'Solid Fuel Ignition Testing for Lunar Applications', NTRS 20250002114",
         "ntrs": "https://ntrs.nasa.gov/citations/20250002114",
@@ -3913,7 +3913,7 @@
       "flow_cm_s": 0,
       "flow_range": null,
       "duration": "5.2 (drop); 5-s extinction criterion",
-      "resultado_en": "LIMIT: lunar-g extinction at SUBSTANTIALLY HIGHER O2 than 1-g WSTF data (less flammable). Numeric lunar-g limit only plotted (Fig.12). Paper's conservative 1-g->lunar correction (95% CI, 35 cm/s->0) = 0.32 % O2. NASA-STD-6001 Test 1 in air: passes Test 1 in air",
+      "resultado_en": "LIMIT: lunar-g extinction at SUBSTANTIALLY HIGHER O2 than 1-g WSTF data (less flammable). Numeric lunar-g limit only plotted (Fig.12). Paper's conservative 1-g->lunar correction (one-tailed 95% confidence-interval slope extrapolated from the presumed 1-g buoyant velocity of 35 cm/s to zero flow; Table 2, p. 11) = 0.32 % O2. NASA-STD-6001 Test 1 in air: passes Test 1 in air",
       "warnings_en": [
         "Values: lunar limit: measured but NOT REPORTED numerically (figure only); correction factor derived by authors.",
         "Authors flag unexplained mismatch with 1-g UHOI data (p.9). 1-g comparison = WSTF upward high-flow oxygen index at 57 kPa, 60-144 cm/s forced flow (figure only)."
