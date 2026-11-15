@@ -182,3 +182,29 @@ Si te falta un dato, anotalo abajo en "Pedidos de Marcos" y Facundo lo prioriza 
 
 **Para el README y la entrega:** el texto del campo "NASA Data" está en [PSI - datos oficiales](research/psi-datos-oficiales.md).
 
+
+### Tanda 3 · sáb 14/11 ~21:00 · Antes del merge a main
+Es la revisión de `feature/lunar-evidence-dashboard` en c3e9faa (ver 2026-11-14). **Lo que está bien no se toca:** LUCI en `data/luci.json` cumple D15; el navegador de evidencia y la IA que solo elige IDs ya citados cumplen la regla 4; el deploy público funciona sin login.
+
+**Hacer antes del merge (en este orden):**
+1. **Sacar `.agents/` del repo.** Son ~14 000 líneas de la herramienta de diseño "impeccable" y no forman parte de la app.
+   ```bash
+   git rm -r --cached .agents && echo ".agents/" >> .gitignore && git commit -m "chore: stop tracking local design tooling"
+   ```
+2. **Pantalla P6 de PSI** (la de la tanda 2). Es la prioridad: es la que demuestra que usamos el recurso oficial del desafío. Hacer `git pull origin main` primero: `data/psi_coverage.json` ya está en main (a0ba929).
+3. **Escenarios de fluido hidráulico y de combustible "unspecified".** No tienen ningún dato de NASA. Elegir una:
+   - **(a) Sacarlos** (recomendado);
+   - **(b) Dejarlos solo en la cámara 3D**, con la etiqueta "Generic pool source · no NASA data", y que **no aparezcan en Similar tests**, donde parecen una búsqueda de evidencia.
+4. **Vista FM2:** que lea un `data/prediction.json` con el material, la dirección esperada, la regla de comparación y la fecha. Facundo pasa el contenido (es la apuesta previa a FM2). Mientras no exista el archivo, dejar el texto actual.
+5. **README de la rama:** en main el README ya está reescrito. Al mergear, quedarse con el de main y agregarle solo la sección del link al deploy y de la cámara 3D.
+
+**Correr antes de abrir el PR:**
+- Las pruebas de aceptación 1 a 9 (secciones 7 y Tanda 2).
+- Buscar "safe" y "never tested" en todo el texto de la interfaz: no tiene que aparecer ninguno.
+- `node scripts/check-chamber.mjs`.
+
+**Merge:** abrir un PR de `feature/lunar-evidence-dashboard` a main. Hoy no tiene conflictos (`git merge-tree`). Lo revisa Facundo antes de mergear.
+
+**A decidir en equipo (no bloquea a Marcos):**
+- La cámara 3D estaba "fuera de alcance" en la sección 5. Ya está hecha y rotulada como ilustrativa, así que se deja, pero **no va en la demo de 30 s**, salvo que el equipo decida lo contrario.
+- La rama `juan/ai-core` (motor de evidencia en TypeScript, con verificación de citas y tests) todavía no está conectada con la app. Decidir si la app usa el `evidence.json` y el verificador de Juan o si sigue con su comparación propia.

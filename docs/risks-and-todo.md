@@ -10,7 +10,9 @@ actualizado: 2026-11-14
 - [x] Leer la consigna oficial y la pestaña **Resources** → [Consigna](challenge/consigna.md) · [Recursos NASA y datos](research/recursos-nasa-y-datos.md) (2026-11-14)
 - [x] Confirmar el título exacto → "SI-Powered"
 - [ ] **Escribir la apuesta antes de FM2** (material, dirección esperada y regla de comparación, con fecha): la vista FM2 de la app está vacía y es la mitad del diferencial
-- [ ] Mergear `feature/lunar-evidence-dashboard` a main (o linkear la rama) para que quien mire el repo vea la app
+- [ ] Mergear `feature/lunar-evidence-dashboard` a main (o linkear la rama) para que quien mire el repo vea la app → checklist en la Tanda 3 de [Paquete para Marcos](DEVELOPMENT.md)
+- [ ] Decidir si la app de Marcos usa el motor de evidencia de Juan (`juan/ai-core`)
+- [ ] Decidir qué hacer con los escenarios de fluido y combustible sin datos de NASA (sacarlos o rotularlos)
 - [x] **Usar al menos un dataset de PSI** → bajados BASS, BASS-II y Saffire I–III ([PSI - datos oficiales](research/psi-datos-oficiales.md)). Falta: que Marcos los muestre en la app (panel de cobertura + Saffire-II µg/1 g) (el recurso central de Resources) en el producto: hoy la evidencia sale de NTRS, no de PSI. Opción mínima: los puntos de 1 g y 0 g de BASS-II o Saffire desde PSI como "cotas" (la consigna dice que µg y 1 g "could bound" la gravedad intermedia)
 - [x] Descargar PSI-25 (BASS-II) y Saffire, y validar las columnas (FLEX no hace falta: son gotas)
 - [x] Verificar "ningún sólido por encima de 22,2 % de O₂" → `#verificado` para BASS-II y Saffire I–III ([PSI - datos oficiales](research/psi-datos-oficiales.md))
