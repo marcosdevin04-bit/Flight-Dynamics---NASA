@@ -4,6 +4,8 @@ Rules the explanation model must follow. Ranking and numbers come from code (`li
 
 Provenance: synthesized on 2026-11-14 from five page-cited verification notes. Those notes were written by agents that opened the PDFs the same day. This file did not re-open the PDFs. A claim the notes marked UNVERIFIED stays UNVERIFIED. The fifth pass (ECLSS atmospheres, the PSI index, NASA-STD-6001B Test 1) is included here; it finished after the coordinator that launched the passes had stopped.
 
+Corrected 2026-11-15 against the repository: the PSI experimental tables are now loaded (rule 2, gaps); FM2 facts from the 2024 FM2 poster and our registered prediction were added (rule 14); the ECLSS report and HEO-DM-1006 are marked as not yet traced in `docs/sources.md` (rules 10–11). This file is reference for people. The production endpoint (`lib/ask.ts`) does not load it into the model prompt.
+
 Labels: **DATA** is a measured value or a sentence printed in a source that was opened. **INFERENCE** is reasoning from those pages. **HYPOTHESIS** is untested. Do not promote an inference or a hypothesis into a measurement.
 
 Short names:
@@ -58,7 +60,7 @@ Short names:
 - DATA. OLSON Table I (p. 6) and p. 4: the 0 g row is "0g (with a concurrent flow of 30 cm/s, which is a reasonable maximum local spacecraft ventilation velocity"). No quiescent 0 g limit is in that paper. The 0 g point is not plotted on Fig. 7 (p. 8).
 - DATA. BASS p. 3 (PDF p. 11): the campaign tests the hypothesis that materials in microgravity, with ventilation, burn as well as or better than in normal gravity at the same pressure and oxygen. The same page says the upward 1 g test "may not be conservative for flammability in space". A text search of the report found no discussion of the Moon or Mars.
 - DATA. BASS p. 94 (PDF p. 102): the SIBAL concurrent-flow tests were at 1 atm, oxygen about 16–21 %, flow from 1 to 55 cm/s. Pressure was not a test variable.
-- DATA. BASS-II is PSI-25. The PSI landing page (2026-11-14) lists an experimental table of 130 rows and about 256 GB of files. Those rows are not in this repository yet. Until they are ingested, say "pending PSI ingestion" and do not invent PSI record ids.
+- DATA. BASS-II is PSI-25. The PSI landing page (2026-11-14) lists an experimental table of 130 rows and about 256 GB of files. The tables were downloaded on 2026-11-14 (`data/psi/`, `data/psi_coverage.json`). `data/psi_bounds_evidence.csv` loads 159 rows as records `psi-<investigation>-r<row>-flight|earth`: 125 from BASS-II (PSI-25), 20 from BASS (PSI-26), 2 from Saffire-I (PSI-98), 10 from Saffire-II (PSI-99) and 2 from Saffire-III (PSI-100). All are 0 g flight rows or 1 g ground comparisons; none is partial gravity. The difference between 130 listed and 125 loaded BASS-II rows has not been reconciled here. Cite PSI rows only by the ids in `evidence.json`.
 - INFERENCE. For Mylar in Table I, the 0 g mean limit (16.5 %) sits between the 1 g mean (20.6 %) and the lunar mean (14.85 %). Interpolating from 0 g to 1 g would miss the lunar point. That comparison mixes a 30 cm/s forced-flow test with buoyant-flow tests (rule 3).
 
 **Counter-evidence.** ULTEM at 0 g in the same table has a small positive margin (+0.25 oxygen points): for that one cell, the 0 g limit is not below the 1 g limit. Do not generalize "microgravity is always worse".
@@ -94,7 +96,7 @@ Short names:
 
 - The 0 g row is forced flow at 30 cm/s, not still air (p. 4). The lunar row is buoyant flow in a centrifuge. They are not the same kind of test.
 - The reduced-gravity criterion is "alive at 5.18 s". The 1 g criterion is a burn length of six inches on NASA-STD-6001 Test 1, with a statistical definition (p. 4). ΔO2 compares two different definitions.
-- The "conservative" remark on p. 4 (weak flames that might have gone out with more time) is written about the Martian Nomex and Ultem drops, not restated for the lunar rows from ref. 8.
+- The "conservative" remark on p. 4 (weak flames that might have gone out with more time) is written about the Martian Nomex and Ultem drops, not restated for the lunar rows from ref. 8. The CSV note carried by the lunar records ("authors call low-g limits conservative") generalizes it; when you repeat it, attribute it to OLSON p. 4 and say it was written about the Martian drops.
 - Nomex's lowest mean in the table is Martian (19.45), not lunar (20.45). The sentence on p. 8 that attributes "up to 5.75% O2 lower" to Martian gravity does not match Table I: −5.75 is lunar Mylar, and the largest Martian margin printed is −3.35 (Nomex). Quote the table, not that sentence, for Martian magnitudes.
 - Fig. 6's caption does not match Table I (the notes record a caption average near −2.6 % against a 0 g table average of −1.38). Use Table I.
 - Ultem and Nomex print the same lunar pair, 21.0 / 19.9. The opened PDF shows it in text and image. Whether that is a coincidence or a copy from ref. 8 cannot be decided without the 2011 paper.
@@ -107,7 +109,7 @@ Short names:
 
 **Rule.** Say the duration of the test. A flame that is still burning when a drop tower ends is not the same observation as a flame that spreads for minutes.
 
-**Mechanism.** Drop towers used here last about 5 s. Aircraft parabolas last on the order of 20–25 s. A spinning sounding rocket gave on the order of two minutes. The lunar surface would allow a burn limited by the sample and the oxygen, not by the facility. A short test can count a dying flame as "still burning", or it can miss a flame that would have gone out, or grown, later.
+**Mechanism.** Drop towers used here last about 5 s. Aircraft parabolas last on the order of 20–25 s. A spinning sounding rocket gave more than 150 s ("over two and a half minutes", LUCI, record csv-1). The lunar surface would allow a burn limited by the sample and the oxygen, not by the facility. A short test can count a dying flame as "still burning", or it can miss a flame that would have gone out, or grown, later.
 
 **Applies when.** The record is a drop-tower centrifuge (OLSON, URBAN), an aircraft parabola (SACK), or any duration the record prints. Quote the duration from the record. If it says "not reported", say that.
 
@@ -202,7 +204,7 @@ Short names:
 
 **Evidence.**
 
-- DATA. STD p. 28, 7.1.3.a: a material is self-extinguishing if none of five specimens burns more than 15 cm (6 in) and none spreads fire by burning debris. The standard prints ">15 cm (6 in)". Do not replace 15 cm with 15.2 cm unless you are quoting a paper that did. Sample stock in Table 3, p. 26, is 30 by 6.4 cm; section 7.1.2.b says 6.5 cm. Both say 2.5 in.
+- DATA. STD p. 28, 7.1.3.a: a material is self-extinguishing if none of five specimens burns more than 15 cm (6 in) and none spreads fire by burning debris. The standard prints ">15 cm (6 in)". Do not replace 15 cm with 15.2 cm unless you are quoting a paper that did. OLSON did: the Olson & Ferkul records (and `curva_gravedad.json`, PREDICTION.md) say 15.2 cm, so keep 15.2 cm with those records and 15 cm (6 in) when quoting the standard. Sample stock in Table 3, p. 26, is 30 by 6.4 cm; section 7.1.2.b says 6.5 cm. Both say 2.5 in.
 - DATA. OLSON p. 4: 1 g ULOI/MOC are statistical Test 1 limits; reduced-gravity ULOI*/MOC* are single observations inside a 5.18 s drop. The authors say three times that the criteria are not the same.
 - DATA. URBAN pp. 5–8: both the centrifuge and the WSTF high-flow test used a 5 s extinction criterion, because 15 cm takes longer than a drop. The WSTF test is forced flow at 60–144 cm/s, not Test 1. Test 1 forbids forced airflow (STD p. 30).
 - INFERENCE. A 5 s "fail" does not mean the sample would have burned 15 cm. A 5 s "pass" does not mean it would have stayed out for a habitat-length exposure.
@@ -243,6 +245,8 @@ Short names:
 
 **Evidence.**
 
+- DATA. Challenge statement (`planning/consigna.md`): the lunar base and rovers will probably use 30 % O2 or more at 10.2 psi or less (the repository copy is a Spanish paraphrase; quote the English challenge page, not this line).
+- NOT YET TRACED. The ECLSS report (NASA/TM-20260003925) is not listed in `docs/sources.md`, so the app cannot show it "one click away". The ECLSS figures below (26.5 %, 40 %, 36–40 %, 70 % and 21 % of subsystems, HEO-DM-1006, ≥33.7 %) are notes from that PDF; do not show them in the app until the source is added. The 34 % / 8.2 psia pair is also traced to the Fortenberry et al. detection white paper (`docs/sources.md`).
 - DATA. ECLSS report p. 9 (PDF p. 13): the two planning atmospheres are 10.2 psia at 26.5 % O2 and 8.2 psia at 34 % O2, with flammability looked at up to 40 % O2 at 8.2 psia. Report p. 29 (PDF p. 33): the maximum oxygen "has not been defined" for every surface element; with control bands it "could be between 36 and 40 %".
 - DATA. FOTM slide 12 prints "34% O2 at 0.558 atm". The string "8.2 psia" is not on that slide. 8.2 psi is the conversion of 0.558 atm, plus the ECLSS sentence that does print 8.2 psia.
 - DATA. PSI index on 2026-11-14: no combustion investigation in lunar or Martian gravity; LUCI and FM2 are not in the index. The filter "Reduced Gravity Investigation" returned zero investigations.
@@ -329,7 +333,10 @@ Short names:
 
 - DATA. LPSC abstract (both PDF copies opened): four flat solid samples, burned one at a time, in a small chamber filled from gas bottles, in real lunar gravity, with cameras, thermocouples, radiometers and an oxygen sensor. Planned launch "late 2026". Quiescent habitable atmosphere. No oxygen percent, no pressure, no material name, no lander, no mission name, and no sentence of the form "we are wrong if".
 - DATA. The abstract's science claim is a hypothesis drawn from earlier theory, drop towers, aircraft and a sounding rocket. It does not present new burn data.
-- DATA. POSTER, introduction panel: FM2 will determine a limiting oxygen concentration for a flight-relevant material named "Synergy Pro", "in the next few years". What Synergy Pro is made of is not on the poster. That name is not a record in this repository.
+- DATA. FM2 2024 poster (Zayac, Johnston, Ruff & Ferkul 2024, NTRS 20240015307; records csv-28 and csv-45): four samples, two SIBAL fabrics burned in air and two acrylic rods in "Normoxic Space Exploration Atmospheres", one of each upward and one downward; the chamber can reproduce 21 % O2 at 14.7 psia and 34 % O2 at 8.2 psia; SIBAL "only" burns downward in air in lunar gravity. That last claim does not cite its underlying tests, so csv-28 is secondary. The poster also names the lander mission CP-21.
+- SELF-REPORTED. Our notes read, from the 2025 POSTER panel, that FM2 will determine a limiting oxygen concentration for a flight-relevant material named "Synergy Pro", "in the next few years". That reading is tagged `#autodeclarado` in `docs/research/fm2-fuego-en-la-luna.md`. What Synergy Pro is made of is not stated. That name is not a record in this repository.
+- DATA. The sample lists conflict: 2024 poster = SIBAL and acrylic rods; 2025 poster = Synergy Pro; LPSC 2026 = "four flat samples". The final list is not confirmed.
+- DATA. Our registered prediction for FM2 (`PREDICTION.md`, `data/prediction.json`, tag `fm2-predictions-v1`, 2026-11-14 22:26 UTC-3) states what would confirm or refute us. It is our inference, not a NASA statement; cite it as ours.
 - DATA. LUCI is the 2025 sounding-rocket test, not FM2. The LPSC abstract refers to a spinning rocket of about 150 s and two materials as prior art with Coriolis, which matches the role LUCI plays, without naming LUCI in the sentences the notes quoted.
 
 **Counter-evidence.** None of the opened FM2 pages contradict the description above. They are thin. Thin is not permission to fill gaps. Absence from a two-page abstract is "not stated in the abstract", not proof that NASA has no internal plan.
@@ -392,7 +399,8 @@ Short names:
 - ECLSS Table 1 was reconstructed from extracted text, not from a rendered page.
 - Cabin air speed in cm/s for a lunar habitat is not in the ECLSS report (only volumetric flow of hardware, and the qualitative point that lower pressure means higher velocity for the same cooling).
 - ISO 14624-1 was not opened, so the igniter energy behind Test 1 is UNVERIFIED.
-- PSI data files were not downloaded. BASS-II's 130-row table is known to exist (PSI-25) and is not in this repository.
+- PSI tables are loaded (159 rows; see rule 2). BASS-II lists 130 rows and 125 are loaded; the difference is not reconciled. PSI has no partial-gravity combustion investigation (rule 10).
+- The ECLSS report and HEO-DM-1006 are not yet listed in `docs/sources.md` (rules 10–11).
 
 ## Sources I could not open
 
@@ -403,4 +411,4 @@ Short names:
 - ISO 14624-1:2003.
 - Hirsch et al. 2003 and Hirano et al. 1974, cited by BASS for a 15.4 % normal-gravity limit and a 20 cm/s buoyant speed.
 - Older revisions of NASA-STD-6001 before B with Change 3.
-- PSI file contents (CSV, video, spreadsheets) for BASS, BASS-II and Saffire. Landing-page JSON and two landing pages were read; the data files were not.
+- PSI videos and raw spreadsheets for BASS, BASS-II and Saffire. The experimental tables were downloaded (`data/psi/`); the video and image files were not.
