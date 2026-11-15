@@ -72,5 +72,5 @@ h1,h2{font-weight:600;letter-spacing:-.03em}h1 em{font-style:normal}.hero h1{fon
 /* #view gets focus programmatically on navigation (for screen readers); it is not a control, so no visible ring. */
 #view:focus{outline:none}
 
-/* Logo mark (redrawn as vector from a Nano Banana concept, 2026-11-15) */
+/* Logo mark: AI-generated image (Google Gemini), credited in the footer */
 header.site .mark{width:30px;height:30px;flex:none}
