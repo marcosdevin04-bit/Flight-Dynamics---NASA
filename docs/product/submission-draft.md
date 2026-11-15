@@ -13,4 +13,4 @@ Team working copy for the English project form.
 
 **Team review before submission.** Confirm the three memberships and event, the preferred public URL, and the final demo. The local pitch and judging submission are separate steps.
 
-**Local form (team review).** Team: Flight Dynamics (Montevideo, Uruguay). Members: Marcos Devincenzi, Juan Benítez and Facundo Díaz. Project: Before the First Fire on the Moon. Dashboard: https://flight-dynamics-lunar-evidence.martindevin26.chatgpt.site/#tests. YouTube URL: pending team video link.
+**Local form (team review).** Team: Flight Dynamics (Montevideo, Uruguay). Members: Marcos Devincenzi, Juan Benítez and Facundo Díaz. Project: Before the First Fire on the Moon. Dashboard: https://flight-dynamics-mu.vercel.app. Repository: https://github.com/marcosdevin04-bit/Flight-Dynamics---NASA. YouTube URL: pending team video link.

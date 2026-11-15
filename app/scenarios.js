@@ -4,7 +4,7 @@ export function shapeFor(id){
  return 'sheet';
 }
 export const shapes={sheet:'Sheet / coupon',rod:'Rod / narrow source',pool:'Pool / surface patch'};
-export const atmospheres=[['custom','Custom oxygen fraction'],['0','Inert atmosphere · 0% O₂'],['21','Air-like · 21% O₂'],['34','Oxygen-enriched · 34% O₂']];
+export const atmospheres=[['custom','Custom O₂ level'],['0','Inert atmosphere · 0% O₂'],['21','Air-like · 21% O₂'],['34','Oxygen-enriched · 34% O₂']];
 export function atmosphereControl(select,input,update){
  const sync=()=>{select.value=atmospheres.some(([v])=>v!=='custom'&&+v===+input.value)?String(+input.value):'custom';};
  select.replaceChildren(...atmospheres.map(([v,label])=>new Option(label,v)));sync();

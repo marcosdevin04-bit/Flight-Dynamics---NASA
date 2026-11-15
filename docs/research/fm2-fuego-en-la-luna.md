@@ -1,6 +1,6 @@
 ---
 tipo: investigacion
-actualizado: 2026-11-14
+actualizado: 2026-11-15
 ---
 
 # FM2: el primer fuego en la Luna

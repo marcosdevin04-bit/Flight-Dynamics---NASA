@@ -1,10 +1,12 @@
 ---
 tipo: equipo
 fuente: "Flame_in_Freefall_Division_del_equipo"
-actualizado: 2026-11-14
+actualizado: 2026-11-15
 ---
 
 # Equipo
+
+**Equipo: Flight Dynamics** · **Proyecto: Before the First Fire** (confirmado por Facundo el 15/11).
 
 | Rol | Herramienta | Persona | Entregables |
 |---|---|---|---|
@@ -23,6 +25,11 @@ La guía técnica (p. 13) sugiere perfiles:
 - **Marcos:** decisiones, contexto operacional y aviación.
 - **Juan:** cómo representar fuentes, condiciones y consultas.
 - **Facundo:** unidades, incertidumbre y evaluación.
+
+## Qué hizo cada uno el 15/11
+- **Facundo:** revisión y merge del PR #1, deploy en Vercel (con la key de Anthropic), investigación de FM2 y el foro, y dirección del rediseño (dashboard, tipografías, logo).
+- **Marcos:** PR #1, que integra el motor de Juan, la pantalla de PSI y la vista FM2, con borradores de la entrega y de la demo.
+- **Juan:** su motor de evidencia (`lib/evidence/`) quedó integrado en la app como "Ask the evidence".
 
 ## Acuerdos del equipo
 1. **Una sola fuente de verdad:** GitHub, más esta bitácora.

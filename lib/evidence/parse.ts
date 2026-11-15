@@ -5,7 +5,7 @@
  * Every number returned here must appear literally in the input text
  * (tests/parse.test.ts checks this against the real data).
  */
-import type { Range } from "./types";
+import type { Range } from "./types.js";
 
 const NUM = String.raw`\d+(?:\.\d+)?`;
 const NOT_REPORTED = /not reported|not stated|not accessed|n\/a\b/i;

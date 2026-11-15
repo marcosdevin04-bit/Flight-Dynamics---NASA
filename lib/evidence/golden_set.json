@@ -54,9 +54,9 @@
       "expected_case": 1,
       "expected_reason": "exact_match",
       "expected_record_ids": ["nomex-ht90-40@luna", "nomex-ht90-40@marte"],
-      "must_mention": ["14.7", "21.0", "19.9", "below the 1 g", "not 8.2"],
+      "must_mention": ["14.7", "21.0", "19.9", "below the 1 g", "not 8.2", "secondary"],
       "must_not_say": ["safe", "certified", "NASA never tested"],
-      "why": "Olson & Ferkul Table I lunar Nomex at 14.7 psia, limit below the 1 g pair. The answer must not reuse this point as the 8.2 psi result. The poster at 8.2 psi shows the opposite direction (gs-06)."
+      "why": "Olson & Ferkul Table I lunar Nomex at 14.7 psia, limit below the 1 g pair. The lunar row is secondary (reproduced from Ferkul & Olson 2011, which was not read). The answer must not reuse this point as the 8.2 psi result. The poster at 8.2 psi shows the opposite direction (gs-06)."
     },
     {
       "id": "gs-06-nomex-ht-8.2psi",
@@ -65,9 +65,9 @@
       "expected_case": 1,
       "expected_reason": "exact_match",
       "expected_record_ids": ["nomex_ht90_40_poster@luna"],
-      "must_mention": ["about 29", "about 23", "about 38", "8.2", "Schechter"],
+      "must_mention": ["about 29", "less flammable than 1 g", "8.2", "Schechter"],
       "must_not_say": ["safe", "certified", "NASA never tested"],
-      "why": "The poster prints about 23% at 1 g, about 29% in lunar g and about 38% in 0 g, at 8.2 psi. Lunar is higher than 1 g here, the reverse of the 14.7 psia table. The poster does not show how the about-values were derived. Flow was not set in the query; the poster does not report a flow."
+      "why": "The poster prints about 23% at 1 g, about 29% in lunar g and about 38% in 0 g, at 8.2 psi. Lunar is higher than 1 g here, the reverse of the 14.7 psia table. Only the lunar point is retrieved for a lunar query (the 1 g and 0 g points are separate records: nomex_ht90_40_poster@1g and @0g), so the explanation states the direction carried by that record (less flammable than 1 g at 8.2 psi) and does not quote 23 or 38, which the verifier would reject. The poster does not show how the about-values were derived. Flow was not set in the query; the poster does not report a flow."
     },
     {
       "id": "gs-07-nomex-ht-habitat-34",
@@ -87,9 +87,9 @@
       "expected_case": 2,
       "expected_reason": "similar_tests",
       "expected_record_ids": ["csv-1", "csv-28", "GMT190-T24", "psi-25-r124-flight", "GMT45-T1", "psi-25-r102-flight", "csv-33", "GMT190-T23"],
-      "must_mention": ["microgravity", "reused", "17.2", "18.2", "LUCI", "lunar"],
+      "must_mention": ["microgravity", "reused", "17.2", "18.2", "LUCI", "lunar", "secondary"],
       "must_not_say": ["safe", "certified", "NASA never tested"],
-      "why": "Acceptance 3. GMT190-T23 (17.2%, reused, did not ignite) and GMT190-T24 (18.2%, reused, one-sided flame) are microgravity. LUCI (csv-1) is the rotating-rocket lunar-g burn and ranks first because gravity is closer. GMT45-T1 carries the oxygen-reading warning. None of these is a same-test match: LUCI's oxygen is a range and its pressure is not reported."
+      "why": "Acceptance 3. GMT190-T23 (17.2%, reused, did not ignite) and GMT190-T24 (18.2%, reused, one-sided flame) are microgravity. LUCI (csv-1) is the rotating-rocket lunar-g burn and ranks first because gravity is closer. GMT45-T1 carries the oxygen-reading warning. csv-28 (the FM2 2024 poster claim that SIBAL only burns downward in air in lunar g) is secondary: the poster does not cite the underlying tests. PLAN §8.3 lists the microgravity tests before LUCI; the ranker puts LUCI first because its gravity is closer to the Moon. None of these is a same-test match: LUCI's oxygen is a range and its pressure is not reported."
     },
     {
       "id": "gs-09-mylar-habitat-34",
@@ -111,7 +111,7 @@
       "expected_record_ids": [],
       "must_mention": ["No matching test in the data we reviewed", "FM2", "Kapton", "not in the data"],
       "must_not_say": ["safe", "certified", "NASA never tested"],
-      "why": "No Kapton record is loaded. Do not borrow another material's limit. Pending PSI ingestion is not an excuse to invent an id."
+      "why": "No Kapton record is loaded, including the PSI tables in the repository (BASS, BASS-II, Saffire I-III: PMMA, Nomex III, SIBAL, Ultem). Do not borrow another material's limit or invent an id."
     },
     {
       "id": "gs-11-do-not-say-safe",
@@ -120,9 +120,9 @@
       "expected_case": 2,
       "expected_reason": "similar_tests",
       "expected_record_ids": ["nomex-velcro"],
-      "must_mention": ["not reported", "higher oxygen", "8.2", "5 s", "cannot certify"],
+      "must_mention": ["not reported", "higher oxygen", "8.2", "5 s", "not an approval"],
       "must_not_say": ["safe", "certified", "NASA never tested"],
-      "why": "The user is asking for an approval word. Urban et al. 2025 says Nomex Velcro extinguished at substantially higher oxygen in lunar g than in the 1 g data, at 8.2 psi, on a 5 s drop, and does not print the lunar number. Answer with that, and refuse the approval wording. 34% oxygen is not a reported field of this record."
+      "why": "The user is asking for an approval word. Urban et al. 2025 says Nomex Velcro extinguished at substantially higher oxygen in lunar g than in the 1 g data, at 8.2 psi, on a 5 s drop, and does not print the lunar number. Answer with that, and decline the approval wording without repeating it: the verifier rejects any word starting with \"certif\", so say the result is a test outcome, not an approval. 34% oxygen is not a reported field of this record."
     },
     {
       "id": "gs-12-pmma-sheet-8.2psi",
@@ -155,7 +155,7 @@
       "expected_record_ids": [],
       "must_mention": ["No matching test in the data we reviewed", "Synergy Pro", "FM2", "not stated"],
       "must_not_say": ["safe", "certified", "NASA never tested"],
-      "why": "The Nomex poster names Synergy Pro as an FM2 material and does not give its composition or a limit. There is no record. The LPSC abstract does not name Synergy Pro, and it states no oxygen, pressure or falsifier."
+      "why": "Our research notes read Synergy Pro as an FM2 material from the 2025 Nomex poster panel; that reading is tagged self-reported (#autodeclarado) in docs/research/fm2-fuego-en-la-luna.md, and the 2024 FM2 poster lists SIBAL and acrylic instead. The poster gives no composition or limit. There is no record. The LPSC abstract does not name Synergy Pro, and it states no oxygen, pressure or falsifier."
     }
   ]
 }

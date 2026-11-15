@@ -17,7 +17,7 @@ import { readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parse as parseCsv } from "csv-parse/sync";
-import { materialKey } from "./materials";
+import { materialKey } from "./materials.js";
 import {
   gravedadLabel,
   numbersIn,
@@ -30,7 +30,7 @@ import {
   parseThickness,
   type Parsed,
   type ParsedGravity,
-} from "./parse";
+} from "./parse.js";
 import {
   ContractRecordSchema,
   NIVEL_LABEL_EN,
@@ -40,7 +40,7 @@ import {
   type GravityRegime,
   type Nivel,
   type Range,
-} from "./types";
+} from "./types.js";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 export const REPO_ROOT = join(HERE, "..", "..");
