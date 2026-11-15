@@ -12,6 +12,19 @@ Si algo de `docs/` contradice este archivo, vale este archivo hasta que el equip
 
 ---
 
+## Estado de la implementación · 15 de noviembre
+
+La versión de revisión está en el [PR privado del equipo](https://github.com/marcosdevin04-bit/Flight-Dynamics---NASA/pull/1). Para probarla desde esa rama: `npm ci`, `npm run build`, `npm run preview`.
+
+| Parte del plan | Resultado comprobado |
+|---|---|
+| Ask the evidence y pruebas 1–7 | La búsqueda distingue los tres casos. Las fuentes quedan enlazadas. Las pruebas de navegador cubren los ejemplos, la caída de la API y el caso sin caché. |
+| PSI, gravedad y materiales | 159 filas PSI en el catálogo. P6 muestra cobertura, O₂ inicial y el contraste de Saffire-II. La curva se cotejó con los 24 valores de la Tabla I de Olson y Ferkul (12 filas). |
+| IA del servidor | La lectura de campos, clasificación por código, verificación de citas, reintento y respuesta de respaldo tienen pruebas. Queda por probar una consulta con Anthropic en el servidor de producción. |
+| FM2 y simulación | Tres predicciones en el tag privado `fm2-predictions-v1`. Cámara 3D ilustrativa según D18. Depósito de Zenodo preparado en borrador. |
+| Presentación | [Texto en inglés](../docs/product/submission-draft.md), [video de revisión de 28 s](../docs/product/demo-draft.mp4) y [subtítulos](../docs/product/demo.en.srt). |
+| Siguientes decisiones del equipo | Facundo revisa el PR antes de integrar a main. El equipo elige cuándo publicar las predicciones y enviar el proyecto a Space Apps. |
+
 ## 1. La idea
 
 **En una frase (para la app y la entrega):**

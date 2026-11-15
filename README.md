@@ -7,13 +7,14 @@
 
 **NASA approves spacecraft materials by testing them on Earth. Before the first fire on the Moon, we show which materials might behave differently there, and what the evidence actually says.**
 
-Built for the **NASA Space Apps Challenge 2026** · Challenge: *Flame in Freefall: AI-Powered Fire Safety Insights from Microgravity Combustion Data* · Team from Montevideo, Uruguay.
+Built for the **NASA Space Apps Challenge 2026** · Challenge: *Flame in Freefall: SI-Powered Fire Safety Insights from Microgravity Combustion Data* · Team from Montevideo, Uruguay.
 
 **[Open the public dashboard](https://flight-dynamics-lunar-evidence.martindevin26.chatgpt.site/#tests)** · [PSI coverage](https://flight-dynamics-lunar-evidence.martindevin26.chatgpt.site/#psi) · [FM2 predictions](https://flight-dynamics-lunar-evidence.martindevin26.chatgpt.site/#fm2)
 
 The app ranks experimental records, not fire risk. Its same-origin `POST /api/ask` accepts a structured scenario or a short question about a lunar atmosphere. The three examples remain available if the service is offline. Two have AI-authored, cached explanations checked against the retrieved citations; arbitrary scenarios use verified templates unless a server-side model is configured. The optional 3D chamber illustrates transport, not material qualification.
 
-Build: `npm ci && npm run build`; verify: `npm test && npm run typecheck`. On Vercel, import this repository with the checked-in configuration; the frontend and API are deployed together. For optional live explanations, use only server-side `ANTHROPIC_API_KEY` and `ANTHROPIC_MODEL` with provider spending/rate limits.
+Run `npm ci`, `npm run build`, and `npm run preview` to open the app locally. Run `npm test`, `npm run typecheck`, and `npm run audit:curve` for the integration tests and the independent Table I transcription check. Vercel serves the dashboard and API together with the included configuration. For on-demand Anthropic interpretation, configure `ANTHROPIC_API_KEY` and `ANTHROPIC_MODEL` on the server. Free text is converted to quoted scenario fields, then validated; explanations receive only retrieved records. Invalid citations trigger one correction attempt. A per-client request limit applies in each server instance. Multiple instances have separate counters.
+
 
 ---
 
