@@ -75,25 +75,46 @@ h1,h2{font-weight:600;letter-spacing:-.03em}h1 em{font-style:normal}.hero h1{fon
 /* Logo mark: AI-generated image (Google Gemini), credited in the footer */
 header.site .mark{width:30px;height:30px;flex:none}
 
-/* Dashboard home (overview first): compact hero with the ask box, then three live evidence panels */
-.hero.dash{padding:2.4rem 0 2.6rem;align-items:start;grid-template-columns:minmax(0,1.25fr) minmax(0,.9fr)}
-.hero.dash h1{font-size:clamp(1.9rem,3.2vw,2.8rem)}
-.hero.dash .hero-lead{font-size:1.02rem;margin:.8rem 0 1.2rem;max-width:56ch}
-.hero.dash .ask-hero{margin:0;padding:1.1rem 1.2rem;background:var(--night-2);border:1px solid var(--night-line)}
-.ask-label{display:block;font-weight:600;font-family:Sora,system-ui,sans-serif;margin-bottom:.6rem}
-.hero.dash .hero-media{margin-top:.4rem}
-.overview-head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:1.1rem}.overview-head h2{margin:0}
-.panels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-bottom:1.6rem}
-.panel{display:flex;flex-direction:column;gap:.6rem;text-decoration:none;color:var(--ink);background:#fcfcf6;border:1px solid var(--line);border-radius:.7rem;padding:1.1rem 1.15rem}
-.panel:hover{border-color:var(--green)}.panel h3{font-size:1.05rem;line-height:1.35}.panel .eyebrow{color:var(--green)}
-.panel .note{color:var(--dim);font-size:.86rem;line-height:1.5}.panel .open{margin-top:auto;color:var(--green);font-weight:600;font-size:.92rem}
-.mini{width:100%;height:auto}.mini text{font:11px 'IBM Plex Sans',sans-serif;fill:var(--dim)}.mini text.hot{fill:#a85f00;font-weight:700}
-.mini-bar{position:relative;height:3.6rem;border-bottom:2px solid #234d42;background:#eef1e6;border-radius:.3rem .3rem 0 0;margin-top:.4rem}
-.mini-bar i{position:absolute;top:42%;height:22%;background:#257560;border-radius:2px}
-.mini-bar b{position:absolute;top:0;height:100%;border-left:2px dashed #a34728;padding-left:3px;color:#683019;font-size:.78rem}
-.mini-bar span{position:absolute;top:70%;font-size:.75rem;color:#244936;white-space:nowrap}
-.mini-axis{display:flex;justify-content:space-between;font-size:.72rem;color:var(--dim)}
-.preds{list-style:none;padding:0;margin:0;display:grid;gap:.55rem}.preds li{display:grid;gap:.15rem;font-size:.92rem;line-height:1.4}
-.preds em{font-style:normal;font-size:.78rem;font-weight:600;width:max-content;padding:.1rem .45rem;border-radius:.3rem}
+/* Dashboard home: compact hero with ask box and full-height video, then three equal evidence panels */
+.hero.dash{padding:2.8rem 0 3rem;align-items:stretch;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:2.5rem}
+.hero.dash h1{font-size:clamp(2rem,3.3vw,3rem)}
+.hero.dash .hero-lead{font-size:1.04rem;margin:.9rem 0 1.4rem;max-width:56ch}
+.hero.dash .ask-hero{margin:0;padding:1.25rem 1.3rem;background:var(--night-2);border:1px solid var(--night-line)}
+.ask-label{display:block;font-weight:600;font-family:Sora,system-ui,sans-serif;font-size:1.05rem;margin-bottom:.7rem}
+.hero.dash .hero-media{margin:0;position:relative;display:flex;min-height:340px;border-radius:.8rem;overflow:hidden;border:1px solid var(--night-line);background:#000}
+.hero.dash .hero-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 78%;aspect-ratio:auto;border:0;border-radius:0}
+.hero.dash .hero-media figcaption{position:absolute;left:0;right:0;bottom:0;margin:0;padding:.7rem 1rem;background:rgba(8,11,13,.72);color:#c9d3cf;font-size:.8rem}
+.overview-head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:1.4rem}
+.overview-head h2{margin:0;font-size:clamp(1.6rem,2.3vw,2.1rem)}
+.panels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem;margin-bottom:2rem}
+.panel{display:grid;grid-template-rows:auto 3.2em 210px auto 1fr;gap:.9rem;text-decoration:none;color:var(--ink);background:#fcfcf6;border:1px solid var(--line);border-radius:.9rem;padding:1.6rem 1.6rem 1.4rem;transition:border-color .15s,transform .15s}
+.panel:hover{border-color:var(--green);transform:translateY(-2px)}
+.panel .eyebrow{color:var(--green)}.panel h3{font-size:1.12rem;line-height:1.4;align-self:start}
+.panel .viz{display:flex;align-items:center;justify-content:center;background:#f3f5ec;border-radius:.6rem;padding:.8rem}
+.panel .note{color:var(--dim);font-size:.88rem;line-height:1.5}.panel .open{align-self:end;color:var(--green);font-weight:600;font-size:.95rem}
+.mini{width:100%;height:100%}.mini text{font:13px 'IBM Plex Sans',sans-serif;fill:var(--dim)}.mini text.val{font-size:14px}.mini text.val{font-weight:600;fill:#33463f}.mini text.hot{fill:#a85f00;font-weight:700}
+.o2{width:100%}.o2-track{position:relative;height:2.6rem;background:#e3e8dc;border-radius:.4rem}
+.o2-track i{position:absolute;top:0;bottom:0;background:#2f7a64;border-radius:.4rem}
+.o2-track u{position:absolute;top:0;bottom:0;background:repeating-linear-gradient(135deg,#d9893a 0 6px,#f1c48f 6px 12px);border-radius:.4rem;text-decoration:none}
+.o2-labels{position:relative;height:3.2rem;margin-top:.5rem}.o2-labels span{position:absolute;transform:translateX(-50%);text-align:center;font-size:.78rem;line-height:1.35;color:#244936;white-space:nowrap}
+.o2-labels span.hab{color:#8a4b0f}.o2-labels b{font-size:.95rem}
+.o2-axis{display:flex;justify-content:space-between;font-size:.72rem;color:var(--dim);border-top:1px solid #c6d1c4;padding-top:.3rem}
+.preds{list-style:none;padding:0;margin:0;display:grid;gap:.75rem;width:100%}
+.preds li{display:grid;grid-template-columns:1.4rem 1fr auto;align-items:center;gap:.6rem}
+.preds b{display:block;font-size:.93rem}.preds small{display:block;color:var(--dim);font-size:.78rem}
+.arrow{font-size:.8rem}.arrow.up{color:#c06a00}.arrow.down{color:#2f7a64}
+.preds em{font-style:normal;font-size:.74rem;font-weight:600;padding:.15rem .5rem;border-radius:.3rem;white-space:nowrap}
 .preds em.up{background:#fdebd2;color:#7a4300}.preds em.down{background:#dcefe6;color:#1d5a44}
-@media(max-width:980px){.panels{grid-template-columns:1fr}.hero.dash{grid-template-columns:1fr}}
+.psi-note{margin-top:.9rem;padding-top:.9rem;border-top:1px solid rgba(255,255,255,.15);font-size:.88rem;line-height:1.55}
+#view>h2{font-size:clamp(1.9rem,3vw,2.6rem)}
+@media(max-width:1020px){.panels{grid-template-columns:1fr}.panel{grid-template-rows:auto auto 210px auto auto}.hero.dash{grid-template-columns:1fr}.hero.dash .hero-media{min-height:240px}}
+
+/* Hero v3: the wide NASA video becomes the hero background, darkened behind the text */
+.hero-bg{position:relative;overflow:hidden}
+.hero-bg .hero-media{position:absolute;inset:0;margin:0;min-height:0;border:0;border-radius:0;background:#000;display:block}
+.hero-bg .hero-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 80%;opacity:.75;aspect-ratio:auto;border:0;border-radius:0}
+.hero-bg .hero-media:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,19,22,.97) 0%,rgba(14,19,22,.9) 42%,rgba(14,19,22,.35) 75%,rgba(14,19,22,.15) 100%),linear-gradient(0deg,rgba(14,19,22,.85) 0%,rgba(14,19,22,0) 35%)}
+.hero-bg .hero-media figcaption{position:absolute;right:0;left:auto;bottom:0;z-index:2;background:none;padding:.8rem 4%;color:#aebbb6;font-size:.78rem;text-align:right;max-width:40ch}
+.hero-bg .hero.dash{position:relative;z-index:1;grid-template-columns:minmax(0,660px);padding:4.2rem 0 4.6rem}
+.hero-bg .ask-hero{background:rgba(23,32,38,.88);backdrop-filter:blur(2px)}
+@media(max-width:1020px){.hero-bg .hero-media:after{background:linear-gradient(0deg,rgba(14,19,22,.96) 0%,rgba(14,19,22,.82) 100%)}.hero-bg .hero.dash{padding:2.6rem 0 4rem}.hero-bg .hero-media figcaption{text-align:left;left:0;max-width:none}}
