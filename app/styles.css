@@ -68,3 +68,6 @@ footer .foot{display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wra
 
 /* Fonts: Sora (headings, numbers) + IBM Plex Sans (text) + IBM Plex Mono (labels), chosen by the team 2026-11-15 */
 h1,h2{font-weight:600;letter-spacing:-.03em}h1 em{font-style:normal}.hero h1{font-weight:600;letter-spacing:-.035em}.stat strong,.metrics strong{font-weight:600;letter-spacing:-.03em}h3{font-family:Sora,system-ui,sans-serif;font-weight:600;letter-spacing:-.01em}
+
+/* #view gets focus programmatically on navigation (for screen readers); it is not a control, so no visible ring. */
+#view:focus{outline:none}
