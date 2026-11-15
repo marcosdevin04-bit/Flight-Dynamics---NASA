@@ -10,7 +10,12 @@ actualizado: 2026-11-14
 |---|---|---|---|
 | Scientific & Data Lead | Claude Pro / Claude Science | **Facundo** (14/11) | Dataset estructurado, base de evidencia, informe científico, criterios de clasificación |
 | Engineering Lead | Claude Pro / Claude Code | **Marcos** (14/11) | Webapp, backend, integraciones, tests, deploy, repositorio |
-| Product, UX & Validation Lead | ChatGPT Pro / Astra Pro | `#pendiente` (¿Juan?) | Especificación funcional, UX/UI, plan de evaluación, QA, demo y storytelling |
+| Product, UX & Validation Lead | ChatGPT Pro / Astra Pro | **Juan** (de hecho, 14/11: rama `juan/ai-core`; falta confirmarlo) | Especificación funcional, UX/UI, plan de evaluación, QA, demo y storytelling |
+
+## Qué hizo cada uno el 14/11
+- **Facundo:** investigación (R1, R11/PSI), bitácora, README y tandas de datos para Marcos.
+- **Marcos:** la app (`feature/lunar-evidence-dashboard`, hasta c3e9faa) con deploy público.
+- **Juan:** `planning/PLAN.md` (plan consolidado de "Before the First Fire on the Moon") y el motor de evidencia `lib/evidence/` en TypeScript (build, rank, verify, golden set, reglas de interpretación y tests). Todavía no está integrado con la app de Marcos.
 
 El PDF asigna herramientas a cada rol, pero **no nombra a las personas**.
 

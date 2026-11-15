@@ -11,10 +11,24 @@ Ferkul, Kralik, Liao y Johnston, "Material Flammability at Lunar and Martian Gra
 - Copia en NTRS: https://ntrs.nasa.gov/api/citations/20260000646/downloads/Ferkul-Lunar%20and%20Planetary%20Science%20Conference%202026.pdf
 
 ## Qué es
-- **FM2 (Flammability of Materials on the Moon):** los **primeros experimentos de combustión en otro mundo**. El lanzamiento estaba planificado para **fines de 2026**; hoy es 14/11/2026, así que el estado actual es `#pendiente`.
+- **FM2 (Flammability of Materials on the Moon):** los **primeros experimentos de combustión en otro mundo**. El lanzamiento estaba planificado para **fines de 2026** (LPSC 2026, p. 1). Al 14/11/2026 **no hay evidencia de lanzamiento ni resultados publicados** (ver "Estado al 14/11" abajo).
 - Va a quemar **4 muestras sólidas planas**, en ensayos separados, en atmósfera habitable sin flujo, **con gravedad lunar real y de larga duración**.
 - Mide con cámaras (velocidad de propagación), radiómetros, termocuplas y un sensor de O₂.
 - Prensa: va en un módulo CLPS (CP-21) `#autodeclarado` (prensa). Los materiales de las muestras **no están publicados** en el abstract.
+
+## Estado al 14/11/2026 (R12, Claude Science; revisado por Claude Code)
+Informe completo: `Documentos/claude-science/fm2_status.md`.
+- **Resultados:** no se encontraron (NTRS, LPSC, prensa). `#pendiente`: que no aparezcan no prueba que no existan.
+- **Vehículo:** el póster de 2024 dice "CLPS lander mission CP-21" `#verificado` (NTRS 20240015307, abstract, revisado por Claude Code). El mismo póster y LUCI (slide 37) mencionan un vuelo de prueba del **SpaceX Human Lander System** `#autodeclarado` (lo leyó Claude Science). Prensa de jul. 2026: "will have to wait for Artemis IV" (~2028) `#autodeclarado`. **Fecha real: no confirmada.**
+- **Muestras (2024):** 4 muestras: **2 telas SIBAL** (algodón/fibra de vidrio) **en aire** y **2 varillas de acrílico en "Normoxic Space Exploration Atmospheres"**; una de cada una hacia arriba y otra hacia abajo. La cámara puede hacer **21 % O₂ a 14,7 psia y 34 % O₂ a 8,2 psia**. "SIBAL fabric has been found to only burn downward in air in lunar gravity [...] where on Earth's gravity it extinguishes immediately after ignition." `#verificado` (NTRS 20240015307, abstract).
+- **Muestras (2025):** el póster de Nomex dice que sus ensayos "are designed to help guide the final selection of fuel, oxygen concentration, and ignition parameters for FM2" `#verificado` (NTRS 20250010975, abstract). Que FM2 medirá el LOC de **"Synergy Pro"** sale del panel del póster `#autodeclarado` (Claude Science). **Conflicto abierto:** 2024 = SIBAL + acrílico; 2025 = Synergy Pro; LPSC 2026 = "four flat samples" (2024 hablaba de varillas). El diseño pudo cambiar `#inferencia`.
+- **No informado:** dimensiones de las muestras, volumen de la cámara y criterio de extinción.
+
+## Nuestra predicción registrada (D17)
+`Documentos/PREDICTION.md` + `data/prediction.json`, registrada el **2026-11-14 22:26 (UTC-3)**, todo `#inferencia`:
+- **P1 · SIBAL en aire, hacia abajo:** más inflamable que en 1 g; base de la llama a ~0,6–1,4 mm/s (LUCI: 0,92 mm/s).
+- **P2a · Acrílico en atmósfera de exploración (supuesta 34 % / 8,2 psi):** se apaga con menos O₂ que en 1 g (~2 puntos, por el factor 1,9 de ICES-2025).
+- **P2b · Materiales tipo Nomex o policarbonato** (si FM2 vuela uno): se apaga con igual o más O₂ que en 1 g.
 
 ## La hipótesis de NASA (clave para nosotros)
 - NASA aprueba los materiales con el **NASA-STD-6001B Test 1, en gravedad terrestre**, suponiendo que si pasa en 1 g es seguro en vuelo. **Esa suposición tiene incertidumbres.**

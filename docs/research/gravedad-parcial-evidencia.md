@@ -19,7 +19,7 @@ Resultado de la investigación **R1** del [Plan de trabajo](../product/plan-de-t
 | Policarbonato y Nomex Velcro se extinguen con "substantially higher oxygen" en gravedad lunar; PMMA, P-213 y la remera tienen un límite lunar menor que el extrapolado | ICES-2025-392, p. 9 y 11 | `#verificado` |
 | Nomex HT90-40 a 8,2 psi: límite de O₂ de ~23 % (1 g), ~29 % (Luna) y ~38 % (0 g) | Póster de Schechter et al., NTRS 20250010975 | `#verificado` (valores aproximados en el póster) |
 | **El dato de Marcos (SIBAL):** GMT190-T23, 2,2 cm, 10 cm/s, 17,2 % → "Reused, did not ignite"; GMT190-T24, 2,2 cm, 10 cm/s, 18,2 % → "Reused, one-sided flame" | Informe resumen de BASS-II, tabla 7.1, p. 96 | `#verificado`. **Advertencia:** son **muestras reutilizadas**, y el informe aclara que "provided less quantitative data, thus will not be discussed" (p. 95). Además, es **microgravedad**, no gravedad lunar |
-| LUCI (cohete New Shepard con rotación, gravedad lunar, más de 150 s, SIBAL y PMMA) | NTRS 20250010653 | `#autodeclarado`: lo leyó Claude Science, no se revisó a mano |
+| LUCI (cohete New Shepard con rotación, gravedad lunar, más de 150 s, SIBAL y PMMA) | NTRS 20250010653 | `#verificado` (R12, 14/11): Claude Science bajó el PDF y comparó slide por slide con `data/luci.json` de Marcos; **todos los campos son correctos**, salvo la plataforma de tierra (no verificable). Claude Code confirmó los slides 22 y 44 con las imágenes. Vuelo: 4/2/2025 (slide 13). Informe: `Documentos/claude-science/luci_check.md` |
 
 ## El hallazgo principal: la curva de gravedad existe para 3 materiales `#verificado`
 Límite de oxígeno (ULOI/MOC, % O₂). Fuente: Olson y Ferkul 2012, tabla I.
@@ -51,7 +51,7 @@ Con la presión de la base lunar (8,2 psi):
 ## Discrepancias abiertas
 1. **¿Dónde está el pico?** El abstract de FM2 dice que la velocidad de propagación en función de la gravedad tiene un pico en la Luna (citando Sacksteder y T'ien 1994, no leído). En cambio, el CP de 2003 del mismo grupo lo ubica **cerca de 0,38 g (Marte)** para Kimwipes a 27,6 kPa. El "mínimo de O₂ cerca de la Luna" sale de un **modelo** (Fire on the Moon 2021). `#pendiente`
 2. **SIBAL en 1 g:** el póster de FM2 de 2024 dice que se apaga enseguida, pero el ensayo en tierra de LUCI muestra propagación antes de extinguirse.
-3. **Gravedad en LUCI:** las slides 22 y 44 se contradicen.
+3. ~~**Gravedad en LUCI:** las slides 22 y 44 se contradicen.~~ **Resuelto (14/11):** el *texto* del slide 44 dice "~constant", pero su *gráfico* muestra la gravedad estable hasta ~123 s y luego cayendo hasta ~0,04 g hacia ~139 s, igual que los slides 22 y 43. Además, la traza medida queda en **~0,18 g**, no en los 0,165 g nominales derivados del giro (lectura visual, slides 41 y 44). Para SIBAL (slide 41) la gravedad sí es constante.
 4. La leyenda de la fig. 6 de Olson y Ferkul 2012 no coincide con su tabla I.
 5. **Fecha y material de FM2:** el póster de Nomex (2025) dice que FM2 está programado "in the next few years" y que medirá el límite de O₂ de **Synergy Pro**. El abstract de LPSC 2026 decía fines de 2026 → actualizar [FM2 - fuego en la Luna](fm2-fuego-en-la-luna.md). `#pendiente`
 

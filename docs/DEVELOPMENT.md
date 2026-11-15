@@ -1,6 +1,6 @@
 ---
 tipo: producto
-estado: tanda 1
+estado: tanda 2
 actualizado: 2026-11-14
 ---
 
@@ -78,6 +78,9 @@ Contexto completo: [FM2 - fuego en la Luna](research/fm2-fuego-en-la-luna.md) ·
 | `data/curva_gravedad.json` | **Usar este para la app.** Datos limpios y verificados de P1, P2 y P3 | `#verificado` |
 | `data/partial_gravity_flammability_evidence.csv` | Tabla completa de Claude Science (45 filas, columnas abajo) | mixto; mirar la columna `verification` |
 | `data/partial_gravity_gaps_summary.md` | Vacíos y discrepancias | — |
+| `data/psi_coverage.json` | **Tanda 2.** Datos de PSI listos para la pantalla P6 | `#verificado` |
+| `data/psi_bounds_evidence.csv` | Los 159 ensayos de PSI con nuestros materiales, fila por fila | `#verificado` |
+| `data/psi/` | Tablas originales de PSI (no modificar) | original |
 
 **Columnas del CSV:**
 `row_id, study, platform, gravity_g, test_duration_s, material_thickness, O2_pct, pressure_kPa, airflow_cm_s_direction, outcome, source_page, value_status, verification, notes`
@@ -150,3 +153,67 @@ Si te falta un dato, anotalo abajo en "Pedidos de Marcos" y Facundo lo prioriza 
 - `curva_gravedad.json` con: 3 materiales × 4 gravedades (verificado) + 5 materiales a 8,2 psi (verificado, solo la dirección del efecto) + Nomex a 8,2 psi (aproximado) + 5 ensayos de SIBAL (verificado, con advertencia).
 - CSV completo de 45 filas y resumen de vacíos.
 - Pendiente para las próximas tandas: estado y material de FM2 (R2), lista de materiales reales de una base lunar (R4), texto de la apuesta para FM2, y valores lunares numéricos de ICES-2025 (si se digitalizan).
+
+### Tanda 2 · sáb 14/11 · PSI (el recurso oficial del desafío)
+**Por qué es prioridad:** la consigna dice que PSI es "the source of the data upon which the NASA Space App is to be based", y el criterio de jurado Relevance premia usar datos de NASA "as a core component". Hoy la app solo usa NTRS. Contexto: [PSI - datos oficiales](research/psi-datos-oficiales.md) · D14.
+
+**Datos:** `data/psi_coverage.json` (generado de las tablas originales de PSI). Tiene tres bloques:
+- `o2_ceiling`: el techo de oxígeno ensayado (22,2 %) frente a la base lunar (≥30 %).
+- `coverage`: por material de la curva, cuántos ensayos hay en PSI, el rango de O₂ y las investigaciones.
+- `saffire2_bounds`: 9 muestras de Saffire-II con resultado en **microgravedad y en 1 g**.
+
+**Pantalla nueva P6 · "What NASA's PSI database covers"** (pestaña propia o sección arriba de la curva):
+1. **Barra de oxígeno** (horizontal, 0–40 %): sombrear lo ensayado con sólidos en PSI (13,6–22,2 %) y marcar con una línea la base lunar ("30% or greater" y 34 %). Texto: "No solid sample in the PSI tables of BASS-II or Saffire I–III was tested above 22.2% oxygen. The planned lunar habitat is at 30% or more." Fuente a un clic: los DOI de `_meta.sources`.
+2. **Tabla de cobertura** por material (de `coverage`): material · ensayos en PSI · rango de O₂ · investigaciones. Los materiales con 0 ensayos muestran "Not found in the PSI tables we reviewed" (nunca "never tested"). Mostrar `note` si existe (por ejemplo, que el Nomex de PSI no es el HT90-40 de la curva).
+3. **Tarjeta "Bounding the Moon"** (de `saffire2_bounds`): por muestra, dos columnas, **Microgravity** y **Earth (1 g)**, con el resultado. Texto (**corregido el 14/11 ~22:00**): "The challenge suggests microgravity and Earth results could bound what happens in between. Saffire-II shows where they agree (SIBAL burned in both) and where they disagree (thin silicone). But agreement is not enough: in the only published partial-gravity limits, Mylar, Ultem and Nomex HT90-40 burned at lower oxygen in lunar gravity than in either microgravity or 1 g (Olson & Ferkul 2012, Table I, p. 6). For those materials, the bounds fail — the question FM2 is designed to answer." Mostrar al lado, en chico, los tres valores lunares frente a 0 g y 1 g.
+4. **En la ficha de material (P2)**: agregar una línea "PSI tests: N (O₂ X–Y%) · see PSI" con link a la investigación.
+
+**Reglas (además de las de la sección 4):**
+- Los datos de PSI son **microgravedad o 1 g**, nunca Luna. No ponerlos como puntos de la curva de gravedad.
+- BASS y BASS-II **no traen columna de resultado**. Si se muestran ensayos sueltos, el resultado es "not reported" salvo las notas del operador, que se rotulan como "operator note".
+- Usar solo el O₂ **inicial**. Hay dos O₂ finales que son errores de sensor (P22b y T28b).
+- Toda cifra de PSI lleva su DOI. PSI pide citar así cada colección.
+
+**Pruebas de aceptación nuevas:**
+6. La barra de oxígeno muestra 22,2 % como máximo ensayado y la base lunar a 30 % o más, con link a PSI-25.
+7. Elegir Mylar en la ficha dice "Not found in the PSI tables we reviewed".
+8. La tarjeta de Saffire-II muestra que SIBAL (2-5) quemó en microgravedad (29 cm, 2,1 mm/s) y en 1 g (completo), citando PSI-99, doi 10.60555/2chp-m469.
+9. Ningún texto de la app dice que PSI tiene datos lunares.
+
+**Para el README y la entrega:** el texto del campo "NASA Data" está en [PSI - datos oficiales](research/psi-datos-oficiales.md).
+
+
+### Tanda 3 · sáb 14/11 ~21:00 · Antes del merge a main
+Es la revisión de `feature/lunar-evidence-dashboard` en c3e9faa (ver 2026-11-14). **Lo que está bien no se toca:** LUCI en `data/luci.json` cumple D15; el navegador de evidencia y la IA que solo elige IDs ya citados cumplen la regla 4; el deploy público funciona sin login.
+
+**Ojo:** se corrigió el texto de la tarjeta "Bounding the Moon" de la Tanda 2: si µg y 1 g coinciden, eso **no** implica que la Luna sea igual (ver [PSI - datos oficiales](research/psi-datos-oficiales.md)).
+
+**Hacer antes del merge (en este orden):**
+1. **Sacar `.agents/` del repo.** Son ~14 000 líneas de la herramienta de diseño "impeccable" y no forman parte de la app.
+   ```bash
+   git rm -r --cached .agents && echo ".agents/" >> .gitignore && git commit -m "chore: stop tracking local design tooling"
+   ```
+2. **Pantalla P6 de PSI** (la de la tanda 2). Es la prioridad: es la que demuestra que usamos el recurso oficial del desafío. Hacer `git pull origin main` primero: `data/psi_coverage.json` ya está en main (a0ba929).
+3. **Escenarios de fluido hidráulico y de combustible "unspecified".** No tienen ningún dato de NASA. Elegir una:
+   - **(a) Sacarlos** (recomendado);
+   - **(b) Dejarlos solo en la cámara 3D**, con la etiqueta "Generic pool source · no NASA data", y que **no aparezcan en Similar tests**, donde parecen una búsqueda de evidencia.
+4. **Vista FM2:** que lea un `data/prediction.json` con el material, la dirección esperada, la regla de comparación y la fecha. Facundo pasa el contenido (es la apuesta previa a FM2). Mientras no exista el archivo, dejar el texto actual.
+5. **README de la rama:** en main el README ya está reescrito. Al mergear, quedarse con el de main y agregarle solo la sección del link al deploy y de la cámara 3D.
+
+**Correr antes de abrir el PR:**
+- Las pruebas de aceptación 1 a 9 (secciones 7 y Tanda 2).
+- Buscar "safe" y "never tested" en todo el texto de la interfaz: no tiene que aparecer ninguno.
+- `node scripts/check-chamber.mjs`.
+
+**Merge:** abrir un PR de `feature/lunar-evidence-dashboard` a main. Hoy no tiene conflictos (`git merge-tree`). Lo revisa Facundo antes de mergear.
+
+**A decidir en equipo (no bloquea a Marcos):**
+- La cámara 3D estaba "fuera de alcance" en la sección 5. Ya está hecha y rotulada como ilustrativa, así que se deja, pero **no va en la demo de 30 s**, salvo que el equipo decida lo contrario.
+- La rama `juan/ai-core` (motor de evidencia en TypeScript, con verificación de citas y tests) todavía no está conectada con la app. Decidir si la app usa el `evidence.json` y el verificador de Juan o si sigue con su comparación propia.
+
+### Tanda 4 · sáb 14/11 ~22:45 · La predicción para FM2
+- **`data/prediction.json`** (3 predicciones) y **`PREDICTION.md`** en la raíz del repo. Formato de cada predicción: `id, registered_at, material, conditions{gravity, o2_pct, pressure_kPa, flow}, expectation{direction, versus, range}, basis[{claim, source, location}], confirmed_if, refuted_if, caveats[], level`.
+- **Vista FM2:** una tarjeta por predicción con material, condiciones, "We expect…" (dirección + rango), la evidencia con su fuente, "Confirmed if / Refuted if" y las advertencias plegadas. Arriba: "Registered 2026-11-14 22:26 (UTC-3), before any FM2 results" y link a `PREDICTION.md`. Rótulo: "Our prediction (inference), not a NASA result".
+- **`data/luci.json`:** Claude Science lo verificó contra el PDF y **está todo bien**. Sugerencias opcionales: en PMMA en vuelo, anotar que la gravedad cae de ~0,18 a ~0,04 g entre ~123 y ~139 s (slide 44); anotar que la traza medida queda cerca de 0,18 g frente a los 0,165 g nominales; fecha de vuelo 2025-02-04 (slide 13).
+- **Prueba de aceptación 10:** la vista FM2 muestra las 3 predicciones con su fecha de registro y ningún texto dice "will" ni "safe".
+

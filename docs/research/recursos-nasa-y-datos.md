@@ -5,6 +5,20 @@ actualizado: 2026-11-14
 
 # Recursos NASA y datos
 
+## Pestaña Resources oficial del desafío `#verificado` (leída 2026-11-14)
+| Recurso | Para qué | ¿Lo usamos? |
+|---|---|---|
+| PSI Data Repository: Combustion Science · https://psi.nasa.gov/physci/repo/search?q=combustion | **La base de datos del desafío** | **Sí** (2026-11-14): tablas de BASS, BASS-II y Saffire I–III → [PSI - datos oficiales](psi-datos-oficiales.md) |
+| NASA Combustion Science (Glenn) · https://www.nasa.gov/glenn/glenn-expertise-space-exploration/physical-sciences-program/combustion-science/ | Fichas de las investigaciones | No |
+| ScienceCasts, "The Power of Studying Combustion on the ISS" (2018) · https://www.youtube.com/watch?v=W1oXykoz9zg | Video introductorio | No |
+| A Researcher's Guide to ISS Combustion Science (2015) · https://www.nasa.gov/missions/station/a-researchers-guide-to-combustion-science/ | Repaso de 50+ páginas | No |
+| Apollo 1 · https://sma.nasa.gov/sma-disciplines/accllp/apollo-1 | Contexto de incidentes | No |
+| Apollo 13 · https://sma.nasa.gov/sma-disciplines/accllp/apollo-13 | Contexto de incidentes | No |
+| 25 Years Ago: Fire Aboard Mir · https://www.nasa.gov/history/25-years-ago-fire-aboard-space-station-mir/ | Contexto de incidentes | No |
+| Spinoffs: Fireman's Air Tanks (spinoff.nasa.gov/node/9582), Fire Detector (node/9407), Fire Attire (node/9918) | Aplicaciones en la Tierra | No |
+
+La propia consigna dice que **PSI no tiene datos de gravedad parcial**. Por eso R1 tuvo que salir de PSI e ir a reportes de NTRS (también de NASA, pero no listados en Resources). `#inferencia`
+
 ## Oficiales / NASA
 | Recurso | Qué tiene | Estado |
 |---|---|---|
@@ -19,7 +33,7 @@ actualizado: 2026-11-14
 | INDUS / INDUS-SDE (NASA + IBM, en Hugging Face): https://science.data.nasa.gov/blog/indus-sde-language-model | Embeddings científicos para búsqueda semántica | opcional |
 
 ## Datos clave para la demo
-- **Ningún sólido se ensayó en vuelo por encima de 22,2 % de O₂** en PSI, frente al 34 % propuesto para la exploración. La tela SIBAL se probó a 31 % en Saffire-VI. `#autodeclarado` (SPICA). **Verificar contra PSI antes de usar.**
+- **Ningún sólido se ensayó en vuelo por encima de 22,2 % de O₂** en las tablas de PSI de BASS-II y Saffire I–III, frente al 34 % propuesto para la exploración. `#verificado` contra PSI (2026-11-14) → [PSI - datos oficiales](psi-datos-oficiales.md). La tela SIBAL a 31 % en Saffire-VI sigue `#autodeclarado` (SPICA; Saffire-VI no está en PSI).
 - **No hay ensayos de PSI en gravedad parcial.** `#autodeclarado` (OSAMABASAM). Coincide con el white paper del Decadal.
 - Atmósfera propuesta para exploración: 34 % O₂ a 8,2 psi. `#pendiente` buscar la fuente NASA primaria.
 
