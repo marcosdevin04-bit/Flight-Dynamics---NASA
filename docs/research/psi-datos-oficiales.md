@@ -40,7 +40,9 @@ A 20 cm/s y ~22 % O₂ (tabla de PSI-99):
 | Silicona 0,27 mm (2-1) | ~0 | Completo, aceleratorio |
 | PMMA (2-8, 2-9) | ~10 cm dañados; llama anclada en la base | Completo, aceleratorio |
 
-Es exactamente lo que sugiere la consigna ("microgravity and normal-gravity results could bound..."): para SIBAL, ambas cotas dicen "arde", así que la Luna también debería. Para la silicona, las cotas no coinciden (µg no, 1 g sí) y la Luna queda en duda. `#inferencia` lo de la Luna.
+Es lo que sugiere la consigna ("microgravity and normal-gravity results could bound..."): para SIBAL, las dos cotas dicen "arde"; para la silicona no coinciden (µg no, 1 g sí).
+
+**Corrección (2026-11-14, a partir del plan de Juan):** que las dos cotas coincidan **no alcanza** para decir que la Luna se comporta igual. En la tabla I de Olson y Ferkul 2012 ([Gravedad parcial - evidencia](gravedad-parcial-evidencia.md)) el límite lunar queda **por debajo de los dos extremos** en los tres materiales: Mylar 15,6 % (0 g: 17,0 · 1 g: 21,2), Ultem 21,0 % (0 g: 24,0 · 1 g: 23,5) y Nomex HT90-40 21,0 % (0 g: 23,0 · 1 g: 23,5). Es decir, la Luna fue **más inflamable que µg y que 1 g**: para esos materiales, µg y 1 g **no acotan** la gravedad lunar. `#verificado` los números; `#inferencia` la lectura. Advertencias: criterios distintos (5,18 s de caída frente al Test 1), el 0 g es con flujo de 30 cm/s, y Saffire-II mide propagación, no límites de O₂. **Esto responde directamente a la frase de la consigna y es un mensaje central del pitch.**
 
 ### 3. Cobertura de nuestros materiales en PSI `#verificado`
 | Material de la curva | ¿En PSI? |

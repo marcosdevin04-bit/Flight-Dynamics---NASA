@@ -6,7 +6,10 @@ actualizado: 2026-11-14
 # Riesgos y pendientes
 
 ## Pendientes (por prioridad)
-- [ ] Validar el spec con el equipo y registrar D1 y D2 en [Registro de decisiones](decisions.md)
+- [ ] **Compuerta 2 (sáb 23:00):** confirmar D9 los tres y congelar el alcance (Next Burn y D1 ya están reemplazados)
+- [ ] Revisar D16 (las cotas µg/1 g fallan para la Luna) y decidir si es el mensaje central del pitch
+- [ ] Corregir la contradicción de [Competencia 2026](research/competencia-2026.md): dice que MicroFire no tiene datos lunares, pero le cuenta 2 registros de LUCI
+- [ ] Asegurar que Marcos use el texto corregido de la tarjeta "Bounding the Moon" (la Tanda 2 que está en main todavía tiene el texto viejo)
 - [x] Leer la consigna oficial y la pestaña **Resources** → [Consigna](challenge/consigna.md) · [Recursos NASA y datos](research/recursos-nasa-y-datos.md) (2026-11-14)
 - [x] Confirmar el título exacto → "SI-Powered"
 - [ ] **Escribir la apuesta antes de FM2** (material, dirección esperada y regla de comparación, con fecha): la vista FM2 de la app está vacía y es la mitad del diferencial
@@ -33,7 +36,7 @@ actualizado: 2026-11-14
 - [x] Encontrar una cita de NASA sobre la Antártida como análogo → Antarctic Space Analog Program (ver [Uruguay y Antártida](research/uruguay-y-antartida.md))
 - [ ] Revisar si MAPTIS (ensayos NASA-STD-6001) es de acceso público; si no, usar reportes de NTRS con ensayos en 1 g
 - [ ] Leer el texto completo del white paper del Decadal (NTRS 20210022403)
-- [ ] Asignar personas a los roles → [07 Equipo](team.md)
+- [x] Asignar personas a los roles → [07 Equipo](team.md) (Juan, de hecho, en el motor de evidencia; falta confirmarlo)
 - [ ] Crear el repo en GitHub y el equipo completo en Members de la plataforma
 - [ ] Elegir el nombre del equipo para la demo
 

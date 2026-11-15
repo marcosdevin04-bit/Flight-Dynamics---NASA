@@ -165,7 +165,7 @@ Si te falta un dato, anotalo abajo en "Pedidos de Marcos" y Facundo lo prioriza 
 **Pantalla nueva P6 · "What NASA's PSI database covers"** (pestaña propia o sección arriba de la curva):
 1. **Barra de oxígeno** (horizontal, 0–40 %): sombrear lo ensayado con sólidos en PSI (13,6–22,2 %) y marcar con una línea la base lunar ("30% or greater" y 34 %). Texto: "No solid sample in the PSI tables of BASS-II or Saffire I–III was tested above 22.2% oxygen. The planned lunar habitat is at 30% or more." Fuente a un clic: los DOI de `_meta.sources`.
 2. **Tabla de cobertura** por material (de `coverage`): material · ensayos en PSI · rango de O₂ · investigaciones. Los materiales con 0 ensayos muestran "Not found in the PSI tables we reviewed" (nunca "never tested"). Mostrar `note` si existe (por ejemplo, que el Nomex de PSI no es el HT90-40 de la curva).
-3. **Tarjeta "Bounding the Moon"** (de `saffire2_bounds`): por muestra, dos columnas, **Microgravity** y **Earth (1 g)**, con el resultado. Texto: "The challenge suggests microgravity and Earth results can bound what happens in between. Where both agree (SIBAL burns in both), lunar gravity likely behaves the same; where they disagree (thin silicone), the Moon is an open question — the kind FM2 is designed to answer."
+3. **Tarjeta "Bounding the Moon"** (de `saffire2_bounds`): por muestra, dos columnas, **Microgravity** y **Earth (1 g)**, con el resultado. Texto (**corregido el 14/11 ~22:00**): "The challenge suggests microgravity and Earth results could bound what happens in between. Saffire-II shows where they agree (SIBAL burned in both) and where they disagree (thin silicone). But agreement is not enough: in the only published partial-gravity limits, Mylar, Ultem and Nomex HT90-40 burned at lower oxygen in lunar gravity than in either microgravity or 1 g (Olson & Ferkul 2012, Table I, p. 6). For those materials, the bounds fail — the question FM2 is designed to answer." Mostrar al lado, en chico, los tres valores lunares frente a 0 g y 1 g.
 4. **En la ficha de material (P2)**: agregar una línea "PSI tests: N (O₂ X–Y%) · see PSI" con link a la investigación.
 
 **Reglas (además de las de la sección 4):**
@@ -185,6 +185,8 @@ Si te falta un dato, anotalo abajo en "Pedidos de Marcos" y Facundo lo prioriza 
 
 ### Tanda 3 · sáb 14/11 ~21:00 · Antes del merge a main
 Es la revisión de `feature/lunar-evidence-dashboard` en c3e9faa (ver 2026-11-14). **Lo que está bien no se toca:** LUCI en `data/luci.json` cumple D15; el navegador de evidencia y la IA que solo elige IDs ya citados cumplen la regla 4; el deploy público funciona sin login.
+
+**Ojo:** se corrigió el texto de la tarjeta "Bounding the Moon" de la Tanda 2: si µg y 1 g coinciden, eso **no** implica que la Luna sea igual (ver [PSI - datos oficiales](research/psi-datos-oficiales.md)).
 
 **Hacer antes del merge (en este orden):**
 1. **Sacar `.agents/` del repo.** Son ~14 000 líneas de la herramienta de diseño "impeccable" y no forman parte de la app.
