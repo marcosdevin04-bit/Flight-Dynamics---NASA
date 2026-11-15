@@ -9,7 +9,7 @@
 
 Built for the **NASA Space Apps Challenge 2026** · Challenge: *Flame in Freefall: SI-Powered Fire Safety Insights from Microgravity Combustion Data* · Team from Montevideo, Uruguay.
 
-**[Open the public dashboard](https://flight-dynamics-lunar-evidence.martindevin26.chatgpt.site/#tests)** · [PSI coverage](https://flight-dynamics-lunar-evidence.martindevin26.chatgpt.site/#psi) · [FM2 predictions](https://flight-dynamics-lunar-evidence.martindevin26.chatgpt.site/#fm2)
+**[Open the public dashboard](https://flight-dynamics-mu.vercel.app/#tests)** · [PSI coverage](https://flight-dynamics-mu.vercel.app/#psi) · [FM2 predictions](https://flight-dynamics-mu.vercel.app/#fm2)
 
 The app ranks experimental records, not fire risk. Its same-origin `POST /api/ask` accepts a structured scenario or a short question about a lunar atmosphere. The three examples remain available if the service is offline. Two have AI-authored, cached explanations checked against the retrieved citations; arbitrary scenarios use verified templates unless a server-side model is configured. The optional 3D chamber illustrates transport, not material qualification.
 

@@ -56,7 +56,7 @@ function gravity(){
  });
  const mylar=materials.find(a=>a.id==='mylar-g');
  const delta=mylar?.delta_o2_vs_1g?.Luna;
- view.innerHTML=title('Gravity curve','Compare the lowest oxygen concentration at which each material burned in the reported tests.')+`<div class="grid"><article class="card"><div class="legend">${materials.map((a,i)=>`<span style="--swatch:${colors(i)}">${escape(name(a))}</span>`).join('')}</div><p class="small-label">Oxygen by volume (%)</p><svg class="chart" viewBox="0 0 630 295" aria-label="Interactive oxygen limits by gravity">${chart}</svg><p class="muted">Each marker is a burn limit (ULOI). Its bar extends to the extinction limit (MOC). Lines connect observations.</p>${Number.isFinite(delta)?`<p><strong>Mylar G:</strong> the midpoint of its two limits was ${Math.abs(delta)} oxygen percentage points ${delta<0?'lower':'higher'} in lunar gravity than on Earth.</p>`:''}${source(data._meta.fuente)}</article><aside class="card detail"><p class="eyebrow">Selected observation</p><label class="field">Material<select id="material">${materials.map(a=>option(a.id,name(a),m.id)).join('')}</select></label><label class="field">Gravity<select id="gravity">${m.puntos.map(b=>option(b.gravedad,tr(b.gravedad),p.gravedad)).join('')}</select></label><div class="metrics"><div><small>ULOI · burned</small><strong>${fmt(p.uloi)}%</strong></div><div><small>MOC · extinguished</small><strong>${fmt(p.moc)}%</strong></div></div><dl class="details"><dt>Platform</dt><dd>${escape(tr(p.plataforma))}</dd><dt>Flow</dt><dd>${escape(tr(p.flujo))}</dd><dt>Pressure / thickness</dt><dd>${fmt(m.presion_kPa)} kPa / ${fmt(m.espesor_mm)} mm</dd></dl><p>${['Luna','0 g'].includes(p.gravedad)?'Secondary · reproduced in Table I':'Verified against Table I'}${p.nota?' · Exact gravity was not reported for this point.':''}</p>${source(data._meta.fuente)}</aside></div><section class="notice"><h3>Reading the limits</h3><ul>${data._meta.advertencias_globales.map(v=>`<li>${escape(tr(v))}</li>`).join('')}</ul></section>`;
+ view.innerHTML=title('Gravity curve','Compare the lowest oxygen concentration at which each material burned in the reported tests.')+`<div class="grid"><article class="card"><div class="legend">${materials.map((a,i)=>`<span style="--swatch:${colors(i)}">${escape(name(a))}</span>`).join('')}</div><p class="small-label">Oxygen by volume (%)</p><svg class="chart" viewBox="0 0 630 295" aria-label="Interactive oxygen limits by gravity">${chart}</svg><p class="muted">Each marker is a burn limit (ULOI). Its bar extends to the extinction limit (MOC). Lines connect observations.</p>${Number.isFinite(delta)?`<p><strong>Mylar G:</strong> the midpoint of its two limits was ${Math.abs(delta)} oxygen percentage points ${delta<0?'lower':'higher'} in lunar gravity than on Earth.</p>`:''}${source(data._meta.fuente)}</article><aside class="card detail"><p class="eyebrow">Selected observation</p><label class="field">Material<select id="material">${materials.map(a=>option(a.id,name(a),m.id)).join('')}</select></label><label class="field">Gravity<select id="gravity">${m.puntos.map(b=>option(b.gravedad,tr(b.gravedad),p.gravedad)).join('')}</select></label><div class="metrics"><div><small>Still burned at</small><strong>${fmt(p.uloi)}%</strong></div><div><small>Went out at</small><strong>${fmt(p.moc)}%</strong></div></div><dl class="details"><dt>Platform</dt><dd>${escape(tr(p.plataforma))}</dd><dt>Flow</dt><dd>${escape(tr(p.flujo))}</dd><dt>Pressure / thickness</dt><dd>${fmt(m.presion_kPa)} kPa / ${fmt(m.espesor_mm)} mm</dd></dl><p>${['Luna','0 g'].includes(p.gravedad)?'Secondary · reproduced in Table I':'Verified against Table I'}${p.nota?' · Exact gravity was not reported for this point.':''}</p>${source(data._meta.fuente)}</aside></div><section class="notice"><h3>Reading the limits</h3><ul>${data._meta.advertencias_globales.map(v=>`<li>${escape(tr(v))}</li>`).join('')}</ul></section>`;
  view.querySelector('.detail').insertAdjacentHTML('beforeend',coverageNote(psiData,m.id));
  function change(material,gravity,focus){selectedMaterial=material;selectedGravity=gravity;render();view.querySelector(focus)?.focus({preventScroll:true});}
  view.querySelector('#material').onchange=e=>change(e.target.value,p.gravedad,'#material');
@@ -84,11 +84,12 @@ let psiData,predictions;
 function materials(){return [...new Map([{id:'sibal',nombre:'SIBAL fabric'},...data.materiales,...data.habitat_lunar_8_2_psi.materiales].map(m=>[m.id,m])).values()];}
 function tests(){return askPanel(view,materials().map(m=>({id:m.id,label:name(m)})),searchState,luciPanel);}
 async function simulation(){const {showChamber}=await import('./chamber.js'); if(location.hash==='#simulation')stop=showChamber(view,searchState,materials().map(m=>({id:m.id,label:name(m)})));}
-const routes={gravity,materials:cards,tests,fm2:()=>predictionPanel(view,predictions),psi:()=>psiPanel(view,psiData,data),simulation};
+const routes={home:()=>{view.innerHTML='';},gravity,materials:cards,tests,fm2:()=>predictionPanel(view,predictions),psi:()=>psiPanel(view,psiData,data),simulation};
 function render(){
  stop();stop=()=>{};
  const route=location.hash.slice(1);
- const active=Object.hasOwn(routes,route)?route:'tests';
+ const active=Object.hasOwn(routes,route)?route:'home';
+ document.body.dataset.route=active;
  document.querySelectorAll('nav a').forEach(a=>{
  if(a.hash==='#'+active)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');
  });
@@ -100,7 +101,17 @@ async function start(){
  if(!response.ok)throw Error('Unavailable evidence');
  data=await response.json();
  [psiData,predictions]=await Promise.all(['psi_coverage','prediction'].map(async n=>{const r=await fetch('./data/'+n+'.json');if(!r.ok)throw Error(n);return r.json();}));
- render();window.addEventListener('hashchange',()=>{render();view.focus({preventScroll:true});});
+ render();window.addEventListener('hashchange',()=>{render();if(document.body.dataset.route==='home')window.scrollTo(0,0);else{window.scrollTo(0,0);view.focus({preventScroll:true});}});
  }catch{view.innerHTML='<p role="alert">The evidence could not be loaded. Refresh to try again.</p>';}
 }
+// Landing: hand a question to "Ask the evidence", and respect reduced motion for the hero video.
+function landing(){
+ const form=document.querySelector('#home-ask');
+ const go=q=>{q=String(q||'').trim();if(!q)return;try{sessionStorage.setItem('fd:pending-question',q);}catch{}location.hash='#tests';};
+ if(form)form.onsubmit=e=>{e.preventDefault();go(form.elements.q.value);};
+ document.querySelectorAll('.chips [data-q]').forEach(b=>b.onclick=()=>go(b.dataset.q));
+ const video=document.querySelector('.hero-media video');
+ if(video&&matchMedia('(prefers-reduced-motion: reduce)').matches){video.removeAttribute('autoplay');video.pause();}
+}
+landing();
 start();

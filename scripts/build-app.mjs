@@ -11,6 +11,8 @@ await buildClient({configFile:false,publicDir:false, logLevel:'warn', define:{'p
 }});
 const files=['index.html','PREDICTION.md',...(await readdir('app')).filter(f=>/\.(js|css)$/.test(f)).map(f=>'app/'+f),...['curva_gravedad','prediction','luci','psi_coverage'].map(k=>'data/'+k+'.json')];
 for(const f of files)await copyFile(f,'dist/'+f);
+// Binary media (hero video) is served statically by Vercel; it stays out of the text-only worker asset map.
+await mkdir('dist/app/media',{recursive:true});for(const f of await readdir('app/media'))await copyFile('app/media/'+f,'dist/app/media/'+f);
 files.push('app/coverage-chart.js');
 await writeFile('dist/data/demo-cache.json',JSON.stringify(cache));files.push('data/demo-cache.json');
 const mime={'.html':'text/html','.json':'application/json','.js':'text/javascript','.md':'text/plain','.css':'text/css'};

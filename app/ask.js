@@ -40,5 +40,7 @@ export function askPanel(host,materials,state,luci){
  }catch(e){if(!disposed&&seq===id)box.textContent=e.message||'Evidence could not be retrieved.';}
  }
  examples.forEach(([label,mat,o,f,p])=>{const b=document.createElement('button');b.textContent=label;b.onclick=()=>{Object.assign(state,{mat,oxygen:o,flow:f,pressure:p??''});sync();submit();};$('#presets').append(b);});
- form.onsubmit=e=>{e.preventDefault();submit();};$('#question').onsubmit=e=>{e.preventDefault();submit(e.target.elements.q.value);};sync();submit();return ()=>{disposed=true;};
+ form.onsubmit=e=>{e.preventDefault();submit();};$('#question').onsubmit=e=>{e.preventDefault();submit(e.target.elements.q.value);};
+ let pending=null;try{pending=sessionStorage.getItem('fd:pending-question');sessionStorage.removeItem('fd:pending-question');}catch{}
+ sync();if(pending){host.querySelector('#question').elements.q.value=pending;submit(pending);}else submit();return ()=>{disposed=true;};
 }

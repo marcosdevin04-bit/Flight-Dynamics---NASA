@@ -1,11 +1,62 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#102821"><title>Before the First Fire on the Moon · Flight Dynamics</title>
-<link rel="stylesheet" href="./app/styles.css"><link rel="stylesheet" href="./app/chamber.css"><script type="module" src="./app/main.js"></script></head>
-<body><a class="skip" href="#view">Skip to evidence</a>
-<header><div class="mast"><a class="brand" href="#gravity"><span class="mark" aria-hidden="true">◒</span> Flight Dynamics</a><span class="edition">NASA Space Apps <b> / </b> Uruguay</span></div></header>
-<main><section class="intro"><p class="eyebrow">Lunar habitat engineering</p><h1>Before the first fire<br>on the <em>Moon.</em></h1><p>Explore how gravity changes the oxygen a material needs to burn. Trace each observation back to the experiment.</p></section>
-<details class="story"><summary>Why this matters to our team in Uruguay</summary><p>On February 25, 2012, a fire in the machinery room of Brazil’s Comandante Ferraz station spread through the Antarctic base. Uruguay’s Artigas station stands on the same island. For our team in Montevideo, that puts a human question behind the data: when help is far away, what can an engineer learn about a material before choosing it for a habitat?</p><p>Antarctica gives us the question. To study how gravity changes burning, we turn to NASA’s experiments. <a href="https://www.marinha.mil.br/egn/sites/www.marinha.mil.br.egn/files/CEMOS_104_MONO_CC_CA_WELLINGTON.pdf">Brazilian Navy account ↗</a> · <a href="https://www.gub.uy/ministerio-defensa-nacional/politicas-y-gestion/bases-antarticas">Uruguay’s Antarctic stations ↗</a></p></details>
-<nav aria-label="Evidence workspace"><a href="#tests">Ask the evidence</a><a href="#psi">PSI coverage</a><a href="#gravity">Gravity curve</a><a href="#materials">Material cards</a><a href="#fm2">FM2 prediction</a><a href="#simulation">3D flame chamber</a></nav>
-<section id="view" tabindex="-1" aria-label="Selected view"><p>Loading the evidence…</p></section><noscript>Enable JavaScript to explore the measurements.</noscript>
-</main><footer>Flight Dynamics · Montevideo, Uruguay <a href="./data/curva_gravedad.json">Open evidence JSON ↗</a></footer></body></html>
+<meta name="theme-color" content="#0e1316"><title>Before the First Fire on the Moon</title>
+<meta name="description" content="What NASA's combustion experiments say about how materials burn in lunar gravity, and where the evidence stops. A NASA Space Apps 2026 project.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap"><link rel="stylesheet" href="./app/styles.css"><link rel="stylesheet" href="./app/chamber.css"><script type="module" src="./app/main.js"></script></head>
+<body data-route="home"><a class="skip" href="#view">Skip to content</a>
+<header class="site"><div class="mast">
+<a class="brand" href="#home"><span class="mark" aria-hidden="true">◒</span> Before the First Fire</a>
+<nav aria-label="Sections"><a href="#tests">Ask the evidence</a><a href="#gravity">Gravity curve</a><a href="#psi">NASA flight tests</a><a href="#materials">Materials</a><a href="#fm2">FM2 prediction</a><a class="minor" href="#simulation">3D chamber</a></nav>
+</div></header>
+
+<section class="landing" aria-labelledby="hero-title">
+<div class="hero">
+<div class="hero-copy">
+<p class="kicker">NASA Space Apps 2026 · Flame in Freefall · Team from Montevideo, Uruguay</p>
+<h1 id="hero-title">On the Moon, some materials burn with less oxygen than on Earth.</h1>
+<p class="hero-lead">NASA screens spacecraft materials with fire tests in Earth gravity. Before the first fire on the Moon, this tool shows what NASA's experiments say about lunar gravity, and where the evidence stops.</p>
+<div class="cta"><a class="btn primary" href="#tests">Ask the evidence</a><a class="btn ghost" href="#fm2">See our FM2 prediction</a></div>
+</div>
+<figure class="hero-media">
+<video src="./app/media/saffire-vi.mp4" poster="./app/media/saffire-vi-poster.jpg" autoplay muted loop playsinline aria-label="Real NASA footage, sped up: a fire spreads across an acrylic sample in microgravity during the Saffire-VI experiment."></video>
+<figcaption>A real fire in microgravity, sped up 5×. Video: NASA, <a href="https://images.nasa.gov/details/Saf-VI%20S8C3+C4%201-sided%20PMMA_unmapped_jpeg-20x%20no%20text" target="_blank" rel="noopener">Saffire-VI experiment</a> (2024).</figcaption>
+</figure>
+</div>
+<div class="stats">
+<a class="stat" href="#gravity"><strong>15.6%</strong><span>oxygen was enough for Mylar film to keep burning in lunar-equivalent gravity. On Earth it needed 21.2%.</span><small>Olson &amp; Ferkul 2012, Table I</small></a>
+<a class="stat" href="#psi"><strong>22.2%</strong><span>was the highest starting oxygen for any solid sample in the NASA flight tables we reviewed. Lunar cabins are planned at 30% or more.</span><small>NASA PSI: BASS-II, Saffire I–III</small></a>
+<a class="stat" href="#fm2"><strong>3</strong><span>dated predictions, registered before NASA's first fire experiment on the Moon.</span><small>Flammability of Materials on the Moon (FM2)</small></a>
+</div>
+</section>
+
+<section class="landing light" aria-labelledby="how-title">
+<div class="wrap">
+<p class="eyebrow">How it works</p>
+<h2 id="how-title">Why gravity matters for fire</h2>
+<ol class="steps">
+<li><span class="step-icon" aria-hidden="true">1</span><h3>Tested on Earth</h3><p>NASA's standard flame test runs in Earth gravity, where rising hot gas controls how a flame gets oxygen and loses heat.</p></li>
+<li><span class="step-icon" aria-hidden="true">2</span><h3>Different on the Moon</h3><p>At one-sixth gravity that flow is much weaker. Depending on the material and the cabin pressure, a flame can survive at lower oxygen, or need more.</p></li>
+<li><span class="step-icon" aria-hidden="true">3</span><h3>Checked by FM2</h3><p>NASA's first fire experiment on the Moon will settle it. We wrote down what we expect before it flies, so anyone can check us.</p></li>
+</ol>
+
+<form class="ask-hero" id="home-ask">
+<label for="home-q"><h3>Ask about a material in a lunar cabin</h3></label>
+<div class="ask-row"><input id="home-q" name="q" required maxlength="650" placeholder="Mylar at 34% oxygen and 8.2 psi on the Moon"><button class="btn primary" type="submit">Ask</button></div>
+<div class="chips"><button type="button" data-q="Polycarbonate at 56.5 kPa on the Moon">Polycarbonate at habitat pressure</button><button type="button" data-q="SIBAL at 18% with 10 cm/s airflow on the Moon">SIBAL fabric at 18% oxygen</button><button type="button" data-q="Mylar at 34% and 8.2 psi on the Moon">Mylar in a lunar cabin atmosphere</button></div>
+<p class="fine">Answers come only from NASA test records. An AI model writes a short summary; code checks every citation and number before you see it.</p>
+</form>
+
+<div class="explore">
+<a href="#gravity"><h3>Gravity curve</h3><p>The oxygen three materials needed to burn at microgravity, Moon, Mars and Earth gravity.</p></a>
+<a href="#psi"><h3>NASA flight tests</h3><p>What NASA's space-station fire experiments covered, and the oxygen levels they never reached.</p></a>
+<a href="#materials"><h3>Materials at habitat pressure</h3><p>Which materials got worse or better in lunar gravity at the planned 8.2 psi cabin pressure.</p></a>
+<a href="#fm2"><h3>FM2 prediction</h3><p>Three expectations for the first fire on the Moon, with what would prove us wrong.</p></a>
+</div>
+
+<details class="story"><summary>Why this matters to a team in Uruguay</summary><p>On February 25, 2012, a fire in the machinery room of Brazil’s Comandante Ferraz station spread through the Antarctic base. Uruguay’s Artigas station stands on the same island. For our team in Montevideo, that puts a human question behind the data: when help is far away, what can an engineer learn about a material before choosing it for a habitat?</p><p>Antarctica gives us the question. To study how gravity changes burning, we turn to NASA’s experiments. <a href="https://www.marinha.mil.br/egn/sites/www.marinha.mil.br.egn/files/CEMOS_104_MONO_CC_CA_WELLINGTON.pdf">Brazilian Navy account ↗</a> · <a href="https://www.gub.uy/ministerio-defensa-nacional/politicas-y-gestion/bases-antarticas">Uruguay’s Antarctic stations ↗</a></p></details>
+</div>
+</section>
+
+<main><section id="view" tabindex="-1" aria-label="Selected view"></section><noscript>Enable JavaScript to explore the measurements.</noscript></main>
+<footer><div class="wrap foot"><p>Independent student project for NASA Space Apps 2026, from Montevideo, Uruguay. Not affiliated with or endorsed by NASA. Data and videos credited to NASA where shown.</p><p><a href="https://github.com/marcosdevin04-bit/Flight-Dynamics---NASA">Source code ↗</a> · <a href="./PREDICTION.md">Registered prediction ↗</a> · <a href="./data/curva_gravedad.json">Evidence JSON ↗</a></p></div></footer>
+</body></html>
