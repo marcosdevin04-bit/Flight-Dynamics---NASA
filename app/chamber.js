@@ -3,7 +3,8 @@ import {chamber,nx,ny,nz,dx} from './reactor.js';
 import {viewport} from './volume.js';
 export function showChamber(view,scenario,materials){
  const defaults={flow:10,oxygen:21,pressure:101.3},bounds={flow:[0,30],oxygen:[0,35],pressure:[50,105]};
- const settings={gravity:Number(scenario.gravity)},notes=[];
+ const gravity=Number(scenario.gravity);
+ const settings={gravity:[0,0.16,1].includes(gravity)?gravity:0.16},notes=[];
  for(const [key,v] of Object.entries(defaults)){const [lo,hi]=bounds[key],raw=scenario[key],n=raw===''||raw==null?v:Number(raw);
  settings[key]=Math.max(lo,Math.min(hi,n));if(raw===''||raw==null)notes.push(key+' defaults to '+v);else if(settings[key]!==n)notes.push(key+' limited to '+settings[key]);}
  view.innerHTML='<div class="ch-head"><div><p class="eyebrow">Flight Dynamics / Simulation laboratory</p><h2>Flame chamber</h2></div><span>3D &nbsp;/&nbsp; REACTING FLOW</span></div>'+
@@ -11,7 +12,7 @@ export function showChamber(view,scenario,materials){
  '<div class="ch-layout"><article class="ch-instrument"><div class="ch-bar"><strong class="sim-label">SIMULATION — illustrative</strong><select id="layer" aria-label="Displayed field"><option value="flame">Flame · reaction rate</option><option value="temp">Thermal plume</option><option value="slice">Temperature · center slice</option></select></div>'+
  '<div class="ch-scene"><canvas tabindex="0" aria-label="3D reacting flow. Drag to orbit, Shift-drag to pan, scroll to zoom. Arrow keys rotate, plus and minus zoom, Home resets."></canvas><div class="ch-camera"><button data-cam="out" aria-label="Zoom out">−</button><button data-cam="in" aria-label="Zoom in">+</button><button data-cam="home">Reset view</button></div></div>'+
  '<div class="ch-read"><span id="elapsed"></span><span id="legend"></span></div><div class="ch-hint">Drag to orbit · Shift-drag to pan · Scroll or pinch to zoom</div></article>'+
- '<aside class="ch-controls"><p class="eyebrow">Boundary conditions</p><h3>Scenario controls</h3><label>Material / fuel scenario<select id="sample"></select></label><label>Oxidizing atmosphere<select id="atmos"></select></label><label>Gravity<select id="gravity"><option value="0">Microgravity · ~0 g</option><option value="0.16">Moon · 0.16 g</option><option value="0.38">Mars · 0.38 g</option><option value="1">Earth · 1 g</option></select></label>'+
+ '<aside class="ch-controls"><p class="eyebrow">Boundary conditions</p><h3>Scenario controls</h3><label>Material / fuel scenario<select id="sample"></select></label><label>Oxidizing atmosphere<select id="atmos"></select></label><label>Gravity<select id="gravity"><option value="0">Microgravity · ~0 g</option><option value="0.16">Moon · 0.16 g</option><option value="1">Earth · 1 g</option></select></label>'+
  [['flow','Ventilation','cm/s'],['oxygen','Oxygen','%'],['pressure','Ambient pressure','kPa']].map(([k,label,unit])=>'<label>'+label+' <output for="'+k+'"></output><input type="range" id="'+k+'" min="'+bounds[k][0]+'" max="'+bounds[k][1]+'" step=".1" data-unit="'+unit+'"></label>').join('')+
  '<label class="ch-check"><input id="vectors" type="checkbox"> Show velocity vectors</label><div class="actions"><button id="pause">Pause</button><button id="restart">Restart model</button></div></aside></div>'+
  '<p id="source-profile" class="ch-note"></p><p class="ch-note"><b>Model, not measurement.</b> The flame shows relative reaction rate around a generic, continuously piloted fuel source. It cannot establish whether a particular habitat material will ignite. <a href="#tests">Compare NASA observations ↗</a></p>'+

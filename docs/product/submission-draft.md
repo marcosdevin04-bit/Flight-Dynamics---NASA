@@ -12,3 +12,5 @@ Team working copy for the English project form.
 **Validation and limits.** A comparison against the published Table I checked all 12 material/gravity rows and all 24 oxygen-limit values. This checks transcription for that table only. In the short reduced-gravity experiments, the criterion was burning through a 5.18-second drop. The Earth test used a 15.2 cm burn-length criterion, and microgravity used 30 cm/s forced ventilation. The three FM2 predictions are the team's inferences. Missing information remains visible.
 
 **Team review before submission.** Confirm the three memberships and event, the preferred public URL, and the final demo. The local pitch and judging submission are separate steps.
+
+**Local form (team review).** Team: Flight Dynamics (Montevideo, Uruguay). Members: Marcos Devincenzi, Juan Benítez and Facundo Díaz. Project: Before the First Fire on the Moon. Dashboard: https://flight-dynamics-lunar-evidence.martindevin26.chatgpt.site/#tests. YouTube URL: pending team video link.
