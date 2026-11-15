@@ -1,6 +1,6 @@
 ---
 tipo: investigacion
-actualizado: 2026-11-14
+actualizado: 2026-11-15
 ---
 
 # Competencia 2026: otros equipos en Flame in Freefall
@@ -27,7 +27,24 @@ Todo lo de esta nota es `#autodeclarado`: viene de READMEs públicos consultados
 
 **Corrección:** antes escribimos "nadie responde qué ensayar después". **Era falso.** MicroFire Atlas y AstraFlame lo hacen. → ver D9 en [Registro de decisiones](../decisions.md)
 
-**Lo que nadie hace (al 14/11):** el **eje gravedad**. Todos grafican O₂ × flujo o presión. MicroFire declara que no tiene datos lunares. Ninguno usa el experimento FM2 de NASA → [FM2 - fuego en la Luna](fm2-fuego-en-la-luna.md)
+~~**Lo que nadie hace (al 14/11):** el eje gravedad. MicroFire declara que no tiene datos lunares. Ninguno usa FM2.~~ **Corregido el 15/11:** la frase era contradictoria (la misma tabla le contaba 2 registros de LUCI a MicroFire) y quedó desactualizada.
+
+## Revisión del 15/11 (README de MicroFire Atlas, leído a las 12:40) `#autodeclarado`
+MicroFire Atlas (https://github.com/A-K-M-Asifuzzaman/MicroFire-Atlas, deploy en microfire-atlas.vercel.app) hoy cubre buena parte de lo que creíamos exclusivo:
+- escenario de hábitat lunar (34 % O₂ a 56,5 kPa) y uno alternativo (66,2 kPa / 28,5 %);
+- **LUCI** (2 registros "lunar-gravity burn, simulated", verificados por página);
+- **FM²** como "research horizon", con los pósteres de 2024 (NTRS 20240008623 y 20240015307);
+- Olson y Ferkul (NTRS 20130010991) como evidencia de gravedad parcial;
+- un "Flame Lab" con gravedad de la Tierra, la Luna, Marte y órbita, y un modo "Predict first, then check NASA's record" (el usuario predice; no es una predicción registrada del equipo).
+- Dato llamativo: GitHub informa `pushed_at` 2026-10-08, anterior al inicio de la hackatón. No lo investigamos.
+
+**Lo que sigue siendo nuestro** `#inferencia` (a confirmar mirando su app):
+1. El hallazgo D16: en la tabla I, microgravedad y 1 g **no acotan** la Luna para Mylar, Ultem y Nomex HT90-40.
+2. **Tres predicciones falsables, con fecha, registradas antes de FM2** (D17), con criterio de confirmación y refutación.
+3. El techo de 22,2 % de O₂ verificado contra las tablas de PSI, frente al ≥30 % del hábitat.
+4. IA en vivo que **solo cita registros recuperados y se verifica en código**, con la página Method que documenta los límites (OSAMABASAM también verifica citas).
+5. El ángulo local: Ferraz 2012 y la base Artigas ([Uruguay y Antártida](uruguay-y-antartida.md)).
+
 
 ## Ideas ya tomadas (no competir de frente) `#inferencia`
 - Chat con RAG y citas

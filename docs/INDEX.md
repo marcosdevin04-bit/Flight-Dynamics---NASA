@@ -1,6 +1,6 @@
 ---
 tipo: indice
-actualizado: 2026-11-14
+actualizado: 2026-11-15
 ---
 
 # Flame in Freefall · Bitácora del proyecto
@@ -8,11 +8,12 @@ actualizado: 2026-11-14
 NASA Space Apps Challenge 2026 · Sede Uruguay · 14–15 de noviembre de 2026
 Equipo: Marcos Devincenzi, Juan Benitez, Facundo Díaz → [07 Equipo](team.md)
 
-## Estado actual (dom 15/11 ~11:30)
-- **Producto:** "Before the First Fire on the Moon" (D9 aceptada). Predicción para FM2 registrada y confirmada (D17).
-- **App:** PR #1 de Marcos listo para revisar (tiene integrado el motor de Juan, la pantalla de PSI y la vista FM2). 162 tests en verde y sin conflictos con main. La web pública ya muestra todo → 2026-11-15
-- **Falta:** mergear el PR #1, probar la IA en vivo con la key de Anthropic, la demo final (hay un borrador de 28 s) y el formulario. **16:00 primera entrega** → [06 Riesgos y pendientes](risks-and-todo.md)
-- **Entrega:** domingo 15/11 23:59 (Uruguay), "Submit for Judging" → [Reglas y entrega](challenge/reglas-y-entrega.md)
+## Estado actual (dom 15/11 12:45)
+- **Producto:** "Before the First Fire on the Moon" (D9). Predicción para FM2 registrada y confirmada (D17).
+- **App en producción:** https://flight-dynamics-mu.vercel.app (D19). Portada como dashboard (D20), página Method, logo (D21), IA en vivo (Haiku 5.5) con citas verificadas, PSI y FM2. 168 tests en verde → 2026-11-15
+- **Falta para la primera entrega (16:00):** la demo de 30 s ([Pitch y demo](product/pitch-y-demo.md), guion v2) y cargar el formulario (Textos de entrega); confirmar el desafío, los 3 miembros y el nombre del equipo.
+- **Después:** taller de pitch 17/11 · jurado local 18 al 20/11 (presentamos) · nominados 21/11 → [Criterios y premios](challenge/criterios-y-premios.md)
+- **Entrega final:** domingo 15/11 23:59 (Uruguay), "Submit for Judging" → [Reglas y entrega](challenge/reglas-y-entrega.md)
 - **Deck (v2, 10 slides):** https://claude.ai/artifact/7MBueEbY7pJTVbL1EKomjz
 
 ## Mapa

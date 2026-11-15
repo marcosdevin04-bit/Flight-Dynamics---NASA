@@ -1,10 +1,12 @@
 ---
 tipo: plan
 estado: propuesta
-actualizado: 2026-11-14
+actualizado: 2026-11-15
 ---
 
 # Plan de trabajo: sábado 14 y domingo 15 de noviembre
+
+> **Estado al 15/11:** el plan se ejecutó con cambios. El producto pasó de Next Burn a "Before the First Fire on the Moon" (D9); el CFD con FDS se reemplazó por la cámara 3D ilustrativa (D18). Las compuertas 1 y 2 se cumplieron. Lo que pasó realmente está en 2026-11-14 y 2026-11-15.
 
 > **Objetivo:** ganar la nominación local (jurado del 18 al 20/11) y competir por un premio global, sobre todo **Mejor uso de la ciencia**.
 > **Producto candidato:** "Antes del primer fuego en la Luna" (D9 + D10) → [FM2 - fuego en la Luna](../research/fm2-fuego-en-la-luna.md) · [Registro de decisiones](../decisions.md)
