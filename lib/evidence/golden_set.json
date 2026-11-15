@@ -1,7 +1,7 @@
 {
   "generated": "2026-11-14",
   "ranker": "lib/evidence/rank.ts",
-  "note": "expected_case, expected_reason and expected_record_ids are the ranker's output for params (closeness of test conditions, not a risk score). tests/golden.test.ts checks them. Record ids are from evidence.json. PSI experimental tables are not ingested.",
+  "note": "expected_case, expected_reason and expected_record_ids are the ranker's output for params (closeness of test conditions, not a risk score). tests/golden.test.ts checks them. Record ids are from evidence.json. Includes the PSI experimental tables; a table row and a report are separate source records, not necessarily independent burns.",
   "scenarios": [
     {
       "id": "gs-01-mylar-lunar",
@@ -86,7 +86,7 @@
       "params": { "material": "SIBAL", "o2_pct": 18, "flow_cm_s": 10 },
       "expected_case": 2,
       "expected_reason": "similar_tests",
-      "expected_record_ids": ["csv-1", "csv-28", "GMT190-T24", "GMT45-T1", "csv-33", "GMT190-T23", "csv-36", "csv-37"],
+      "expected_record_ids": ["csv-1", "csv-28", "GMT190-T24", "psi-25-r124-flight", "GMT45-T1", "psi-25-r102-flight", "csv-33", "GMT190-T23"],
       "must_mention": ["microgravity", "reused", "17.2", "18.2", "LUCI", "lunar"],
       "must_not_say": ["safe", "certified", "NASA never tested"],
       "why": "Acceptance 3. GMT190-T23 (17.2%, reused, did not ignite) and GMT190-T24 (18.2%, reused, one-sided flame) are microgravity. LUCI (csv-1) is the rotating-rocket lunar-g burn and ranks first because gravity is closer. GMT45-T1 carries the oxygen-reading warning. None of these is a same-test match: LUCI's oxygen is a range and its pressure is not reported."

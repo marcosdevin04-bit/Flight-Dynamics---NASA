@@ -558,8 +558,35 @@ export function buildEvidence(dataDir = DATA_DIR): EvidenceFile {
   const csvRecords = csvRows.map(fromCsvRow).map(finalize);
   const csvById = new Map(csvRecords.map((r) => [r.id, r]));
 
-  const extra: EvidenceRecord[] = [];
-  for (const f of readdirSync(dataDir).filter((f) => f.endsWith(".json") && f !== CURVE_FILE).sort()) {
+  const psiFile = "psi_bounds_evidence.csv";
+  type Row = Record<string,string>;
+  const rows: Row[] = parseCsv(readFileSync(join(dataDir, psiFile)), {columns:true,bom:true,skip_empty_lines:true});
+  inputs.push(psiFile);
+  const extra = rows.map(row => {
+    const ground = row.gravity.startsWith("1 g");
+    const inv = row.psi_investigation.split(" ")[0];
+    const id = inv.toLowerCase()+"-r"+row.source_row+(ground?"-earth":"-flight");
+    const inferred = inv==="PSI-99" && /^2-(6|9)\b/.test(row.test_id);
+    const outcome = row.outcome==="not reported" ? "Outcome not reported." : row.outcome;
+    const note = [inferred ? "Material inferred from the table layout." : "", row.outcome_basis, row.geometry_thickness].filter(Boolean).join(" · ");
+    const [p] = fromContract([{id, material: row.material_in_our_curve, gravedad: ground?"1 g":"0 g",g:ground?1:0,
+      resultado:outcome,nivel:inferred?"secundario":"verificado",advertencia:note,
+      fuente:{cita:row.psi_investigation+" · DOI "+row.psi_doi, psi:"https://doi.org/"+row.psi_doi, ubicacion:row.source_file+" · row "+row.source_row+" · "+row.test_id}}], psiFile);
+    p.platform=row.gravity;
+    p.source_path="data/"+psiFile+" → "+row.source_file+":"+row.source_row;
+    p.o2=parseO2(row.o2_initial_pct);
+    p.pressure=parsePressure(row.pressure_kpa);
+    p.flujo=row.airflow_raw;
+    const single=row.airflow_raw.trim().match(/^(\d+(?:\.\d+)?)(?:\s*cm\/s)?$/);
+    p.flow=PLAIN(single?Number(single[1]):null);
+    const r=finalize(p);
+    if (!single && row.airflow_raw!=="not reported") r.display.flow="Variable protocol: "+row.airflow_raw;
+    // Nomex III is not HT90-40; mixed coupons are not pure specimens.
+    if (/Nomex III/.test(row.material_in_our_curve)) r.material_key="nomex/iii";
+    if (row.material_in_our_curve==="PMMA + Nomex") r.material_key="mixed-pmma-nomex";
+    return r;
+  });
+  for (const f of readdirSync(dataDir).filter((f) => f.endsWith(".json") && ![CURVE_FILE, "prediction.json", "psi_coverage.json", "luci.json"].includes(f)).sort()) {
     const parts = fromContract(JSON.parse(readFileSync(join(dataDir, f), "utf8")), f);
     if (parts.length) {
       inputs.push(f);

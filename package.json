@@ -6,7 +6,8 @@
   "scripts": {
     "build:evidence": "tsx lib/evidence/build.ts",
     "test": "vitest run",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "build": "node scripts/build-app.mjs"
   },
   "dependencies": {
     "csv-parse": "^7.0.3",
@@ -16,6 +17,7 @@
     "@types/node": "^26.6.6",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2",
-    "vitest": "^5.1.0"
+    "vitest": "^5.1.0",
+    "esbuild": "0.28.2"
   }
 }

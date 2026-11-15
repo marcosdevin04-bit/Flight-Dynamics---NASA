@@ -1,7 +1,5 @@
 // The catalogue identifies samples. Source shapes are illustrative, not kinetic constants.
-export const fluidScenarios=[{id:'hydraulic-fluid',nombre:'Hydraulic fluid (unspecified formulation)'},{id:'spacecraft-fuel',nombre:'Spacecraft fuel (unspecified formulation)'}];
 export function shapeFor(id){
- if(fluidScenarios.some(m=>m.id===id))return 'pool';
  if(id==='pmma')return 'rod';
  return 'sheet';
 }

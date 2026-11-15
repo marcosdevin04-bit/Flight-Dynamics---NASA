@@ -1,5 +1,6 @@
 import {luciPanel} from './luci.js';
-import {evidenceGuide} from './interpretation.js';
+import {askPanel} from './ask.js';
+import {psiPanel,predictionPanel,coverageNote} from './research.js';
 const view = document.querySelector('#view');
 const escape = value => String(value ?? 'Not reported').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 const fmt = value => typeof value === 'number' && Number.isFinite(value) ? String(value) : 'Not reported';
@@ -56,6 +57,7 @@ function gravity(){
  const mylar=materials.find(a=>a.id==='mylar-g');
  const delta=mylar?.delta_o2_vs_1g?.Luna;
  view.innerHTML=title('Gravity curve','Compare the lowest oxygen concentration at which each material burned in the reported tests.')+`<div class="grid"><article class="card"><div class="legend">${materials.map((a,i)=>`<span style="--swatch:${colors(i)}">${escape(name(a))}</span>`).join('')}</div><p class="small-label">Oxygen by volume (%)</p><svg class="chart" viewBox="0 0 630 295" aria-label="Interactive oxygen limits by gravity">${chart}</svg><p class="muted">Each marker is a burn limit (ULOI). Its bar extends to the extinction limit (MOC). Lines connect observations.</p>${Number.isFinite(delta)?`<p><strong>Mylar G:</strong> the midpoint of its two limits was ${Math.abs(delta)} oxygen percentage points ${delta<0?'lower':'higher'} in lunar gravity than on Earth.</p>`:''}${source(data._meta.fuente)}</article><aside class="card detail"><p class="eyebrow">Selected observation</p><label class="field">Material<select id="material">${materials.map(a=>option(a.id,name(a),m.id)).join('')}</select></label><label class="field">Gravity<select id="gravity">${m.puntos.map(b=>option(b.gravedad,tr(b.gravedad),p.gravedad)).join('')}</select></label><div class="metrics"><div><small>ULOI · burned</small><strong>${fmt(p.uloi)}%</strong></div><div><small>MOC · extinguished</small><strong>${fmt(p.moc)}%</strong></div></div><dl class="details"><dt>Platform</dt><dd>${escape(tr(p.plataforma))}</dd><dt>Flow</dt><dd>${escape(tr(p.flujo))}</dd><dt>Pressure / thickness</dt><dd>${fmt(m.presion_kPa)} kPa / ${fmt(m.espesor_mm)} mm</dd></dl><p>${['Luna','0 g'].includes(p.gravedad)?'Secondary · reproduced in Table I':'Verified against Table I'}${p.nota?' · Exact gravity was not reported for this point.':''}</p>${source(data._meta.fuente)}</aside></div><section class="notice"><h3>Reading the limits</h3><ul>${data._meta.advertencias_globales.map(v=>`<li>${escape(tr(v))}</li>`).join('')}</ul></section>`;
+ view.querySelector('.detail').insertAdjacentHTML('beforeend',coverageNote(psiData,m.id));
  function change(material,gravity,focus){selectedMaterial=material;selectedGravity=gravity;render();view.querySelector(focus)?.focus({preventScroll:true});}
  view.querySelector('#material').onchange=e=>change(e.target.value,p.gravedad,'#material');
  view.querySelector('#gravity').onchange=e=>change(m.id,e.target.value,'#gravity');
@@ -71,123 +73,33 @@ function cards(){
  const test=a=>({pasa:'Pass',falla:'Fail'}[a.test1_aire]||'Not reported');
  const n=h.nomex_ht90_40_poster, ref=data.materiales.find(a=>a.id==='nomex-ht90-40');
  view.innerHTML=title('Material cards','Compare Earth screening with the reported direction of the lunar effect at 8.2 psi.')+`<div class="grid"><article class="card"><h3>Materials at habitat pressure</h3><div class="table-wrap"><table><thead><tr><th>Material</th><th>Earth Test 1 in air</th><th>Lunar effect</th></tr></thead><tbody>${h.materiales.map(a=>`<tr><td><button aria-pressed="${a.id===m.id}" data-card="${escape(a.id)}">${escape(name(a))}</button></td><td>${test(a)}</td><td>${effect(a)}</td></tr>`).join('')}</tbody></table></div>${source(h._meta.fuente)}</article><aside class="card detail"><p class="eyebrow">Material record</p><h3>${escape(name(m))}</h3><p>${effect(m)} on the Moon (at 8.2 psi).</p><p>Conservative O₂ correction: <strong>${fmt(m.correccion_conservadora_o2)} percentage points</strong>. This is the study’s correction, not a measured lunar oxygen limit.</p>${source(h._meta.fuente)}</aside></div>`;
+ view.querySelector('.detail').insertAdjacentHTML('beforeend',coverageNote(psiData,m.id));
+ view.insertAdjacentHTML('beforeend','<div class="notice"><label>PSI coverage by material <select id="psi-material"></select></label><p id="psi-note"></p></div>');const picker=view.querySelector('#psi-material');picker.replaceChildren(...Object.entries(psiData.coverage).map(([k,v])=>new Option(v.label,k)));picker.value='mylar';picker.onchange=()=>{view.querySelector('#psi-note').innerHTML=coverageNote(psiData,picker.value);};picker.onchange();
  if(n && ref)view.insertAdjacentHTML('beforeend',`<section class="notice"><h3>Nomex HT90-40 changes direction across studies</h3><p>At ${fmt(ref.presion_kPa)} kPa, the lunar burn limit was below the Earth limit. At 8.2 psi the poster reports approximately ${fmt(n.limite_o2_aprox.Luna)}% oxygen for lunar gravity and ${fmt(n.limite_o2_aprox['1 g'])}% on Earth. Protocols differ as well as pressure.</p>${source(data._meta.fuente)} · ${source(n.fuente)}</section>`);
  view.querySelectorAll('[data-card]').forEach(el=>el.onclick=()=>{selectedCard=el.dataset.card;cards();view.querySelector(`[data-card="${CSS.escape(selectedCard)}"]`).focus({preventScroll:true});});
 }
 
 const searchState={mat:'sibal',oxygen:'18',flow:'10',gravity:'0',pressure:''};
-function makeRecords(){
- const s=data.ejemplo_sibal_microgravedad;
- const records=s.ensayos.map(a=>({id:a.test,mat:'sibal',oxygen:a.o2,flow:/^\d+(\.\d+)?$/.test(a.flujo_cm_s)?Number(a.flujo_cm_s):null,g:0,pressure:null,result:tr(a.resultado),source:s._meta.fuente,level:'Experimental record'}));
- for(const m of data.materiales)for(const p of m.puntos){
- const flow=p.flujo?.match(/(\d+(?:\.\d+)?)\s*cm\/s/);
- for(const key of ['uloi','moc']){
- if(!Number.isFinite(p[key]))continue;
- records.push({id:`${name(m)} · ${tr(p.gravedad)} · ${key.toUpperCase()}`,mat:m.id,oxygen:p[key],flow:flow?Number(flow[1]):null,g:p.g,pressure:m.presion_kPa,result:key==='uloi'?'Burn limit under the study criterion':'Extinction limit under the study criterion',source:data._meta.fuente,level:['Luna','0 g'].includes(p.gravedad)?'Secondary · reproduced in Table I':'Verified · Table I'});
- }}
- return records;
-}
-const dimensions=[
- {key:'oxygen',label:'O₂',unit:'%',scale:2},
- {key:'flow',label:'Airflow',unit:' cm/s',scale:10},
- {key:'g',label:'Gravity',unit:' g',scale:.16},
- {key:'pressure',label:'Pressure',unit:' kPa',scale:5}];
-function compareRecords(query){
- const asked=dimensions.filter(d=>query[d.key]!==null);
- return makeRecords().filter(r=>r.mat===query.mat && r.g===query.g).map(r=>{
- let total=0,missing=0;
- const reasons=asked.map(d=>{
- const value=r[d.key];if(!Number.isFinite(value)){missing++;total+=1;return `${d.label}: not reported`;}
- const delta=Math.abs(value-query[d.key]);total+=delta/d.scale;
- return `${d.label}: ${value}${d.unit}${delta>0?` (requested ${query[d.key]}${d.unit})`:' ✓'}`;
- });
- return {r,total:total/asked.length,missing,reasons};
- }).filter(a=>asked.every(d=>!Number.isFinite(a.r[d.key])||Math.abs(a.r[d.key]-query[d.key])<=d.scale+1e-8)).sort((a,b)=>a.total-b.total||a.missing-b.missing);
-}
-import {fluidScenarios,atmosphereControl} from './scenarios.js';
-function materials(){return [...new Map([{id:'sibal',nombre:'SIBAL fabric'},...data.materiales,...data.habitat_lunar_8_2_psi.materiales,...fluidScenarios].map(m=>[m.id,m])).values()];}
-let luciData=null;
-function queryOf(s){return {mat:s.mat,g:+s.gravity,...Object.fromEntries(['oxygen','flow','pressure'].map(k=>[k,s[k]===''?null:+s[k]]))};}
-function backgroundRecords(q){
- const candidates=[];
- for(const r of luciData?.records||[]){if((r.material==='PMMA rod'?'pmma':'sibal')!==q.mat)continue;
- const g=r.gravity_g, o=r.oxygen.initial_pct;
- candidates.push({r:{id:'LUCI · '+r.material+' · '+r.kind,mat:q.mat,oxygen:o,g,result:r.result,source:{ntrs:r.source.ntrs,cita:r.source.citation,ubicacion:'slides '+r.source.slides.join(', ')},level:r.kind},dist:Math.abs(q.g-g),reasons:[r.platform,'Gravity: '+g+' g (requested '+q.g+' g)','Initial O₂: '+(o===null?'not reported':'≈'+o+'%')+'; changes during burn','Pressure and airflow: not reported numerically. Different protocol.']});}
- for(const r of makeRecords().filter(r=>r.mat===q.mat)){candidates.push({r,dist:Math.abs(r.g-q.g)+.02*Math.abs(r.oxygen-q.oxygen),reasons:dimensions.filter(d=>q[d.key]!==null).map(d=>d.label+': '+(r[d.key]===null?'not reported':r[d.key]+d.unit)+'; requested '+q[d.key]+d.unit)});}
- const urban=data.habitat_lunar_8_2_psi,m=urban.materiales.find(m=>m.id===q.mat);
- if(m)candidates.push({r:{id:name(m)+' · habitat-pressure study',mat:q.mat,g:.16,oxygen:null,result:(m.efecto_luna?.startsWith('más')?'More':'Less')+' flammable under the study’s lunar comparison; not an ignition observation for your oxygen setting.',source:urban._meta.fuente,level:'Study summary'},dist:Math.abs(q.g-.16)+.1,reasons:['8.2 psi study; outcome summarized across protocols','Requested oxygen and airflow are not individual measurements in this summary.']});
- return candidates.sort((a,b)=>a.dist-b.dist).slice(0,2);
-}
-function verdict(host,s,surface){
- const q=queryOf(s), ranked=compareRecords(q), exact=ranked.filter(a=>a.total===0);
- const entries=exact.length?exact:ranked.length?ranked:backgroundRecords(q);
- const state=exact.length?'exact':entries.length?'related':'missing';
- const h={exact:'Exact match for the conditions entered',related:'Related NASA evidence',missing:'No matching test in the data we reviewed'}[state];
- const explanation={exact:'These entries match every specified search field. The reported outcome applies to the cited experiment and its protocol.',related:ranked.length?'Similar tests, ranked by distance. The conditions differ or are incomplete. Compare the differences before using a result.':'The catalogue contains a study of this material, but none matching the selected conditions. Use it as a reference, not as an answer for this scenario.',missing:'Neither evidence file identifies a comparable record for this selection. This does not mean NASA has never tested it.'}[state];
- host.dataset.verdict=state;host.innerHTML='<section class="result"><p class="eyebrow">Evidence navigator · '+escape(materials().find(m=>m.id===q.mat)?.nombre||q.mat)+'</p><h3>'+h+'</h3><p>'+explanation+'</p></section>';
- if(!luciData)host.insertAdjacentHTML('beforeend','<p>LUCI data unavailable; results cover only the main catalogue.</p>');
- if(entries.length){
- const guide=document.createElement('section');host.append(guide);evidenceGuide(guide,entries,q);
- const list=document.createElement('details');list.className='notice';list.open=surface==='tests';list.innerHTML='<summary>Conditions and sources ('+entries.length+')</summary>';host.append(list);
- for(const {r,reasons} of entries){list.insertAdjacentHTML('beforeend','<article class="card result"><span class="tag">'+escape(r.level)+'</span><h3>'+escape(r.id)+' · '+escape(r.result)+'</h3><p>'+escape(reasons.join(' · '))+'</p>'+source(r.source)+'</article>');}
- }
- if(surface==='tests'&&entries.length){
- const baseline=entries[0].r;
- const launch=document.createElement('button');launch.textContent='Start from '+baseline.id+' in the chamber';
- launch.onclick=()=>{const nearest=[0,.16,.38,1].reduce((a,b)=>Math.abs(b-baseline.g)<Math.abs(a-baseline.g)?b:a);Object.assign(searchState,{gravity:String(nearest),oxygen:Number.isFinite(baseline.oxygen)?String(baseline.oxygen):searchState.oxygen,flow:Number.isFinite(baseline.flow)?String(baseline.flow):searchState.flow,pressure:Number.isFinite(baseline.pressure)?String(baseline.pressure):searchState.pressure,baseline:baseline.id+' · documented values copied; unreported fields retain your scenario or chamber defaults.'+(nearest!==baseline.g?' Model gravity '+nearest+' g approximates reported '+baseline.g+' g.':'')});location.hash='simulation';};host.append(launch);
- }
- const action=document.createElement('p');action.className='actions';host.append(action);
- if(surface==='tests'){action.onclick=()=>delete searchState.baseline;action.innerHTML='<a class="scenario-link" href="#simulation">'+(state==='related'?'Adapt this scenario in the 3D chamber':'Open the 3D flame chamber')+' →</a>'; }
- else action.innerHTML='<a href="#tests">Review this query in Similar tests →</a>';
-}
-
-
-function tests(){
- const mats=materials();
- view.innerHTML=title('Similar tests','Start with the gravity environment, then select a material and test conditions. Leave airflow or pressure blank to compare all reported values.')+`<div class="controls"><label>Gravity<select id="gravity">${[['0','Microgravity'],['0.16','Moon'],['0.38','Mars'],['1','Earth']].map(([v,s])=>option(v,s,searchState.gravity)).join('')}</select></label><label>Material<select id="mat">${mats.map(m=>option(m.id,name(m),searchState.mat)).join('')}</select></label><label>Oxidizing atmosphere<select id="atmos"></select></label><label>Oxygen (%)<input required id="oxygen" type="number" min="0" max="100" step="any"></label><label>Airflow (cm/s)<input id="flow" type="number" min="0" step="any" placeholder="Any"></label><label>Pressure (kPa)<input id="pressure" type="number" min="0.01" step="any" placeholder="Any"></label></div><div class="actions"><button id="sibal">ISS fabric example</button><button id="habitat">Lunar habitat scenario</button></div><div id="results" aria-live="polite"></div><details class="notice"><summary>How tests are ranked</summary><p>Material and gravity must match. Each requested variable has equal weight. Distance is the mean absolute difference divided by its comparison scale: oxygen 2 percentage points, airflow 10 cm/s, gravity 0.16 g, pressure 5 kPa. A known difference beyond its scale excludes the record; a missing requested value adds one unit of distance and prevents an exact match. These are search settings, not physical limits. If no record falls in that range, we show same-material studies as background, with differences labeled.</p></details>`;
- const step=document.createElement('section');
- step.className='notice';
- luciPanel(step,searchState.mat);step.hidden=!['sibal','pmma'].includes(searchState.mat);
- view.querySelector('#results').before(step);
- function refresh(){
- const results=view.querySelector('#results');
- const fields=['oxygen','flow','pressure'];
- if(fields.some(k=>!view.querySelector('#'+k).validity.valid)){
- results.innerHTML='<p class="notice">Enter valid conditions. Oxygen must be between 0 and 100%.</p>';return;}
- verdict(results,searchState,'tests');
-
- }
- for(const key of ['mat','oxygen','flow','gravity','pressure']){
- const input=view.querySelector('#'+key);input.value=searchState[key];
- input.oninput=()=>{searchState[key]=input.value;if(key==='mat'){luciPanel(step,searchState.mat);step.hidden=!['sibal','pmma'].includes(searchState.mat);}delete searchState.baseline;refresh();};
- }
- atmosphereControl(view.querySelector('#atmos'),view.querySelector('#oxygen'),()=>view.querySelector('#oxygen').dispatchEvent(new Event('input')));
- function preset(values){delete searchState.baseline;Object.assign(searchState,values);tests();}
- view.querySelector('#sibal').onclick=()=>preset({mat:'sibal',oxygen:'18',flow:'10',gravity:'0',pressure:''});
- view.querySelector('#habitat').onclick=()=>preset({mat:'sibal',oxygen:'34',flow:'',gravity:'0.16',pressure:'56.5'});
- refresh();
-}
-function fm2(){
- view.innerHTML=title('Before FM2','Flammability of Materials on the Moon will offer a way to compare ground-based evidence with sustained lunar gravity.')+`<article class="card"><span class="tag">Awaiting research release</span><h3>Pre-experiment prediction</h3><p>The current evidence release contains no dated team prediction. The research team will publish its material, expected direction and comparison rule before evaluating the mission results.</p><p>To compare results, record the sample, thickness, oxygen, pressure, ventilation, test duration and definition of the measured limit. If conditions differ, document the differences before interpreting the outcome.</p><a href="https://ntrs.nasa.gov/citations/20260000646" target="_blank" rel="noopener">FM2 experiment description · Ferkul et al., LPSC 2026 ↗</a></article>`;
-}
-async function simulation(){ const {showChamber}=await import('./chamber.js'); if(location.hash==='#simulation')stop=showChamber(view,searchState,materials().map(m=>({id:m.id,label:name(m)})),verdict); }
-
-const routes={gravity,materials:cards,tests,fm2,simulation};
+let psiData,predictions;
+function materials(){return [...new Map([{id:'sibal',nombre:'SIBAL fabric'},...data.materiales,...data.habitat_lunar_8_2_psi.materiales].map(m=>[m.id,m])).values()];}
+function tests(){return askPanel(view,materials().map(m=>({id:m.id,label:name(m)})),searchState,luciPanel);}
+async function simulation(){const {showChamber}=await import('./chamber.js'); if(location.hash==='#simulation')stop=showChamber(view,searchState,materials().map(m=>({id:m.id,label:name(m)})));}
+const routes={gravity,materials:cards,tests,fm2:()=>predictionPanel(view,predictions),psi:()=>psiPanel(view,psiData,data),simulation};
 function render(){
  stop();stop=()=>{};
  const route=location.hash.slice(1);
- const active=Object.hasOwn(routes,route)?route:'gravity';
+ const active=Object.hasOwn(routes,route)?route:'tests';
  document.querySelectorAll('nav a').forEach(a=>{
  if(a.hash==='#'+active)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');
  });
- routes[active]();
+ const cleanup=routes[active]();if(typeof cleanup==='function')stop=cleanup;
 }
 async function start(){
  try{
  const response=await fetch(new URL('../data/curva_gravedad.json',import.meta.url),{cache:'no-cache'});
  if(!response.ok)throw Error('Unavailable evidence');
  data=await response.json();
- try{const lr=await fetch(new URL('../data/luci.json',import.meta.url),{cache:'no-cache'});if(lr.ok)luciData=await lr.json();}catch{/* Warn in the navigator about incomplete coverage. */}
+ [psiData,predictions]=await Promise.all(['psi_coverage','prediction'].map(async n=>{const r=await fetch('./data/'+n+'.json');if(!r.ok)throw Error(n);return r.json();}));
  render();window.addEventListener('hashchange',()=>{render();view.focus({preventScroll:true});});
  }catch{view.innerHTML='<p role="alert">The evidence could not be loaded. Refresh to try again.</p>';}
 }

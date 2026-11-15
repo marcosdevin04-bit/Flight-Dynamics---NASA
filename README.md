@@ -9,7 +9,11 @@
 
 Built for the **NASA Space Apps Challenge 2026** · Challenge: *Flame in Freefall: AI-Powered Fire Safety Insights from Microgravity Combustion Data* · Team from Montevideo, Uruguay.
 
-> 🚧 Work in progress during the hackathon (Nov 14–15, 2026).
+**[Open the public dashboard](https://flight-dynamics-lunar-evidence.martindevin26.chatgpt.site/#tests)** · [PSI coverage](https://flight-dynamics-lunar-evidence.martindevin26.chatgpt.site/#psi) · [FM2 predictions](https://flight-dynamics-lunar-evidence.martindevin26.chatgpt.site/#fm2)
+
+The app ranks experimental records, not fire risk. Its same-origin `POST /api/ask` accepts a structured scenario or a short question about a lunar atmosphere. The three examples remain available if the service is offline. Two have AI-authored, cached explanations checked against the retrieved citations; arbitrary scenarios use verified templates unless a server-side model is configured. The optional 3D chamber illustrates transport, not material qualification.
+
+Build: `npm ci && npm run build`; verify: `npm test && npm run typecheck`. On Vercel, import this repository with the checked-in configuration; the frontend and API are deployed together. For optional live explanations, use only server-side `ANTHROPIC_API_KEY` and `ANTHROPIC_MODEL` with provider spending/rate limits.
 
 ---
 
@@ -30,7 +34,7 @@ A decision-support tool for **the engineer who designs the materials and ventila
 | **Material cards** | Which materials become *more* flammable in lunar gravity and which become *less*, with the source for each result |
 | **Similar tests** | Pick oxygen, airflow and gravity: the tool finds the closest NASA tests, explains what matches and what differs, and says plainly when **no matching test exists in the data we reviewed** |
 | **Our bet before FM2** | A dated, falsifiable prediction written *before* FM2 results, to be checked when NASA publishes them |
-| **Simulation** *(optional)* | Orbitable 3D reacting-flow chamber with gravity, ventilation, oxygen and pressure controls; illustrative, unvalidated |
+| **Simulation** *(optional)* | Heat transport around a sample under different gravity and ventilation, clearly labeled as a simulation |
 
 ## What the data already shows
 
@@ -42,7 +46,7 @@ A decision-support tool for **the engineer who designs the materials and ventila
 
 - **It depends on the material.** In NASA drop-tower tests, **Mylar burned in lunar gravity with ~5.75 points less oxygen than in Earth gravity** (Olson & Ferkul 2012, Table I). Nomex HT90-40 had its worst case at Martian gravity instead.
 - At the planned habitat pressure (8.2 psi), **PMMA, P-213 tape and a cotton T-shirt were more flammable in lunar gravity**, while **polycarbonate and Nomex Velcro were less flammable** (Urban et al., ICES-2025-392).
-- **No test has yet measured flame spread or limits in partial gravity at the exact habitat atmosphere** (34% O₂, 8.2 psi). That is precisely what FM2 is designed to answer.
+- **We found no matching partial-gravity flame-spread or limit measurement in the data reviewed at the exact habitat atmosphere** (34% O₂, 8.2 psi). That is precisely what FM2 is designed to answer.
 
 ## How it works
 
@@ -109,11 +113,7 @@ Three engineering students from Montevideo, Uruguay:
 - **Juan Benitez:** Systems Engineering student
 - **Facundo Díaz:** AI & Data Science student · research
 
-Open the [live dashboard](https://flight-dynamics-lunar-evidence.martindevin26.chatgpt.site/#gravity) or the [3D flame chamber](https://flight-dynamics-lunar-evidence.martindevin26.chatgpt.site/#simulation). The chamber uses a generic fuel source; it cannot predict whether a selected NASA material will ignite. Run `node scripts/check-chamber.mjs` to check the numerical response.
-
 ## Use of AI
-
-In Similar tests, deterministic filters retrieve matching records. The ISS fabric example has a cached AI explanation checked against two cited SIBAL trials. On browsers with an available local language model, the user can also ask it to select the most informative records; the app validates the selected IDs and displays values from the JSON. The chamber uses numerical equations, not AI.
 
 This project uses AI assistants (Claude, ChatGPT) for literature search, data extraction, documentation and coding support. Every number used in the app is checked against the original NASA document, or labeled as secondary or unverified. Details are logged in [docs/sources.md](docs/sources.md).
 
