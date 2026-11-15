@@ -101,8 +101,32 @@ async function start(){
  if(!response.ok)throw Error('Unavailable evidence');
  data=await response.json();
  [psiData,predictions]=await Promise.all(['psi_coverage','prediction'].map(async n=>{const r=await fetch('./data/'+n+'.json');if(!r.ok)throw Error(n);return r.json();}));
+ overview();
  render();window.addEventListener('hashchange',()=>{render();if(document.body.dataset.route==='home')window.scrollTo(0,0);else{window.scrollTo(0,0);view.focus({preventScroll:true});}});
  }catch{view.innerHTML='<p role="alert">The evidence could not be loaded. Refresh to try again.</p>';}
+}
+// Dashboard overview on the home page: three live panels built from the loaded data (overview first, details on demand).
+function overview(){
+ const host=document.querySelector('#overview');if(!host)return;
+ const m=data.materiales.find(a=>a.id==='mylar-g');
+ const pts=(m?.puntos||[]).filter(p=>Number.isFinite(p.uloi)).slice().sort((a,b)=>a.g-b.g);
+ const lo=12,hi=24,X=g=>48+232*g,Y=v=>118-96*(v-lo)/(hi-lo);
+ const axis={'0 g':'0 g','Luna':'Moon','Marte':'Mars','1 g':'Earth'};
+ let svg=`<svg class="mini" viewBox="0 0 300 150" role="img" aria-label="Mylar lowest burning oxygen: ${pts.map(p=>tr(p.gravedad)+' '+p.uloi+'%').join(', ')}">`;
+ for(const v of [15,20])svg+=`<path d="M44 ${Y(v)}H292" stroke="#dbe2d6"/><text x="38" y="${Y(v)+4}" text-anchor="end">${v}%</text>`;
+ svg+=`<polyline points="${pts.map(p=>X(p.g)+','+Y(p.uloi)).join(' ')}" fill="none" stroke="#6f7f78" stroke-width="2"/>`;
+ for(const p of pts){const moon=p.gravedad==='Luna';svg+=`<circle cx="${X(p.g)}" cy="${Y(p.uloi)}" r="${moon?7:4.5}" fill="${moon?'#e38b12':'#33463f'}"/><text x="${X(p.g)}" y="${Y(p.uloi)-12}" text-anchor="middle" class="${moon?'hot':''}">${p.uloi}%</text><text x="${X(p.g)+(p.gravedad==='0 g'?-6:p.gravedad==='Luna'?8:0)}" y="142" text-anchor="middle">${escape(axis[p.gravedad]||tr(p.gravedad))}</text>`;}
+ svg+='</svg>';
+ const max=psiData.o2_ceiling.max_initial_o2_pct_solids;
+ const min=Math.min(...Object.values(psiData.coverage).flatMap(r=>r.o2_initial_min_pct==null?[]:[r.o2_initial_min_pct]));
+ const pct=v=>(v/40*100).toFixed(1)+'%';
+ const bar=`<div class="mini-bar" role="img" aria-label="Tested oxygen ${min} to ${max} percent; lunar cabin plans 30 to 34 percent"><i style="left:${pct(min)};width:${pct(max-min)}"></i><b style="left:${pct(30)}">30%</b><b style="left:${pct(34)}">34%</b><span style="left:${pct(min)}">${min}–${max}% tested</span></div><div class="mini-axis"><span>0%</span><span>20%</span><span>40% O₂</span></div>`;
+ const short={'FM2-P1-SIBAL-air-downward':'SIBAL fabric, burning downward in air','FM2-P2a-acrylic-SEA':'Acrylic (PMMA) at 34% O₂, 8.2 psi','FM2-P2b-high-pyrolysis-temperature-SEA':'Nomex- or polycarbonate-type material at 34% O₂, 8.2 psi'};
+ const list=predictions.map(r=>{const more=r.expectation.direction==='more flammable';return `<li><span>${escape(short[r.id]||r.material)}</span><em class="${more?'up':'down'}">${more?'More flammable':'Less flammable'} than at 1 g</em></li>`;}).join('');
+ const when=escape(predictions[0].registered_at.replace('T',' ').replace('-03:00',' (UTC−3)'));
+ host.innerHTML=`<a class="panel" href="#gravity"><p class="eyebrow">Gravity curve</p><h3>Mylar kept burning at ${pts.find(p=>p.gravedad==='Luna')?.uloi}% oxygen in lunar gravity</h3>${svg}<p class="note">Lowest oxygen that still burned, from microgravity (0 g) to Earth. The 0 g point used forced airflow. Olson &amp; Ferkul 2012, Table I.</p><span class="open">Open the gravity curve →</span></a>`+
+ `<a class="panel" href="#psi"><p class="eyebrow">NASA flight tests</p><h3>NASA’s solid-fuel flight tests stop at ${max}% oxygen</h3>${bar}<p class="note">Lunar cabins are planned at 30% or more. Source: BASS-II and Saffire I–III tables in NASA PSI.</p><span class="open">Open NASA flight tests →</span></a>`+
+ `<a class="panel" href="#fm2"><p class="eyebrow">FM2 prediction</p><h3>Three predictions, registered before the first fire on the Moon</h3><ul class="preds">${list}</ul><p class="note">Registered ${when}. Each one says what would prove it wrong.</p><span class="open">Open the predictions →</span></a>`;
 }
 // Landing: hand a question to "Ask the evidence", and respect reduced motion for the hero video.
 function landing(){

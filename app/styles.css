@@ -74,3 +74,26 @@ h1,h2{font-weight:600;letter-spacing:-.03em}h1 em{font-style:normal}.hero h1{fon
 
 /* Logo mark: AI-generated image (Google Gemini), credited in the footer */
 header.site .mark{width:30px;height:30px;flex:none}
+
+/* Dashboard home (overview first): compact hero with the ask box, then three live evidence panels */
+.hero.dash{padding:2.4rem 0 2.6rem;align-items:start;grid-template-columns:minmax(0,1.25fr) minmax(0,.9fr)}
+.hero.dash h1{font-size:clamp(1.9rem,3.2vw,2.8rem)}
+.hero.dash .hero-lead{font-size:1.02rem;margin:.8rem 0 1.2rem;max-width:56ch}
+.hero.dash .ask-hero{margin:0;padding:1.1rem 1.2rem;background:var(--night-2);border:1px solid var(--night-line)}
+.ask-label{display:block;font-weight:600;font-family:Sora,system-ui,sans-serif;margin-bottom:.6rem}
+.hero.dash .hero-media{margin-top:.4rem}
+.overview-head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:1.1rem}.overview-head h2{margin:0}
+.panels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-bottom:1.6rem}
+.panel{display:flex;flex-direction:column;gap:.6rem;text-decoration:none;color:var(--ink);background:#fcfcf6;border:1px solid var(--line);border-radius:.7rem;padding:1.1rem 1.15rem}
+.panel:hover{border-color:var(--green)}.panel h3{font-size:1.05rem;line-height:1.35}.panel .eyebrow{color:var(--green)}
+.panel .note{color:var(--dim);font-size:.86rem;line-height:1.5}.panel .open{margin-top:auto;color:var(--green);font-weight:600;font-size:.92rem}
+.mini{width:100%;height:auto}.mini text{font:11px 'IBM Plex Sans',sans-serif;fill:var(--dim)}.mini text.hot{fill:#a85f00;font-weight:700}
+.mini-bar{position:relative;height:3.6rem;border-bottom:2px solid #234d42;background:#eef1e6;border-radius:.3rem .3rem 0 0;margin-top:.4rem}
+.mini-bar i{position:absolute;top:42%;height:22%;background:#257560;border-radius:2px}
+.mini-bar b{position:absolute;top:0;height:100%;border-left:2px dashed #a34728;padding-left:3px;color:#683019;font-size:.78rem}
+.mini-bar span{position:absolute;top:70%;font-size:.75rem;color:#244936;white-space:nowrap}
+.mini-axis{display:flex;justify-content:space-between;font-size:.72rem;color:var(--dim)}
+.preds{list-style:none;padding:0;margin:0;display:grid;gap:.55rem}.preds li{display:grid;gap:.15rem;font-size:.92rem;line-height:1.4}
+.preds em{font-style:normal;font-size:.78rem;font-weight:600;width:max-content;padding:.1rem .45rem;border-radius:.3rem}
+.preds em.up{background:#fdebd2;color:#7a4300}.preds em.down{background:#dcefe6;color:#1d5a44}
+@media(max-width:980px){.panels{grid-template-columns:1fr}.hero.dash{grid-template-columns:1fr}}
