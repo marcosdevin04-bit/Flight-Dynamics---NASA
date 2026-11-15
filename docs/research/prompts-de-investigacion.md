@@ -108,6 +108,34 @@ Entregables:
 - Lista de archivos que tenemos que bajar a mano, con URL exacta.
 ```
 
+### R12 · La apuesta antes de FM2 (pre-registro)
+Por qué: la vista FM2 de la app está vacía y es la mitad del diferencial (D9). Hay que dejar escrita, con fecha, qué esperamos que muestre FM2, antes de que NASA publique. Base: [Gravedad parcial - evidencia](gravedad-parcial-evidencia.md), [PSI - datos oficiales](psi-datos-oficiales.md) y D16 (las cotas µg/1 g fallan para la Luna).
+```
+Contexto: somos un equipo de NASA Space Apps 2026 (desafío "Flame in Freefall"). Nuestro producto, "Before the First Fire on the Moon", quiere dejar registrada, con fecha, una predicción para FM2 (Flammability of Materials on the Moon, NASA Glenn), antes de que haya resultados. Archivos en esta carpeta: Documentos/datos/curva_gravedad.json, Documentos/datos/partial_gravity_flammability_evidence.csv, Documentos/datos/psi_coverage.json, y el abstract de FM2 (Ferkul et al., LPSC 2026) en Documentos/.
+
+Reglas: no inventes datos. Cada número con fuente + página/tabla. Marcá cada afirmación como verificado (lo leíste en la fuente primaria), autodeclarado (lo dice otro), inferencia (deducción tuya) o pendiente. "No informado" no es 0.
+
+1. Estado actual de FM2 (buscá en la web, fuentes de NASA primero: nasa.gov, ntrs.nasa.gov, NASA CLPS, LPSC, ICES, ASGSR 2025-2026):
+   - ¿Ya se lanzó? ¿En qué misión CLPS (se mencionó CP-21) y con qué fecha prevista o real?
+   - ¿Qué materiales va a quemar? Hay un póster de 2025 (Schechter et al., NTRS 20250010975) que dice que medirá el límite de O2 de "Synergy Pro" y que FM2 es "in the next few years". Confirmá o corregí.
+   - Atmósfera, presión, O2 y geometría de las muestras de FM2, si están publicadas.
+   - ¿Hay resultados publicados? Si los hay, decilo primero: cambia todo.
+
+2. Borrador de la predicción. Con los datos de los archivos (no con conocimiento general), proponé 1 o 2 predicciones falsables. Ideas, en orden de preferencia:
+   a) Para un material de FM2 (si se conoce), dirección esperada del efecto de la gravedad lunar frente a 1 g y frente a µg, usando la tabla I de Olson y Ferkul 2012 (Mylar, Ultem, Nomex HT90-40: el límite lunar queda por debajo de 0 g y de 1 g) y la tabla 2 de Urban et al. ICES-2025 (a 8,2 psi algunos materiales empeoran y otros mejoran).
+   b) Si el material no se conoce: una predicción condicional por tipo de material (por ejemplo, "los que fallan Test 1 en aire van a ser más inflamables en la Luna; los que pasan, menos", según ICES-2025).
+   Para cada predicción: material, condiciones (gravedad, O2, presión, flujo), qué se espera (dirección y, si se puede, un rango), en qué evidencia se basa (fuente + página), regla de comparación (qué resultado de FM2 la confirma y cuál la refuta) y advertencias (criterios distintos, centrífuga, flujo de 30 cm/s en 0 g, presión distinta a la del hábitat).
+
+3. LUCI (NTRS 20250010653, presentación ASGSR 2025, Ferkul et al.): bajá el PDF y verificá a mano: plataforma, velocidad de giro y radio (slide 12), gravedad efectiva, y qué dicen exactamente las slides 22 y 44 sobre la gravedad durante la quema del PMMA. Compará con Documentos/datos/luci.json (lo cargó Marcos: SIBAL y PMMA, vuelo y tierra, gravedad de 0,165 g derivada del giro) y marcá cada campo como correcto, incorrecto o no verificable.
+
+Entregables (los textos para el público en inglés):
+- PREDICTION.md (inglés): 1 página, con fecha y hora de hoy (UTC-3), las predicciones, la evidencia citada, la regla de comparación y las advertencias. Tono: "we expect", nunca "will". Sin "safe".
+- prediction.json con este formato, uno por predicción:
+  {"id": "", "registered_at": "AAAA-MM-DDTHH:MM-03:00", "material": "", "conditions": {"gravity": "Moon (0.16 g)", "o2_pct": null, "pressure_kPa": null, "flow": ""}, "expectation": {"direction": "more flammable | less flammable | same", "versus": "1 g | 0 g | both", "range": null}, "basis": [{"claim": "", "source": "", "location": ""}], "confirmed_if": "", "refuted_if": "", "caveats": [""], "level": "inferencia"}
+- fm2_status.md (español): lo que encontraste en el punto 1, con fuentes y niveles.
+- luci_check.md (español): el punto 3, slide por slide.
+```
+
 ### P-EXTRAER · De un paper a una ficha de hallazgo
 ```
 Te paso un paper o un informe técnico (adjunto o pegado). Extraé cada resultado experimental en este formato, uno por bloque. No mezcles resultados de ensayos distintos:

@@ -12,7 +12,7 @@ actualizado: 2026-11-14
 - [ ] Asegurar que Marcos use el texto corregido de la tarjeta "Bounding the Moon" (la Tanda 2 que está en main todavía tiene el texto viejo)
 - [x] Leer la consigna oficial y la pestaña **Resources** → [Consigna](challenge/consigna.md) · [Recursos NASA y datos](research/recursos-nasa-y-datos.md) (2026-11-14)
 - [x] Confirmar el título exacto → "SI-Powered"
-- [ ] **Escribir la apuesta antes de FM2** (material, dirección esperada y regla de comparación, con fecha): la vista FM2 de la app está vacía y es la mitad del diferencial
+- [x] **Escribir la apuesta antes de FM2** → `PREDICTION.md` + `prediction.json`, 2026-11-14 22:26 (D17). Falta: que la confirme el equipo y que Marcos la muestre (Tanda 4)
 - [ ] Mergear `feature/lunar-evidence-dashboard` a main (o linkear la rama) para que quien mire el repo vea la app → checklist en la Tanda 3 de [Paquete para Marcos](DEVELOPMENT.md)
 - [ ] Decidir si la app de Marcos usa el motor de evidencia de Juan (`juan/ai-core`)
 - [ ] Decidir qué hacer con los escenarios de fluido y combustible sin datos de NASA (sacarlos o rotularlos)
@@ -28,17 +28,19 @@ actualizado: 2026-11-14
 - [ ] Bajar a mano el dataset de Rojas-Alva y Jomaas (Mendeley) a `Documentos/`
 - [ ] Digitalizar las figs. 7–12 de ICES-2025 para tener los límites lunares numéricos (marcarlos como "derivados")
 - [ ] Resolver dónde está el pico (¿Luna o Marte?) leyendo Sacksteder y T'ien 1994
-- [ ] Escribir `PREDICTION.md` (la apuesta pre-registrada para FM2) y sumarla al README: tanda de las 23:00. Opcional: DOI en Zenodo
+- [x] Escribir `PREDICTION.md` → hecho (D17). Pendiente: link en el README. Opcional: DOI en Zenodo para probar la fecha
 - [ ] Revisar en GitHub que el diagrama Mermaid del README se vea bien (no se pudo validar localmente)
-- [ ] Actualizar FM2: el póster de 2025 dice "next few years" y material Synergy Pro, contra "fines de 2026" del abstract
+- [x] Actualizar FM2 → [FM2 - fuego en la Luna](research/fm2-fuego-en-la-luna.md) (estado al 14/11: sin lanzamiento ni resultados; muestras en conflicto entre 2024 y 2025)
 - [ ] Averiguar si alguien del equipo puede correr NIST FDS. Si no, el CFD queda como un modelo 2D simple marcado como ilustrativo
-- [ ] Verificar si FM2 ya se lanzó (estaba planificado para fines de 2026)
+- [x] Verificar si FM2 ya se lanzó → no hay evidencia (14/11)
 - [x] Encontrar una cita de NASA sobre la Antártida como análogo → Antarctic Space Analog Program (ver [Uruguay y Antártida](research/uruguay-y-antartida.md))
 - [ ] Revisar si MAPTIS (ensayos NASA-STD-6001) es de acceso público; si no, usar reportes de NTRS con ensayos en 1 g
 - [ ] Leer el texto completo del white paper del Decadal (NTRS 20210022403)
 - [x] Asignar personas a los roles → [07 Equipo](team.md) (Juan, de hecho, en el motor de evidencia; falta confirmarlo)
 - [ ] Crear el repo en GitHub y el equipo completo en Members de la plataforma
 - [ ] Elegir el nombre del equipo para la demo
+
+- [ ] Revisar a mano LUCI: ~~pendiente~~ hecho por Claude Science (R12); queda solo confirmar si querés mirarlo vos
 
 ## Riesgos
 | Riesgo | Prob. | Impacto | Mitigación |

@@ -1,0 +1,146 @@
+[
+  {
+    "id": "FM2-P1-SIBAL-air-downward",
+    "registered_at": "2026-11-14T22:26-03:00",
+    "material": "SIBAL fabric (75% cotton / 25% fiberglass), as listed for FM2 in the 2024 FM2 poster",
+    "conditions": {
+      "gravity": "Moon (0.16 g)",
+      "o2_pct": 21,
+      "pressure_kPa": 101.3,
+      "flow": "quiescent (no forced flow; buoyant flow only); downward (opposed) spread"
+    },
+    "expectation": {
+      "direction": "more flammable",
+      "versus": "1 g",
+      "range": "steady flame-base spread rate 0.6-1.4 mm/s (our interval around the LUCI value of 0.92 mm/s; it stays below the 1.5 mm/s LUCI 1-g ground value)"
+    },
+    "basis": [
+      {
+        "claim": "SIBAL burned downward in air at rotation-simulated lunar g with steady spread: flame base 0.92 mm/s, flame tip 1.1 mm/s",
+        "source": "Ferkul et al. 2025, LUCI presentation (ASGSR 2025), NTRS 20250010653",
+        "location": "slides 16, 19"
+      },
+      {
+        "claim": "In the 1-g ground comparison the SIBAL flame went out about 45 s sooner than in partial g; linear-fit base/tip rates were 1.5/2.8 mm/s at 1 g versus 0.9/1.1 mm/s at partial g",
+        "source": "Ferkul et al. 2025, LUCI presentation (ASGSR 2025), NTRS 20250010653",
+        "location": "slides 33, 34"
+      },
+      {
+        "claim": "SIBAL fabric 'has been found to only burn downward in air in lunar gravity (via Lunar gravity centrifuge and parabolic flight) where on Earth's gravity it extinguishes immediately after ignition'",
+        "source": "Zayac, Johnston, Ruff & Ferkul 2024, FM2 poster, NTRS 20240015307",
+        "location": "NTRS abstract; poster panel"
+      },
+      {
+        "claim": "FM2 plans two SIBAL samples burned in air (21% O2, 14.7 psia), one upward and one downward",
+        "source": "Zayac, Johnston, Ruff & Ferkul 2024, FM2 poster, NTRS 20240015307",
+        "location": "NTRS abstract"
+      }
+    ],
+    "confirmed_if": "The FM2 downward SIBAL burn in air keeps a flame spreading for at least 30 s after the igniter turns off. The range part is confirmed if the reported steady base spread rate is between 0.6 and 1.4 mm/s.",
+    "refuted_if": "The flame extinguishes within 10 s after the igniter turns off, or never establishes steady spread (direction refuted). The range part is refuted if the steady base spread rate is below 0.6 or above 1.4 mm/s.",
+    "caveats": [
+      "LUCI used centrifugal gravity on a spinning rocket; Coriolis force deflected the flames (slide 17).",
+      "The nominal 0.165 g is our derivation from 11 RPM and 1.22 m (slide 12). The gravity traces plotted on slides 41 and 44 sit near 0.18 g. This is our visual reading of the plot.",
+      "LUCI is one test per material, with no replicates. Its pressure is stated only as 'normal pressure'.",
+      "The two 1-g sources disagree. The LUCI ground SIBAL burn spread before going out, while the 2024 poster says SIBAL extinguishes immediately at 1 g.",
+      "O2 fell from about 20% to 18% during the LUCI SIBAL burn (slide 42). FM2's chamber volume and sample size are not published.",
+      "The 30 s and 10 s thresholds and the rate interval are our choices, not NASA criteria."
+    ],
+    "level": "inferencia"
+  },
+  {
+    "id": "FM2-P2a-acrylic-SEA",
+    "registered_at": "2026-11-14T22:26-03:00",
+    "material": "Acrylic (PMMA). The 2024 FM2 poster lists two acrylic rods. This branch applies to any FM2 sample that is a thermoplastic or cellulosic material failing NASA-STD-6001 Test 1 in air.",
+    "conditions": {
+      "gravity": "Moon (0.16 g)",
+      "o2_pct": 34,
+      "pressure_kPa": 56.5,
+      "flow": "quiescent (buoyant only); upward and downward samples per the 2024 poster"
+    },
+    "expectation": {
+      "direction": "more flammable",
+      "versus": "1 g",
+      "range": "extinction O2 (from chamber O2 depletion) lower than NASA's 1-g value from the same hardware and protocol. Our central guess is about 2 percentage points lower, based on the ICES-2025 conservative PMMA factor of 1.9."
+    },
+    "basis": [
+      {
+        "claim": "At 56.5 kPa (8.2 psia) the lunar-g centrifuge limit for 0.8 mm PMMA was lower than any extrapolation of the 1-g data. The conservative 1-g to lunar correction is 1.9 % O2.",
+        "source": "Urban et al. 2025, ICES-2025-392, NTRS 20250002114",
+        "location": "p.9; Fig. 7; Table 2, p.11"
+      },
+      {
+        "claim": "Mylar G, a non-charring thermoplastic film: the midpoint of its burn (ULOI) and extinction (MOC) limits was 5.75 points lower in lunar gravity than at 1 g (70.3 kPa)",
+        "source": "Olson & Ferkul 2012, AIAA 2012-3492, NTRS 20130010991",
+        "location": "Table I, p.6"
+      },
+      {
+        "claim": "LUCI describes the chamber O2 drop during burning as 'enabling a limiting value for extinction to be defined'",
+        "source": "Ferkul et al. 2025, LUCI presentation (ASGSR 2025), NTRS 20250010653",
+        "location": "slide 12"
+      },
+      {
+        "claim": "FM2 can reproduce 21% O2 at 14.7 psia and 34% O2 at 8.2 psia; the two acrylic rods are planned for 'Normoxic Space Exploration Atmospheres (SEA)'",
+        "source": "Zayac, Johnston, Ruff & Ferkul 2024, FM2 poster, NTRS 20240015307",
+        "location": "NTRS abstract"
+      }
+    ],
+    "confirmed_if": "FM2 reports, or allows us to compute, an extinction O2 for an acrylic sample in lunar gravity that is lower than NASA's 1-g reference value for the same configuration by more than the stated sensor uncertainty.",
+    "refuted_if": "The lunar extinction O2 is equal to or higher than the 1-g reference value, within sensor uncertainty. The test is inconclusive if the sample burns out before O2 depletion causes extinction, or if no 1-g reference is published.",
+    "caveats": [
+      "The 2024 poster does not state 34% O2 / 8.2 psia for the acrylic rods; we assume it because it is the only exploration atmosphere the poster names.",
+      "The ICES-2025 lunar values come from 5.2 s drop-tower centrifuge tests and are given only in figures. The 1.9 factor is an extrapolation, not a lunar measurement.",
+      "The Mylar shift (-5.75) was measured at 70.3 kPa with a 5.18 s criterion, not at 56.5 kPa. Its lunar point comes from Ferkul & Olson 2011, which we have not read.",
+      "In LUCI (air, about 101 kPa) the PMMA O2 traces ended at similar values in flight and on the ground (14.3% vs 14.5%; slides 22, 31). That weakens the expected magnitude.",
+      "In LUCI the gravity dropped from about 125 s during the PMMA burn (slides 22, 43; slide 44 plot), even though the slide 44 text says '~constant'.",
+      "Rod diameter and FM2 chamber volume are not published. At 34% O2 the sample may burn out before O2 depletion causes extinction."
+    ],
+    "level": "inferencia"
+  },
+  {
+    "id": "FM2-P2b-high-pyrolysis-temperature-SEA",
+    "registered_at": "2026-11-14T22:26-03:00",
+    "material": "Conditional branch: any FM2 sample that passes NASA-STD-6001 Test 1 in air and has a high pyrolysis temperature, such as Nomex or polycarbonate. This may include 'Synergy Pro', named for FM2 in the 2025 Nomex poster; its composition is not verified by us.",
+    "conditions": {
+      "gravity": "Moon (0.16 g)",
+      "o2_pct": 34,
+      "pressure_kPa": 56.5,
+      "flow": "quiescent (buoyant only)"
+    },
+    "expectation": {
+      "direction": "less flammable",
+      "versus": "1 g",
+      "range": null
+    },
+    "basis": [
+      {
+        "claim": "At 56.5 kPa, polycarbonate and Nomex Velcro extinguished in lunar g at 'substantially higher' O2 than the 1-g WSTF data",
+        "source": "Urban et al. 2025, ICES-2025-392, NTRS 20250002114",
+        "location": "p.11; Figs. 11-12"
+      },
+      {
+        "claim": "Nomex HT90-40 at 8.2 psi: approximate LOC ~23% at 1 g, ~29% at lunar g, ~38% at 0 g",
+        "source": "Schechter et al. 2025, Nomex/FM2 poster, NTRS 20250010975",
+        "location": "Results panel"
+      },
+      {
+        "claim": "FM2 'will determine limiting oxygen concentration (LOC) for a flight-relevant material (Synergy Pro)'",
+        "source": "Schechter et al. 2025, Nomex/FM2 poster, NTRS 20250010975",
+        "location": "Introduction panel"
+      },
+      {
+        "claim": "The Nomex HT-90 tests 'are designed to help guide the final selection of fuel, oxygen concentration, and ignition parameters for FM2'",
+        "source": "Schechter et al. 2025, NTRS 20250010975",
+        "location": "NTRS abstract"
+      }
+    ],
+    "confirmed_if": "FM2 reports a lunar extinction O2 (or LOC) for such a material that is equal to or higher than the 1-g reference value for the same configuration.",
+    "refuted_if": "The lunar extinction O2 is lower than the 1-g reference value by more than the sensor uncertainty.",
+    "caveats": [
+      "The opposite direction was measured at 101.3 kPa: Nomex HT90-40 had its lunar O2 limit 2.35 points below 1 g (Olson & Ferkul 2012, Table I, p.6). The sign may depend on pressure.",
+      "The Nomex poster values are approximate (~) and include an unexplained note: '* Assuming a buoyant velocity of 25 cm/s'.",
+      "This branch applies only if FM2 flies such a material. The 2024 FM2 poster lists only SIBAL and acrylic."
+    ],
+    "level": "inferencia"
+  }
+]

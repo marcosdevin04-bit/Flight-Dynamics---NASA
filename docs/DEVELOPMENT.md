@@ -210,3 +210,10 @@ Es la revisión de `feature/lunar-evidence-dashboard` en c3e9faa (ver 2026-11-14
 **A decidir en equipo (no bloquea a Marcos):**
 - La cámara 3D estaba "fuera de alcance" en la sección 5. Ya está hecha y rotulada como ilustrativa, así que se deja, pero **no va en la demo de 30 s**, salvo que el equipo decida lo contrario.
 - La rama `juan/ai-core` (motor de evidencia en TypeScript, con verificación de citas y tests) todavía no está conectada con la app. Decidir si la app usa el `evidence.json` y el verificador de Juan o si sigue con su comparación propia.
+
+### Tanda 4 · sáb 14/11 ~22:45 · La predicción para FM2
+- **`data/prediction.json`** (3 predicciones) y **`PREDICTION.md`** en la raíz del repo. Formato de cada predicción: `id, registered_at, material, conditions{gravity, o2_pct, pressure_kPa, flow}, expectation{direction, versus, range}, basis[{claim, source, location}], confirmed_if, refuted_if, caveats[], level`.
+- **Vista FM2:** una tarjeta por predicción con material, condiciones, "We expect…" (dirección + rango), la evidencia con su fuente, "Confirmed if / Refuted if" y las advertencias plegadas. Arriba: "Registered 2026-11-14 22:26 (UTC-3), before any FM2 results" y link a `PREDICTION.md`. Rótulo: "Our prediction (inference), not a NASA result".
+- **`data/luci.json`:** Claude Science lo verificó contra el PDF y **está todo bien**. Sugerencias opcionales: en PMMA en vuelo, anotar que la gravedad cae de ~0,18 a ~0,04 g entre ~123 y ~139 s (slide 44); anotar que la traza medida queda cerca de 0,18 g frente a los 0,165 g nominales; fecha de vuelo 2025-02-04 (slide 13).
+- **Prueba de aceptación 10:** la vista FM2 muestra las 3 predicciones con su fecha de registro y ningún texto dice "will" ni "safe".
+

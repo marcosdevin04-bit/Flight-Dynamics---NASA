@@ -48,6 +48,12 @@ Registro de todas las fuentes consultadas. Las referencias [1]–[29] de la guí
 | Video NASA Glenn "Saffire-V Experiment January 2021" (images.nasa.gov, GRC-2021-CN-00008): https://images.nasa.gov/details/GRC-2021-CN-00008 | NASA (dominio público, con crédito) | `#verificado` | 2026-11-14 | GIF del README |
 | https://en.wikipedia.org/wiki/Artigas_Base | enciclopedia | `#verificado` (secundaria) | 2026-11-14 | [Uruguay y Antártida](research/uruguay-y-antartida.md) |
 
+## Fuentes nuevas (R12, consultadas el 2026-11-14)
+- Zayac, Johnston, Ruff y Ferkul 2024, "Flammability of Materials on the Moon" (póster), NTRS 20240015307 · https://ntrs.nasa.gov/citations/20240015307 · `#verificado` (abstract)
+- Schechter, Zayac, Ferkul, Dietrich y Liao 2025, "Characterizing the Flammability of Nomex Fabric for the Preparation of FM2", NTRS 20250010975 · `#verificado` (abstract); panel "Synergy Pro" `#autodeclarado` (Claude Science)
+- Ferkul et al. 2025, LUCI, ASGSR 2025, NTRS 20250010653 · `#verificado` (PDF, slide por slide, Claude Science)
+- Prensa sobre FM2: KETV (jul. 2026, "Artemis IV") y Fire & Safety Journal Americas · `#autodeclarado`
+
 ## Uso de IA (para el campo "Use of Super Intelligence")
 Registrar acá cada uso relevante: herramienta, para qué, y qué revisó una persona.
 - 2026-11-14 · Claude Code (Opus 5.5): investigación de la competencia, ganadores y ángulo local; armado de esta bitácora; propuesta del spec. Revisión humana: `#pendiente`
@@ -59,3 +65,4 @@ Registrar acá cada uso relevante: herramienta, para qué, y qué revisó una pe
 - 2026-11-14 · Claude Code (Opus 5.5): R11. Descarga de las tablas experimentales de PSI, armado de `psi_bounds_evidence.csv` (159 filas) y nota [PSI - datos oficiales](research/psi-datos-oficiales.md). Antes intentó, sin éxito, aprobar a distancia el permiso de red de Claude Science. Revisión humana: `#pendiente`
 - 2026-11-14 · Claude Code (Opus 5.5): deck de kickoff de 10 slides (interno, no es la demo de la entrega). Revisión humana: `#pendiente`
 - 2026-11-14 ~22:00 · Claude Code (Opus 5.5): revisó las ramas de Marcos y Juan, escribió la Tanda 3 y reordenó la bitácora. Detectó, a partir del plan de Juan, que el texto de cotas µg/1 g de la Tanda 2 era incorrecto, y lo corrigió contra la tabla I de Olson y Ferkul 2012 (D16).
+- 2026-11-14 ~22:30 · Claude Science: R12 (estado de FM2, borrador de la predicción y verificación de LUCI contra el PDF). Claude Code revisó los abstracts de NTRS 20240015307 y 20250010975, corrigió 3 puntos (atmósfera del acrílico supuesta, redacción del dato de Mylar, cita de Nomex para P2b) y pasó los entregables al vault.
