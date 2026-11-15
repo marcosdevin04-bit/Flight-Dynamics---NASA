@@ -208,7 +208,7 @@
   {
    "sample": "2-4",
    "material": "Silicone",
-   "thickness": "037 mm",
+   "thickness": "037 mm (as published in PSI-99; likely 0.37 mm)",
    "o2_pct": "~ 22.1",
    "airflow": "20 cm/s",
    "flow_direction": "Opposed",
@@ -224,7 +224,7 @@
   {
    "sample": "2-5",
    "material": "SIBAL",
-   "thickness": "037 mm; 29 cm x 5 cm",
+   "thickness": "037 mm (as published in PSI-99; likely 0.37 mm); 29 cm x 5 cm",
    "o2_pct": "~ 22.1",
    "airflow": "20 cm/s",
    "flow_direction": "Concurrent",
@@ -240,7 +240,7 @@
   {
    "sample": "2-6",
    "material": "SIBAL (material inferred from table layout)",
-   "thickness": "037 mm; 29 cm x 5 cm",
+   "thickness": "037 mm (as published in PSI-99; likely 0.37 mm); 29 cm x 5 cm",
    "o2_pct": "~ 22.1",
    "airflow": "20 cm/s",
    "flow_direction": "Concurrent",

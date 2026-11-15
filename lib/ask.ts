@@ -47,8 +47,11 @@ export async function answer(body:unknown,env:ModelEnv={}){
     }
   }
  }
- return {weights:r.weights,threshold:r.threshold,case:r.case,case_label:r.case_label,scenario:r.scenario,results:r.results.map(({id,record:a,not_compared})=>({id,material:a.material,regime:a.gravity_label,display:a.display,outcome:a.resultado_en,level:a.nivel_label,source:a.fuente,warnings:a.warnings_en,not_compared})),explanation,citations:checked.citations,mode,fm2_note:r.fm2_note};
+ return {weights:r.weights,threshold:r.threshold,case:r.case,case_label:r.case_label,scenario:r.scenario,results:r.results.map(({id,record:a,not_compared})=>({id,material:materialEn(a.material),regime:a.gravity_label,display:a.display,outcome:a.resultado_en,level:a.nivel_label,source:a.fuente,warnings:a.warnings_en,not_compared})),explanation,citations:checked.citations,mode,fm2_note:r.fm2_note};
 }
+// Display names in English; evidence.json keeps the source wording.
+const MATERIAL_EN:Record<string,string>={"Mylar G (film de PET)":"Mylar G (PET film)","Ultem 1000 (film de PEI)":"Ultem 1000 (PEI film)","Nomex HT90-40 (tela)":"Nomex HT90-40 (fabric)","PMMA (acrílico) 0,8 mm":"PMMA (acrylic) 0.8 mm","Cinta P-213 (fibra de vidrio, adhesivo acrílico)":"P-213 tape (fiberglass, acrylic adhesive)","Remera de algodón (Beefy-T)":"Cotton T-shirt (Beefy-T)","Policarbonato":"Polycarbonate","Velcro de Nomex":"Nomex Velcro"};
+export function materialEn(m:string):string{return MATERIAL_EN[m]??m.replace(/^SIBAL \(algodón\/fibra de vidrio\), (\S+) cm de ancho$/,"SIBAL (cotton/fiberglass), $1 cm wide");}
 export async function handle(request:Request,env:ModelEnv={},client="local"):Promise<Response>{
  if(request.method!=="POST")return new Response("POST required",{status:405,headers:{Allow:"POST"}});
  const origin=request.headers.get("Origin");if(origin && origin!==new URL(request.url).origin)return new Response("Origin mismatch",{status:403});
