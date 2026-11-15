@@ -7,9 +7,14 @@
 
 **NASA approves spacecraft materials by testing them on Earth. Before the first fire on the Moon, we show which materials might behave differently there, and what the evidence actually says.**
 
-Built for the **NASA Space Apps Challenge 2026** · Challenge: *Flame in Freefall: AI-Powered Fire Safety Insights from Microgravity Combustion Data* · Team from Montevideo, Uruguay.
+Built for the **NASA Space Apps Challenge 2026** · Challenge: *Flame in Freefall: SI-Powered Fire Safety Insights from Microgravity Combustion Data* · Team from Montevideo, Uruguay.
 
-> 🚧 Work in progress during the hackathon (Nov 14–15, 2026).
+**[Open the public dashboard](https://flight-dynamics-lunar-evidence.martindevin26.chatgpt.site/#tests)** · [PSI coverage](https://flight-dynamics-lunar-evidence.martindevin26.chatgpt.site/#psi) · [FM2 predictions](https://flight-dynamics-lunar-evidence.martindevin26.chatgpt.site/#fm2)
+
+The app ranks experimental records, not fire risk. Its same-origin `POST /api/ask` accepts a structured scenario or a short question about a lunar atmosphere. The three examples remain available if the service is offline. Two have AI-authored, cached explanations checked against the retrieved citations; arbitrary scenarios use verified templates unless a server-side model is configured. The optional 3D chamber illustrates transport, not material qualification.
+
+Run `npm ci`, `npm run build`, and `npm run preview` to open the app locally. Run `npm test`, `npm run typecheck`, and `npm run audit:curve` for the integration tests and the independent Table I transcription check. Vercel serves the dashboard and API together with the included configuration. For on-demand Anthropic interpretation, configure `ANTHROPIC_API_KEY` and `ANTHROPIC_MODEL` on the server. Free text is converted to quoted scenario fields, then validated; explanations receive only retrieved records. Invalid citations trigger one correction attempt. A per-client request limit applies in each server instance. Multiple instances have separate counters.
+
 
 ---
 
@@ -42,7 +47,7 @@ A decision-support tool for **the engineer who designs the materials and ventila
 
 - **It depends on the material.** In NASA drop-tower tests, **Mylar burned in lunar gravity with ~5.75 points less oxygen than in Earth gravity** (Olson & Ferkul 2012, Table I). Nomex HT90-40 had its worst case at Martian gravity instead.
 - At the planned habitat pressure (8.2 psi), **PMMA, P-213 tape and a cotton T-shirt were more flammable in lunar gravity**, while **polycarbonate and Nomex Velcro were less flammable** (Urban et al., ICES-2025-392).
-- **No test has yet measured flame spread or limits in partial gravity at the exact habitat atmosphere** (34% O₂, 8.2 psi). That is precisely what FM2 is designed to answer.
+- **We found no matching partial-gravity flame-spread or limit measurement in the data reviewed at the exact habitat atmosphere** (34% O₂, 8.2 psi). That is precisely what FM2 is designed to answer.
 
 ## How it works
 

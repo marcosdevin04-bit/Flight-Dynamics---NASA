@@ -1,0 +1,24 @@
+1
+00:00:00,000 --> 00:00:06,000
+Mylar film burned at 15.6% oxygen in lunar-equivalent gravity,
+below the measured limits in microgravity and on Earth.
+
+2
+00:00:06,000 --> 00:00:11,000
+In these solid-fuel tests, initial oxygen reached 22.2%.
+The proposed 34% habitat atmosphere lies beyond that range.
+
+3
+00:00:11,000 --> 00:00:17,000
+For SIBAL at 18% oxygen, the app finds related tests.
+Open each citation to see where and how the sample burned.
+
+4
+00:00:17,000 --> 00:00:22,000
+For Mylar at 34% oxygen and 8.2 psi, the search
+finds no matching test in the data we reviewed.
+
+5
+00:00:22,000 --> 00:00:28,000
+Three dated predictions specify which future lunar results
+would support or refute our expectations.

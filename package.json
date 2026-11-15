@@ -1,0 +1,29 @@
+{
+  "name": "before-the-first-fire-on-the-moon",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "build:evidence": "tsx lib/evidence/build.ts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "build": "node scripts/build-app.mjs",
+    "preview": "node scripts/preview.mjs",
+    "audit:curve": "node scripts/audit-table-i.mjs"
+  },
+  "dependencies": {
+    "csv-parse": "^7.0.3",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "recharts": "^3.10.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "esbuild": "0.28.2",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vitest": "^5.1.0",
+    "vite": "8.3.8"
+  }
+}

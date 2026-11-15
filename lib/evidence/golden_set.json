@@ -1,0 +1,161 @@
+{
+  "generated": "2026-11-14",
+  "ranker": "lib/evidence/rank.ts",
+  "note": "expected_case, expected_reason and expected_record_ids are the ranker's output for params (closeness of test conditions, not a risk score). tests/golden.test.ts checks them. Record ids are from evidence.json. Includes the PSI experimental tables; a table row and a report are separate source records, not necessarily independent burns.",
+  "scenarios": [
+    {
+      "id": "gs-01-mylar-lunar",
+      "query_natural_language": "What did NASA observe for Mylar film in lunar gravity near 15.6% oxygen, no forced flow, at 10.2 psi?",
+      "params": { "material": "Mylar", "o2_pct": 15.6, "flow_cm_s": 0, "pressure_kPa": 70.3 },
+      "expected_case": 1,
+      "expected_reason": "exact_match",
+      "expected_record_ids": ["mylar-g@luna", "mylar-g@marte"],
+      "must_mention": ["15.6", "14.1", "Olson", "5.18", "secondary", "70.3"],
+      "must_not_say": ["safe", "certified", "NASA never tested"],
+      "why": "Case 1 is the Olson & Ferkul 2012 Table I lunar point (ULOi 15.6 / MOC 14.1 at 70.3 kPa). The Martian point is similar, not the match. The lunar and 0 g rows are secondary because the 2011 paper was not read, and the drop criterion is 5.18 s rather than Test 1."
+    },
+    {
+      "id": "gs-02-ultem-lunar",
+      "query_natural_language": "Ultem 1000 in lunar gravity, about 21% oxygen, no forced flow, 10.2 psi. What is the closest test?",
+      "params": { "material": "Ultem 1000", "o2_pct": 21, "flow_cm_s": 0, "pressure_kPa": 70.3 },
+      "expected_case": 1,
+      "expected_reason": "exact_match",
+      "expected_record_ids": ["ultem-1000@luna", "ultem-1000@marte"],
+      "must_mention": ["21.0", "19.9", "10.2", "same lunar pair as Nomex", "secondary"],
+      "must_not_say": ["safe", "certified", "NASA never tested"],
+      "why": "Table I lunar Ultem is ULOI 21.0 / MOC 19.9 at 10.2 psia, the same printed pair as Nomex HT90-40. Say that the opened 2012 PDF prints them identical and that the 2011 source was not read. Do not describe this 10.2 psia test as an 8.2 psi habitat test."
+    },
+    {
+      "id": "gs-03-polycarbonate-8.2psi",
+      "query_natural_language": "Polycarbonate at the 8.2 psi lunar-habitat pressure. What did the centrifuge test show relative to 1 g?",
+      "params": { "material": "polycarbonate", "pressure_kPa": 56.5 },
+      "expected_case": 1,
+      "expected_reason": "exact_match",
+      "expected_record_ids": ["policarbonato"],
+      "must_mention": ["ICES-2025-392", "8.2", "higher", "5 s", "not printed"],
+      "must_not_say": ["safe", "certified", "NASA never tested"],
+      "why": "Acceptance 2: the Urban et al. 2025 lunar centrifuge record. The text says polycarbonate extinguished at substantially higher oxygen in lunar g than in the 1 g forced-flow data. No numeric lunar limit is printed. Passing Test 1 in air is not a lunar result."
+    },
+    {
+      "id": "gs-04-polycarbonate-34pct",
+      "query_natural_language": "Will polycarbonate burn at 34% oxygen and 8.2 psi in lunar gravity, with no forced flow?",
+      "params": { "material": "polycarbonate", "o2_pct": 34, "flow_cm_s": 0, "pressure_kPa": 56.5 },
+      "expected_case": 2,
+      "expected_reason": "similar_tests",
+      "expected_record_ids": ["policarbonato"],
+      "must_mention": ["not reported", "8.2", "34", "higher oxygen"],
+      "must_not_say": ["safe", "certified", "NASA never tested"],
+      "why": "The record is the right material, gravity and pressure, but it does not report a numeric oxygen. Asking for 34% cannot be a same-test match. Say the oxygen limit is not reported, not zero, and that the paper's qualitative result is a higher lunar limit than the 1 g forced-flow data."
+    },
+    {
+      "id": "gs-05-nomex-ht-14.7psi",
+      "query_natural_language": "Nomex HT90-40 in lunar gravity at 14.7 psi, about 21% oxygen, no forced flow.",
+      "params": { "material": "Nomex HT90-40", "o2_pct": 21, "flow_cm_s": 0, "pressure_kPa": 101.3 },
+      "expected_case": 1,
+      "expected_reason": "exact_match",
+      "expected_record_ids": ["nomex-ht90-40@luna", "nomex-ht90-40@marte"],
+      "must_mention": ["14.7", "21.0", "19.9", "below the 1 g", "not 8.2"],
+      "must_not_say": ["safe", "certified", "NASA never tested"],
+      "why": "Olson & Ferkul Table I lunar Nomex at 14.7 psia, limit below the 1 g pair. The answer must not reuse this point as the 8.2 psi result. The poster at 8.2 psi shows the opposite direction (gs-06)."
+    },
+    {
+      "id": "gs-06-nomex-ht-8.2psi",
+      "query_natural_language": "Nomex HT90-40 at 8.2 psi in lunar gravity, around 29% oxygen. How does that compare with 1 g and with 0 g?",
+      "params": { "material": "Nomex HT90-40", "o2_pct": 29, "pressure_kPa": 56.5 },
+      "expected_case": 1,
+      "expected_reason": "exact_match",
+      "expected_record_ids": ["nomex_ht90_40_poster@luna"],
+      "must_mention": ["about 29", "about 23", "about 38", "8.2", "Schechter"],
+      "must_not_say": ["safe", "certified", "NASA never tested"],
+      "why": "The poster prints about 23% at 1 g, about 29% in lunar g and about 38% in 0 g, at 8.2 psi. Lunar is higher than 1 g here, the reverse of the 14.7 psia table. The poster does not show how the about-values were derived. Flow was not set in the query; the poster does not report a flow."
+    },
+    {
+      "id": "gs-07-nomex-ht-habitat-34",
+      "query_natural_language": "Nomex HT90-40 for a cabin at 34% oxygen and 8.2 psi, on the Moon.",
+      "params": { "material": "Nomex HT90-40", "o2_pct": 34, "pressure_kPa": 56.5 },
+      "expected_case": 2,
+      "expected_reason": "similar_tests",
+      "expected_record_ids": ["nomex_ht90_40_poster@luna"],
+      "must_mention": ["about 29", "34", "8.2", "not the same test", "14.7"],
+      "must_not_say": ["safe", "certified", "NASA never tested"],
+      "why": "Closest record is the poster lunar point near 29% at 56.5 kPa, five points below the asked 34%. Similar, not the same test. Mention that the 14.7 psia Olson point is a different pressure and the other direction."
+    },
+    {
+      "id": "gs-08-sibal-18-10",
+      "query_natural_language": "SIBAL fabric at 18% oxygen and 10 cm/s. What is closest to the Moon, and what was seen in microgravity?",
+      "params": { "material": "SIBAL", "o2_pct": 18, "flow_cm_s": 10 },
+      "expected_case": 2,
+      "expected_reason": "similar_tests",
+      "expected_record_ids": ["csv-1", "csv-28", "GMT190-T24", "psi-25-r124-flight", "GMT45-T1", "psi-25-r102-flight", "csv-33", "GMT190-T23"],
+      "must_mention": ["microgravity", "reused", "17.2", "18.2", "LUCI", "lunar"],
+      "must_not_say": ["safe", "certified", "NASA never tested"],
+      "why": "Acceptance 3. GMT190-T23 (17.2%, reused, did not ignite) and GMT190-T24 (18.2%, reused, one-sided flame) are microgravity. LUCI (csv-1) is the rotating-rocket lunar-g burn and ranks first because gravity is closer. GMT45-T1 carries the oxygen-reading warning. None of these is a same-test match: LUCI's oxygen is a range and its pressure is not reported."
+    },
+    {
+      "id": "gs-09-mylar-habitat-34",
+      "query_natural_language": "Mylar at 34% oxygen, 8.2 psi, no forced flow, in lunar gravity. Is there a test?",
+      "params": { "material": "Mylar", "o2_pct": 34, "flow_cm_s": 0, "pressure_kPa": 56.5 },
+      "expected_case": 3,
+      "expected_reason": "no_close_conditions",
+      "expected_record_ids": [],
+      "must_mention": ["No matching test in the data we reviewed", "FM2", "15.6", "70.3"],
+      "must_not_say": ["safe", "certified", "NASA never tested"],
+      "why": "Acceptance 4. Mylar's lunar point is 15.6 / 14.1 at 70.3 kPa, far from 34% and 56.5 kPa. Context may show that point; it is not a match. Say FM2 has not published this condition."
+    },
+    {
+      "id": "gs-10-material-absent",
+      "query_natural_language": "Kapton polyimide film at 34% oxygen and 8.2 psi on the Moon.",
+      "params": { "material": "Kapton", "o2_pct": 34, "flow_cm_s": 0, "pressure_kPa": 56.5 },
+      "expected_case": 3,
+      "expected_reason": "material_not_in_data",
+      "expected_record_ids": [],
+      "must_mention": ["No matching test in the data we reviewed", "FM2", "Kapton", "not in the data"],
+      "must_not_say": ["safe", "certified", "NASA never tested"],
+      "why": "No Kapton record is loaded. Do not borrow another material's limit. Pending PSI ingestion is not an excuse to invent an id."
+    },
+    {
+      "id": "gs-11-do-not-say-safe",
+      "query_natural_language": "Is Nomex Velcro safe for a lunar habitat at 34% oxygen and 8.2 psi? Can you certify it?",
+      "params": { "material": "Nomex Velcro", "o2_pct": 34, "pressure_kPa": 56.5 },
+      "expected_case": 2,
+      "expected_reason": "similar_tests",
+      "expected_record_ids": ["nomex-velcro"],
+      "must_mention": ["not reported", "higher oxygen", "8.2", "5 s", "cannot certify"],
+      "must_not_say": ["safe", "certified", "NASA never tested"],
+      "why": "The user is asking for an approval word. Urban et al. 2025 says Nomex Velcro extinguished at substantially higher oxygen in lunar g than in the 1 g data, at 8.2 psi, on a 5 s drop, and does not print the lunar number. Answer with that, and refuse the approval wording. 34% oxygen is not a reported field of this record."
+    },
+    {
+      "id": "gs-12-pmma-sheet-8.2psi",
+      "query_natural_language": "PMMA sheet at 8.2 psi in lunar gravity. Did it get more or less flammable than the 1 g forced-flow tests?",
+      "params": { "material": "PMMA sheet", "pressure_kPa": 56.5 },
+      "expected_case": 1,
+      "expected_reason": "exact_match",
+      "expected_record_ids": ["pmma"],
+      "must_mention": ["ICES-2025-392", "lower", "8.2", "figure", "not printed"],
+      "must_not_say": ["safe", "certified", "NASA never tested"],
+      "why": "Opposite direction from polycarbonate and Nomex Velcro in the same paper: the text says the lunar limit is lower than the 1 g extrapolation. Do not quote a figure-read percent; the opened PDF's PMMA, P-213 and cotton panels look mis-assigned."
+    },
+    {
+      "id": "gs-13-sibal-habitat-atmosphere",
+      "query_natural_language": "SIBAL at 34% oxygen and 56.5 kPa. What transfers to the Moon?",
+      "params": { "material": "SIBAL", "o2_pct": 34, "pressure_kPa": 56.5 },
+      "expected_case": 2,
+      "expected_reason": "similar_tests",
+      "expected_record_ids": ["csv-42"],
+      "must_mention": ["microgravity", "31", "Saffire", "not lunar", "FM2"],
+      "must_not_say": ["safe", "certified", "NASA never tested"],
+      "why": "The only similar record is Saffire VI in microgravity (about 31% oxygen, 54.1 kPa, 20 cm/s). Close in oxygen and pressure, wrong gravity. A 1 g test at 34% and 56.5 kPa must not be offered as the lunar match."
+    },
+    {
+      "id": "gs-14-synergy-pro-absent",
+      "query_natural_language": "What do we know about Synergy Pro at 34% oxygen and 8.2 psi in lunar gravity? FM2 is going to burn it.",
+      "params": { "material": "Synergy Pro", "o2_pct": 34, "pressure_kPa": 56.5 },
+      "expected_case": 3,
+      "expected_reason": "material_not_in_data",
+      "expected_record_ids": [],
+      "must_mention": ["No matching test in the data we reviewed", "Synergy Pro", "FM2", "not stated"],
+      "must_not_say": ["safe", "certified", "NASA never tested"],
+      "why": "The Nomex poster names Synergy Pro as an FM2 material and does not give its composition or a limit. There is no record. The LPSC abstract does not name Synergy Pro, and it states no oxygen, pressure or falsifier."
+    }
+  ]
+}
