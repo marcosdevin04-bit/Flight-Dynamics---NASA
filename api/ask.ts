@@ -1,5 +1,5 @@
 import type {IncomingMessage,ServerResponse} from "node:http";
-import {handle} from "../lib/ask";
+import {handle} from "../lib/ask.js";
 export default async function handler(req:IncomingMessage & {body?:unknown},res:ServerResponse){
  const env={ANTHROPIC_API_KEY:process.env.ANTHROPIC_API_KEY,ANTHROPIC_MODEL:process.env.ANTHROPIC_MODEL};
  if(req.method!=="POST"){res.writeHead(405,{Allow:"POST"}).end();return;}

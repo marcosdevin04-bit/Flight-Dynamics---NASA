@@ -1,6 +1,6 @@
 import {z} from "zod";
-import type {Scenario} from "./evidence/rank";
-import {knownMaterialKey} from "./evidence/materials";
+import type {Scenario} from "./evidence/rank.js";
+import {knownMaterialKey} from "./evidence/materials.js";
 
 export type ModelEnv = {ANTHROPIC_API_KEY?: string, ANTHROPIC_MODEL?: string};
 export type ConfiguredModel = {ANTHROPIC_API_KEY: string, ANTHROPIC_MODEL: string};

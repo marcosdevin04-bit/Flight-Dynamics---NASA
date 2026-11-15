@@ -1,11 +1,11 @@
-import {rank,type Scenario} from "./evidence/rank";
-import {knownMaterialKey} from "./evidence/materials";
-import {splitSentences,extractCitations,verifyExplanation} from "./evidence/verify";
+import {rank,type Scenario} from "./evidence/rank.js";
+import {knownMaterialKey} from "./evidence/materials.js";
+import {splitSentences,extractCitations,verifyExplanation} from "./evidence/verify.js";
 import {z} from "zod";
 
-import {configured, interpretQuestion, modelText, scenarioSchema as scenario, type ModelEnv} from "./lunar-question";
-import {limit} from "./request-limit";
-export {parseQuestion} from "./lunar-question";
+import {configured, interpretQuestion, modelText, scenarioSchema as scenario, type ModelEnv} from "./lunar-question.js";
+import {limit} from "./request-limit.js";
+export {parseQuestion} from "./lunar-question.js";
 const input=z.union([z.object({scenario}).strict(),z.object({question:z.string().trim().min(2).max(650)}).strict()]);
 const presets=[
  {params:{material:"Mylar",o2_pct:15.6,flow_cm_s:0,pressure_kPa:70.3},text:"At lunar-equivalent gravity the Mylar film burned at 15.6% oxygen and self-extinguished at 14.1% [mylar-g@luna]. The result was reproduced in a later paper; the short drop and the Earth burn-length criterion differ [mylar-g@luna]."},

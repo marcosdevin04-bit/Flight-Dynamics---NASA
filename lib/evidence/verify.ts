@@ -13,8 +13,8 @@
  *   4. it never uses the forbidden words ("safe", "certified", "never tested"...).
  *   5. if records were retrieved, it cites at least one of them.
  */
-import { stripSourceRefs, yearsIn } from "./parse";
-import type { EvidenceRecord } from "./types";
+import { stripSourceRefs, yearsIn } from "./parse.js";
+import type { EvidenceRecord } from "./types.js";
 
 export type VerifyErrorKind =
   | "forbidden_word"

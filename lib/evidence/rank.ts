@@ -8,9 +8,9 @@
  * Distance = sum of weighted, normalized differences (lower = closer).
  * This is CLOSENESS OF TEST CONDITIONS, not a risk score.
  */
-import evidenceFile from "./evidence.json";
-import { materialKey, sameMaterial } from "./materials";
-import { nivelOrder, type EvidenceFile, type EvidenceRecord, type Range } from "./types";
+import evidenceFile from "./evidence.json" with { type: "json" };
+import { materialKey, sameMaterial } from "./materials.js";
+import { nivelOrder, type EvidenceFile, type EvidenceRecord, type Range } from "./types.js";
 
 export const MOON_G = 0.16;
 
