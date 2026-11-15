@@ -118,3 +118,10 @@ header.site .mark{width:30px;height:30px;flex:none}
 .hero-bg .hero.dash{position:relative;z-index:1;grid-template-columns:minmax(0,660px);padding:4.2rem 0 4.6rem}
 .hero-bg .ask-hero{background:rgba(23,32,38,.88);backdrop-filter:blur(2px)}
 @media(max-width:1020px){.hero-bg .hero-media:after{background:linear-gradient(0deg,rgba(14,19,22,.96) 0%,rgba(14,19,22,.82) 100%)}.hero-bg .hero.dash{padding:2.6rem 0 4rem}.hero-bg .hero-media figcaption{text-align:left;left:0;max-width:none}}
+
+/* Method view */
+.method-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem;margin:1.2rem 0}
+.method-grid .card ul,.method-grid .card ol{padding-left:1.2rem;margin:.6rem 0 0}.method-grid li+li{margin-top:.45rem}
+.method-ai{border-left:4px solid var(--flame)}.method-links{margin-top:1.2rem}
+.fm2-status{background:#fdebd2;color:#5a3300;border-radius:.5rem;padding:.6rem .9rem;margin:.6rem 0 .4rem;max-width:80ch}
+@media(max-width:900px){.method-grid{grid-template-columns:1fr}}

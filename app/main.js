@@ -1,6 +1,7 @@
 import {luciPanel} from './luci.js';
 import {askPanel} from './ask.js';
 import {psiPanel,predictionPanel,coverageNote} from './research.js';
+import {methodPanel} from './method.js';
 const view = document.querySelector('#view');
 const escape = value => String(value ?? 'Not reported').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 const fmt = value => typeof value === 'number' && Number.isFinite(value) ? String(value) : 'Not reported';
@@ -84,7 +85,7 @@ let psiData,predictions;
 function materials(){return [...new Map([{id:'sibal',nombre:'SIBAL fabric'},...data.materiales,...data.habitat_lunar_8_2_psi.materiales].map(m=>[m.id,m])).values()];}
 function tests(){return askPanel(view,materials().map(m=>({id:m.id,label:name(m)})),searchState,luciPanel);}
 async function simulation(){const {showChamber}=await import('./chamber.js'); if(location.hash==='#simulation')stop=showChamber(view,searchState,materials().map(m=>({id:m.id,label:name(m)})));}
-const routes={home:()=>{view.innerHTML='';},gravity,materials:cards,tests,fm2:()=>predictionPanel(view,predictions),psi:()=>psiPanel(view,psiData,data),simulation};
+const routes={home:()=>{view.innerHTML='';},method:()=>methodPanel(view),gravity,materials:cards,tests,fm2:()=>predictionPanel(view,predictions),psi:()=>psiPanel(view,psiData,data),simulation};
 function render(){
  stop();stop=()=>{};
  const route=location.hash.slice(1);
