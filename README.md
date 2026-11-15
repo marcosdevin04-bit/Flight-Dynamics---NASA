@@ -11,7 +11,7 @@ Built for the **NASA Space Apps Challenge 2026** · Challenge: *Flame in Freefal
 
 **[Open the public dashboard](https://flight-dynamics-mu.vercel.app/#tests)** · [PSI coverage](https://flight-dynamics-mu.vercel.app/#psi) · [FM2 predictions](https://flight-dynamics-mu.vercel.app/#fm2)
 
-The app ranks experimental records, not fire risk. Its same-origin `POST /api/ask` accepts a structured scenario or a short question about a lunar atmosphere. The three examples remain available if the service is offline. Two have AI-authored, cached explanations checked against the retrieved citations; arbitrary scenarios use verified templates unless a server-side model is configured. The optional 3D chamber illustrates transport, not material qualification.
+The app ranks experimental records, not fire risk. Its same-origin `POST /api/ask` accepts a structured scenario or a short question about a lunar atmosphere. The three examples remain available if the service is offline. Two have AI-authored, cached explanations checked against the retrieved citations; arbitrary scenarios use verified templates unless a server-side model is configured. The optional 3D chamber illustrates transport, not material qualification; its split view runs the same model twice, differing only in gravity.
 
 Run `npm ci`, `npm run build`, and `npm run preview` to open the app locally. Run `npm test`, `npm run typecheck`, and `npm run audit:curve` for the integration tests and the independent Table I transcription check. Vercel serves the dashboard and API together with the included configuration. For on-demand Anthropic interpretation, configure `ANTHROPIC_API_KEY` and `ANTHROPIC_MODEL` on the server. Free text is converted to quoted scenario fields, then validated; explanations receive only retrieved records. Invalid citations trigger one correction attempt. A per-client request limit applies in each server instance. Multiple instances have separate counters.
 
@@ -35,7 +35,7 @@ A decision-support tool for **the engineer who designs the materials and ventila
 | **Material cards** | Which materials become *more* flammable in lunar gravity and which become *less*, with the source for each result |
 | **Similar tests** | Pick oxygen, airflow and gravity: the tool finds the closest NASA tests, explains what matches and what differs, and says plainly when **no matching test exists in the data we reviewed** |
 | **Our bet before FM2** | A dated, falsifiable prediction written *before* FM2 results, to be checked when NASA publishes them |
-| **Simulation** *(optional)* | Heat transport around a sample under different gravity and ventilation, clearly labeled as a simulation |
+| **Simulation** *(optional)* | Heat transport around a sample under different gravity and ventilation, with a side-by-side view of two gravities, clearly labeled as a simulation |
 
 ## What the data already shows
 

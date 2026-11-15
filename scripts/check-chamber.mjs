@@ -7,6 +7,7 @@ const run=(gravity,flow,oxygen,pressure)=>{
  return {sum,x:sx/sum,y:sy/sum};
 };
 const low=run(0,2,21,101.3),earth=run(1,2,21,101.3),vent=run(0,16,21,101.3);
+assert.deepEqual(run(.16,10,21,101.3),run(.16,10,21,101.3),'Identical settings must give identical fields, so the split view isolates gravity.');
 assert.ok(earth.y>low.y+1,'Buoyancy must raise the reaction centroid.');
 assert.ok(vent.x>low.x+1,'Ventilation must move the reaction centroid downstream.');
 assert.equal(run(.16,10,0,50).sum,0,'Without ambient oxygen the source cannot generate a reaction.');
