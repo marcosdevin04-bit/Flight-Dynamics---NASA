@@ -12,10 +12,10 @@ actualizado: 2026-11-14
 - [ ] Asegurar que Marcos use el texto corregido de la tarjeta "Bounding the Moon" (la Tanda 2 que está en main todavía tiene el texto viejo)
 - [x] Leer la consigna oficial y la pestaña **Resources** → [Consigna](challenge/consigna.md) · [Recursos NASA y datos](research/recursos-nasa-y-datos.md) (2026-11-14)
 - [x] Confirmar el título exacto → "SI-Powered"
-- [x] **Escribir la apuesta antes de FM2** → `PREDICTION.md` + `prediction.json`, 2026-11-14 22:26 (D17). Falta: que la confirme el equipo y que Marcos la muestre (Tanda 4)
-- [ ] Mergear `feature/lunar-evidence-dashboard` a main (o linkear la rama) para que quien mire el repo vea la app → checklist en la Tanda 3 de [Paquete para Marcos](DEVELOPMENT.md)
-- [ ] Decidir si la app de Marcos usa el motor de evidencia de Juan (`juan/ai-core`)
-- [ ] Decidir qué hacer con los escenarios de fluido y combustible sin datos de NASA (sacarlos o rotularlos)
+- [x] **Escribir la apuesta antes de FM2** → `PREDICTION.md` + `prediction.json`, 2026-11-14 22:26 (D17). Confirmada por el equipo. Falta que Marcos la muestre (Tanda 4)
+- [x] Mergear `feature/lunar-evidence-dashboard` a main → PR #1 (2026-11-15)
+- [x] Decidir si la app de Marcos usa el motor de evidencia de Juan → sí, por `/api/ask` (D18)
+- [x] Escenarios de fluido y combustible sin datos → retirados (D18)
 - [x] **Usar al menos un dataset de PSI** → bajados BASS, BASS-II y Saffire I–III ([PSI - datos oficiales](research/psi-datos-oficiales.md)). Falta: que Marcos los muestre en la app (panel de cobertura + Saffire-II µg/1 g) (el recurso central de Resources) en el producto: hoy la evidencia sale de NTRS, no de PSI. Opción mínima: los puntos de 1 g y 0 g de BASS-II o Saffire desde PSI como "cotas" (la consigna dice que µg y 1 g "could bound" la gravedad intermedia)
 - [x] Descargar PSI-25 (BASS-II) y Saffire, y validar las columnas (FLEX no hace falta: son gotas)
 - [x] Verificar "ningún sólido por encima de 22,2 % de O₂" → `#verificado` para BASS-II y Saffire I–III ([PSI - datos oficiales](research/psi-datos-oficiales.md))
@@ -41,6 +41,11 @@ actualizado: 2026-11-14
 - [ ] Elegir el nombre del equipo para la demo
 
 - [ ] Revisar a mano LUCI: ~~pendiente~~ hecho por Claude Science (R12); queda solo confirmar si querés mirarlo vos
+
+- [ ] **Probar la IA en vivo en producción** (`ANTHROPIC_API_KEY` y `ANTHROPIC_MODEL` en el servidor): hoy solo se probó con un proveedor simulado; sin key, la app usa plantillas verificadas
+- [x] Revisar y mergear el PR #1 → mergeado (877ed2d). Sincronización del vault lista para el push
+- [x] Detalle de UI: nombres en español → arreglado en la rama (falta el push de Facundo)
+- [ ] Confirmar en la plataforma: desafío, 3 miembros y URL pública final; demo final (hay un borrador de 28 s en `docs/product/`)
 
 ## Riesgos
 | Riesgo | Prob. | Impacto | Mitigación |

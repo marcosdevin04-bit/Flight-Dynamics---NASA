@@ -119,8 +119,8 @@ Contexto completo: [FM2 - fuego en la Luna](research/fm2-fuego-en-la-luna.md) ·
    - el código verifica que los IDs y números citados existan;
    - las respuestas de la demo quedan **cacheadas**, por si falla la API.
 5. **Todo el texto de la interfaz en inglés.**
-PSI-1. **Sin logo de NASA.** Las imágenes generadas con IA llevan marca de agua.
-PSI-2. **Accesible:** contraste suficiente; los colores siempre con texto.
+6. **Sin logo de NASA.** Las imágenes generadas con IA llevan marca de agua.
+7. **Accesible:** contraste suficiente; los colores siempre con texto.
 
 ## 5. Fuera de alcance (no hacer)
 Login · cargar todo PSI · modelos predictivos de ML · 3D · detector por cámara (D6) · multiusuario.
@@ -215,5 +215,5 @@ Es la revisión de `feature/lunar-evidence-dashboard` en c3e9faa (ver 2026-11-14
 - **`data/prediction.json`** (3 predicciones) y **`PREDICTION.md`** en la raíz del repo. Formato de cada predicción: `id, registered_at, material, conditions{gravity, o2_pct, pressure_kPa, flow}, expectation{direction, versus, range}, basis[{claim, source, location}], confirmed_if, refuted_if, caveats[], level`.
 - **Vista FM2:** una tarjeta por predicción con material, condiciones, "We expect…" (dirección + rango), la evidencia con su fuente, "Confirmed if / Refuted if" y las advertencias plegadas. Arriba: "Registered 2026-11-14 22:26 (UTC-3), before any FM2 results" y link a `PREDICTION.md`. Rótulo: "Our prediction (inference), not a NASA result".
 - **`data/luci.json`:** Claude Science lo verificó contra el PDF y **está todo bien**. Sugerencias opcionales: en PMMA en vuelo, anotar que la gravedad cae de ~0,18 a ~0,04 g entre ~123 y ~139 s (slide 44); anotar que la traza medida queda cerca de 0,18 g frente a los 0,165 g nominales; fecha de vuelo 2025-02-04 (slide 13).
-- **Prueba de aceptación FM2-1:** la vista FM2 muestra las 3 predicciones con su fecha de registro y las predicciones se expresan como inferencias. Una cita literal de NASA no se cambia por contener “will”.
+- **Prueba de aceptación FM2-1:** la vista FM2 muestra las 3 predicciones con su fecha de registro y las predicciones se expresan como inferencias. Una cita literal de NASA no se cambia por contener "will".
 
