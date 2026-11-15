@@ -126,3 +126,8 @@ header.site .mark{width:30px;height:30px;flex:none}
 .fm2-status{background:#fdebd2;color:#5a3300;border-radius:.5rem;padding:.6rem .9rem;margin:.6rem 0 .4rem;max-width:80ch}
 @media(max-width:900px){.method-grid{grid-template-columns:1fr}}
 .grid>.card+.card{margin-top:0}
+
+/* Flame lab: highlighted nav item */
+header.site nav a.lab{color:var(--flame);border:1px solid var(--flame);border-radius:.4rem;margin-left:.3rem}
+header.site nav a.lab:hover{background:rgba(242,163,58,.12);color:#ffc77a}
+header.site nav a.lab[aria-current]{background:var(--flame);color:var(--flame-ink);box-shadow:none;border-radius:.4rem}
