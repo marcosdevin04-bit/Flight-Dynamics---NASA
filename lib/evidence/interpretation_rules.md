@@ -4,7 +4,7 @@ Rules the explanation model must follow. Ranking and numbers come from code (`li
 
 Provenance: synthesized on 2026-11-14 from five page-cited verification notes. Those notes were written by agents that opened the PDFs the same day. This file did not re-open the PDFs. A claim the notes marked UNVERIFIED stays UNVERIFIED. The fifth pass (ECLSS atmospheres, the PSI index, NASA-STD-6001B Test 1) is included here; it finished after the coordinator that launched the passes had stopped.
 
-Corrected 2026-11-15 against the repository: the PSI experimental tables are now loaded (rule 2, gaps); FM2 facts from the 2024 FM2 poster and our registered prediction were added (rule 14); the ECLSS report and HEO-DM-1006 are marked as not yet traced in `docs/sources.md` (rules 10–11). This file is reference for people. The production endpoint (`lib/ask.ts`) does not load it into the model prompt.
+Corrected 2026-11-15 against the repository: the PSI experimental tables are now loaded (rule 2, gaps); FM2 facts from the 2024 FM2 poster and our registered prediction were added (rule 14); the ECLSS report is listed in `docs/sources.md`; HEO-DM-1006 remains an indirect reference (rules 10–11). This file is reference for people. The production endpoint (`lib/ask.ts`) does not load it into the model prompt.
 
 Labels: **DATA** is a measured value or a sentence printed in a source that was opened. **INFERENCE** is reasoning from those pages. **HYPOTHESIS** is untested. Do not promote an inference or a hypothesis into a measurement.
 
@@ -246,7 +246,7 @@ Short names:
 **Evidence.**
 
 - DATA. Challenge statement (`planning/consigna.md`): the lunar base and rovers will probably use 30 % O2 or more at 10.2 psi or less (the repository copy is a Spanish paraphrase; quote the English challenge page, not this line).
-- NOT YET TRACED. The ECLSS report (NASA/TM-20260003925) is not listed in `docs/sources.md`, so the app cannot show it "one click away". The ECLSS figures below (26.5 %, 40 %, 36–40 %, 70 % and 21 % of subsystems, HEO-DM-1006, ≥33.7 %) are notes from that PDF; do not show them in the app until the source is added. The 34 % / 8.2 psia pair is also traced to the Fortenberry et al. detection white paper (`docs/sources.md`).
+- SOURCE. [ECLSS report, NASA/TM-20260003925](https://ntrs.nasa.gov/citations/20260003925), indexed in `docs/sources.md`. The ECLSS figures below (26.5 %, 40 %, 36–40 %, 70 % and 21 % of subsystems, HEO-DM-1006, ≥33.7 %) are notes from that PDF. Check each figure against its cited page before using it. The 34 % / 8.2 psia pair is also traced to the Fortenberry et al. detection white paper (`docs/sources.md`).
 - DATA. ECLSS report p. 9 (PDF p. 13): the two planning atmospheres are 10.2 psia at 26.5 % O2 and 8.2 psia at 34 % O2, with flammability looked at up to 40 % O2 at 8.2 psia. Report p. 29 (PDF p. 33): the maximum oxygen "has not been defined" for every surface element; with control bands it "could be between 36 and 40 %".
 - DATA. FOTM slide 12 prints "34% O2 at 0.558 atm". The string "8.2 psia" is not on that slide. 8.2 psi is the conversion of 0.558 atm, plus the ECLSS sentence that does print 8.2 psia.
 - DATA. PSI index on 2026-11-14: no combustion investigation in lunar or Martian gravity; LUCI and FM2 are not in the index. The filter "Reduced Gravity Investigation" returned zero investigations.
@@ -400,7 +400,7 @@ Short names:
 - Cabin air speed in cm/s for a lunar habitat is not in the ECLSS report (only volumetric flow of hardware, and the qualitative point that lower pressure means higher velocity for the same cooling).
 - ISO 14624-1 was not opened, so the igniter energy behind Test 1 is UNVERIFIED.
 - PSI tables are loaded (159 rows; see rule 2). BASS-II lists 130 rows and 125 are loaded; the difference is not reconciled. PSI has no partial-gravity combustion investigation (rule 10).
-- The ECLSS report and HEO-DM-1006 are not yet listed in `docs/sources.md` (rules 10–11).
+- The ECLSS report is listed in `docs/sources.md`. HEO-DM-1006 is cited indirectly through that report (rules 10–11).
 
 ## Sources I could not open
 

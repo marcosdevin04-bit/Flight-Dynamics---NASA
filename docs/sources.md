@@ -9,6 +9,7 @@ Registro de todas las fuentes consultadas. Las referencias [1]–[29] de la guí
 
 | Fuente | Tipo | Nivel | Consultada | Usada en |
 |---|---|---|---|---|
+| [Impacts of Reduced Pressure Atmospheres on Environmental Control and Life Support Systems (ECLSS) Architectures](https://ntrs.nasa.gov/citations/20260003925), NASA/TM-20260003925, §4, p. 9 | NASA, memorando técnico | Verificado para las atmósferas de planificación de 10,2 psia / 26,5 % O₂ y 8,2 psia / 34 % O₂ | 2026-11-15 | Contexto de diseño del hábitat, [reglas 10–11](../lib/evidence/interpretation_rules.md). |
 | Guía del participante de Space Uruguay 2026 (PDF local) | oficial local | `#verificado` | 2026-11-14 | [Reglas y entrega](challenge/reglas-y-entrega.md) |
 | Guía técnica Flame in Freefall (PDF local) | síntesis del equipo | `#verificado` (sus fuentes) | 2026-11-14 | [Ciencia base](research/ciencia-base.md) |
 | División del equipo (PDF local) | interno | — | 2026-11-14 | [07 Equipo](team.md) |

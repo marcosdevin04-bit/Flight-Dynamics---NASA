@@ -18,7 +18,7 @@ Before the First Fire on the Moon is an evidence dashboard for the engineer who 
 
 ## 3. Link to Project Demo
 
-[PENDIENTE: link público al video de hasta 30 s (YouTube o Drive) con subtítulos en inglés. Borrador: `docs/product/demo-draft.mp4` + `demo.en.srt`. Probar el link en una ventana privada.]
+[PENDIENTE: confirmar si el video del equipo https://youtu.be/en18xWde9hE, que YouTube identifica como «prueba», es el definitivo y revisar su duración y subtítulos en inglés.]
 
 ---
 
@@ -26,7 +26,7 @@ Before the First Fire on the Moon is an evidence dashboard for the engineer who 
 
 https://flight-dynamics-mu.vercel.app
 
-[PENDIENTE: agregar https://github.com/marcosdevin04-bit/Flight-Dynamics---NASA solo cuando el repo sea público. Hoy es privado y da 404 sin sesión.]
+https://github.com/marcosdevin04-bit/Flight-Dynamics---NASA
 
 ---
 
