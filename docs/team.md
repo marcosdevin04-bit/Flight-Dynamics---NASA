@@ -6,6 +6,8 @@ actualizado: 2026-11-15
 
 # Equipo
 
+**Equipo: Flight Dynamics** · **Proyecto: Before the First Fire** (confirmado por Facundo el 15/11).
+
 | Rol | Herramienta | Persona | Entregables |
 |---|---|---|---|
 | Scientific & Data Lead | Claude Pro / Claude Science | **Facundo** (14/11) | Dataset estructurado, base de evidencia, informe científico, criterios de clasificación |

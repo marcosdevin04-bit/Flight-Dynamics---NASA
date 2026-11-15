@@ -65,6 +65,10 @@ Registro de todas las fuentes consultadas. Las referencias [1]–[29] de la guí
 - Noticias de FM2: https://gizmodo.com/nasa-plans-to-start-a-fire-on-the-moon-in-first-of-its-kind-experiment-2000747964 · https://www.slate.fr/sciences/espace-nasa-feu-lune-experience-physique-combustion-incendie-materiaux-microgravite-mission-fm2-flammabilty-materials-moon · https://eniscuola.eni.com/en-IT/news/2026/bonfire-on-the-moon-nasa-experiment-for-future-missions.html · `#autodeclarado`
 - NTRS 20260001966: versión 2 del mismo abstract de FM2 en LPSC 2026 (mismo título y autores) · `#verificado`
 
+## Texto a voz (consultado el 2026-11-15) `#autodeclarado`
+- Comparativas: https://speechify.ai/blog/best-tts-providers-2026-comparison · https://tech-insider.org/ca/elevenlabs-vs-openai-vs-google-gemini-tts-2026/ · https://dupple.com/learn/best-ai-text-to-speech
+- Gemini 3.8 TTS: https://aibusiness.com/generative-ai/gemini-3-8-text-speech-refines-voice-ai-capabilities
+
 ## Uso de IA (para el campo "Use of Super Intelligence")
 Registrar acá cada uso relevante: herramienta, para qué, y qué revisó una persona.
 - 2026-11-14 · Claude Code (Opus 5.5): investigación de la competencia, ganadores y ángulo local; armado de esta bitácora; propuesta del spec. Revisión humana: `#pendiente`
@@ -78,6 +82,8 @@ Registrar acá cada uso relevante: herramienta, para qué, y qué revisó una pe
 - 2026-11-14 · Claude Code (Opus 5.5): deck de kickoff de 10 slides (interno, no es la demo de la entrega). Revisión humana: `#pendiente`
 - 2026-11-14 ~22:00 · Claude Code (Opus 5.5): revisó las ramas de Marcos y Juan, escribió la Tanda 3 y reordenó la bitácora. Detectó, a partir del plan de Juan, que el texto de cotas µg/1 g de la Tanda 2 era incorrecto, y lo corrigió contra la tabla I de Olson y Ferkul 2012 (D16).
 - 2026-11-14 ~22:30 · Claude Science: R12 (estado de FM2, borrador de la predicción y verificación de LUCI contra el PDF). Claude Code revisó los abstracts de NTRS 20240015307 y 20250010975, corrigió 3 puntos (atmósfera del acrílico supuesta, redacción del dato de Mylar, cita de Nomex para P2b) y pasó los entregables al vault.
+- 2026-11-15 ~14:00 · Claude Code (Opus 5.5): ajuste estético (encabezados, alto de tarjetas, layout de la cámara) medido y verificado en el navegador en 3 anchos. Commits y push: Facundo. Revisión humana: `#pendiente`
+- 2026-11-15 ~13:40 · Claude Code (Fable 5): vista dividida de dos gravedades en la cámara 3D (D23), test de determinismo y nota de método; verificó el resultado en el navegador. Commits y push: Facundo. Revisión humana: `#pendiente`
 - 2026-11-15 ~11:20 · Claude Code (Opus 5.5): revisó el PR #1 (tests, typecheck, auditoría de la tabla I, web pública) y arregló detalles de la interfaz en la rama de Marcos (nombres en inglés, nota sobre el espesor de PSI-99, 1 test nuevo).
 - 2026-11-15 ~11:35 · Claude Code (Opus 5.5): eligió Haiku 5.5 por precio, ajustó la llamada al modelo (thinking desactivado, texto plano con cita por oración, diagnósticos sin la key) y corrigió una frase ambigua del CSV contra ICES-2025-392, p. 11. Probado en local con la key de Facundo: "live AI · citations checked".
 - 2026-11-15 ~11:45 · Claude Code (Opus 5.5): actualizó Textos de entrega con el estado de main (IA en vivo, predicciones, stack, links verificados).
@@ -85,3 +91,5 @@ Registrar acá cada uso relevante: herramienta, para qué, y qué revisó una pe
 - 2026-11-15 ~12:15 · Gemini (Nano Banana): **el logo publicado es la imagen generada por Gemini** (concepto 2, elegido por Facundo), con fondo transparente. Identificado visiblemente en el pie de la web. Claude Code la preparó (recorte, transparencia, tamaños e íconos).
 - 2026-11-15 ~12:30 · Claude Code (Opus 5.5): reorganizó la portada como dashboard (panorama primero, con 3 paneles generados de los datos) a partir de la consigna, los ganadores 2025 y el principio de Shneiderman.
 - 2026-11-15 ~12:40 · Claude Code (Opus 5.5): leyó el foro oficial y noticias, y agregó la sección "Method" (con la declaración de uso de IA) y el estado de FM2 en la web.
+- 2026-11-15 ~13:10 · ElevenLabs (Eleven v4), usado por Facundo: voz en off de la demo, generada con IA y declarada en pantalla. Claude Code (Opus 5.5): grabación automatizada de la web (Playwright), cursor y zoom, subtítulos y montaje con ffmpeg.
+- 2026-11-15 · **Aclaración de autoría (D25):** las ideas centrales son del equipo: la gravedad como eje, de Facundo; el ingeniero de materiales y ventilación, de Marcos. Las IA se usaron para investigar, verificar datos, proponer cómo implementarlo, programar, diseñar y producir la demo. La propuesta inicial "Next Burn" de Claude Code (14/11) se descartó.

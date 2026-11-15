@@ -10,7 +10,7 @@ Equipo: Marcos Devincenzi, Juan Benitez, Facundo Díaz → [07 Equipo](team.md)
 
 ## Estado actual (dom 15/11 12:45)
 - **Producto:** "Before the First Fire on the Moon" (D9). Predicción para FM2 registrada y confirmada (D17).
-- **App en producción:** https://flight-dynamics-mu.vercel.app (D19). Portada como dashboard (D20), página Method, logo (D21), IA en vivo (Haiku 5.5) con citas verificadas, PSI y FM2. 168 tests en verde → 2026-11-15
+- **App en producción:** https://flight-dynamics-mu.vercel.app (D19). Portada como dashboard (D20), página Method, logo (D21), IA en vivo (Haiku 5.5) con citas verificadas, PSI y FM2. Cámara 3D con vista dividida de dos gravedades (D23, falta publicar). 168 tests en verde → 2026-11-15
 - **Falta para la primera entrega (16:00):** la demo de 30 s ([Pitch y demo](product/pitch-y-demo.md), guion v2) y cargar el formulario (Textos de entrega); confirmar el desafío, los 3 miembros y el nombre del equipo.
 - **Después:** taller de pitch 17/11 · jurado local 18 al 20/11 (presentamos) · nominados 21/11 → [Criterios y premios](challenge/criterios-y-premios.md)
 - **Entrega final:** domingo 15/11 23:59 (Uruguay), "Submit for Judging" → [Reglas y entrega](challenge/reglas-y-entrega.md)

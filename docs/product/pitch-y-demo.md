@@ -1,6 +1,6 @@
 ---
 tipo: producto
-estado: borrador v2 (Before the First Fire)
+estado: borrador v3 (voz con IA)
 actualizado: 2026-11-15
 ---
 
@@ -8,18 +8,17 @@ actualizado: 2026-11-15
 
 Límite: **video de hasta 30 s o hasta 7 diapositivas**, en inglés. Si se pasan, no van a la etapa global.
 
-## Guion de 30 s, v2 (borrador; sigue la estructura de la guía del participante, p. 20)
-Producto: "Before the First Fire on the Moon" (D9). Se graba sobre https://flight-dynamics-mu.vercel.app.
-| t | Pantalla | Texto (inglés, subtítulos) |
+## Guion de 30 s, v4 (final, 15/11 ~13:50) — con la cámara 3D (D24)
+Texto: `Documentos/demo/guion-voz.txt`. Voz de ElevenLabs (David, Eleven v4) acelerada ×1,085 → 28,27 s. Video final: `Documentos/demo/before-the-first-fire-demo.mp4` (28,9 s, 1920×1080), subtítulos en `.en.srt`.
+| ~t | Pantalla | Voz |
 |---|---|---|
-| 0:00 | Logo + hero con la llama de Saffire-VI | "Team [nombre del equipo], Montevideo, Uruguay. Challenge: Flame in Freefall." |
-| 0:03 | Hero | "NASA tests spacecraft materials in Earth gravity. But on the Moon, some burn with less oxygen." |
-| 0:08 | Panel de la curva → Gravity curve con Mylar en la Luna | "Mylar kept burning at 15.6% oxygen in lunar gravity, below Earth and microgravity. Those two don't bound the Moon." |
-| 0:14 | Panel de PSI → barra de O₂ | "NASA's solid-fuel flight tests in PSI stop at 22.2% oxygen. Lunar cabins plan 30% or more." |
-| 0:19 | Ask the evidence: escribir una pregunta → "live AI · citations checked" | "Ask about any material: AI explains the closest NASA tests, and code checks every citation." |
-| 0:25 | FM2 prediction | "We registered three predictions before NASA's first fire on the Moon. Before the First Fire." |
-
-Revisar antes de grabar: el nombre del equipo, cronometrar (≤ 30 s), subtítulos en inglés y que no aparezcan menores.
+| 0–3,4 s | Hero con la llama de Saffire-VI, zoom al título | "Flight Dynamics, Uruguay, on Flame in Freefall." |
+| 4–10,4 s | Título → desplazamiento suave → panel de Mylar | "Before the First Fire. NASA tests materials in Earth gravity; on the Moon, some burn with less oxygen." |
+| 10,9–13,6 s | **Cámara 3D: Luna frente a Tierra**, "SIMULATION — illustrative" | "Our simulation shows gravity reshaping the flame." |
+| 14,1–19,7 s | Gravity curve (Mylar en la Luna) → barra de O₂ de PSI | "Earth and microgravity tests don't always bound the Moon; flight tests stop at 22 percent oxygen." |
+| 20,1–25,3 s | Ask the evidence: pregunta escrita → "live AI · citations checked" | "Ask any material: AI explains the closest tests; code checks every citation." |
+| 25,6–28,3 s | FM2 prediction con el estado | "Our predictions await the first fire on the Moon." |
+Grabación automatizada: `Documentos/demo/grabacion/` (`run.sh` graba, sincroniza, monta y revisa los cortes).
 
 ## Mensajes que no se negocian
 - Nunca decir "safe" ni "certify".

@@ -29,7 +29,7 @@ export function methodPanel(host){
 <article class="card">
 <h3>3 · How we checked it</h3>
 <ul>
-<li><b>168 automated tests</b> cover parsing, ranking, citation checks and the answer flow.</li>
+<li><b>199 automated tests</b> cover parsing, ranking, citation checks and the answer flow.</li>
 <li>All <b>24 oxygen limits</b> on the gravity curve match Table I of Olson &amp; Ferkul (2012).</li>
 <li>Every LUCI value was checked slide by slide against the NASA presentation.</li>
 <li>PSI tables were downloaded from NASA and their file sizes matched what PSI reports.</li>
@@ -49,6 +49,7 @@ export function methodPanel(host){
 
 <article class="card method-ai">
 <h3>Use of AI (super intelligence)</h3>
+<p><b>The idea is ours:</b> putting gravity at the center, and designing for the engineer who chooses habitat materials and ventilation, came from the team. AI helped us research, check and build it.</p>
 <p><b>Inside the dashboard:</b> Anthropic’s Claude Haiku reads questions and drafts explanations; code ranks the records and verifies every citation and number.</p>
 <p><b>While building it:</b> Claude Science extracted data from NASA documents; Claude Code cross-checked it against the original PDFs and tables, and helped build the data pipeline and the interface. OpenAI Codex supported implementation, and ChatGPT and Grok were used to review the app. The logo is an AI-generated image (Google Gemini). The team reviewed the outputs, and every number in the app is checked against its NASA source.</p>
 </article>

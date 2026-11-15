@@ -31,25 +31,29 @@ actualizado: 2026-11-15
 - [x] Escribir `PREDICTION.md` → hecho (D17). Pendiente: link en el README. Opcional: DOI en Zenodo para probar la fecha
 - [ ] Revisar en GitHub que el diagrama Mermaid del README se vea bien (no se pudo validar localmente)
 - [x] Actualizar FM2 → [FM2 - fuego en la Luna](research/fm2-fuego-en-la-luna.md) (estado al 14/11: sin lanzamiento ni resultados; muestras en conflicto entre 2024 y 2025)
-- [x] FDS descartado: la cámara 3D queda como simulación ilustrativa (D18)
+- [x] FDS descartado: la cámara 3D queda como simulación ilustrativa (D18). Aclaración 15/11: la cámara es un CFD reducido propio, no una animación; ahora con vista dividida de dos gravedades (D23)
+- [ ] Probar la vista dividida (D23) en la laptop de la demo: corre 2 modelos a la vez (en la de desarrollo anda fluida)
+- [x] Publicar D23 → la vista dividida ya está en producción (verificado el 15/11 ~13:45)
 - [x] Verificar si FM2 ya se lanzó → no hay evidencia (14/11)
 - [x] Encontrar una cita de NASA sobre la Antártida como análogo → Antarctic Space Analog Program (ver [Uruguay y Antártida](research/uruguay-y-antartida.md))
 - [ ] Revisar si MAPTIS (ensayos NASA-STD-6001) es de acceso público; si no, usar reportes de NTRS con ensayos en 1 g
 - [ ] Leer el texto completo del white paper del Decadal (NTRS 20210022403)
 - [x] Asignar personas a los roles → [07 Equipo](team.md) (Juan, de hecho, en el motor de evidencia; falta confirmarlo)
 - [x] Repo en GitHub creado · [ ] Equipo completo en Members de la plataforma (ver la entrega)
-- [ ] Elegir el nombre del equipo para la demo
+- [x] Nombre del equipo: Flight Dynamics
 
 - [x] LUCI verificado contra el PDF (R12)
 
 - [x] **Probar la IA en vivo en producción** → funciona en Vercel (D19, 2026-11-15)
 - [x] Revisar y mergear el PR #1 → mergeado (877ed2d). Sincronización del vault lista para el push
 - [x] Detalle de UI: nombres en español → arreglado en la rama (falta el push de Facundo)
-- [ ] Confirmar en la plataforma: desafío, 3 miembros y URL pública final; demo final (hay un borrador de 28 s en `docs/product/`)
+- [ ] Confirmar en la plataforma: desafío, 3 miembros y nombre del equipo · demo en YouTube: https://youtu.be/en18xWde9hE
 
-- [ ] **Demo de 30 s** (guion v2 en [Pitch y demo](product/pitch-y-demo.md)): grabar, subtitular, subir a un link público y probarlo en una ventana privada
-- [ ] **Nombre del equipo** para la demo y la plataforma (¿"Flight Dynamics", como el repo?)
+- [x] **Demo de 30 s** armada (`Documentos/demo/before-the-first-fire-demo.mp4`, 28,9 s) · [ ] subirla a YouTube como no listado y probar el link en una ventana privada
+- [x] **Nombres:** equipo **Flight Dynamics**, proyecto **Before the First Fire** (Facundo, 15/11)
 - [ ] Preparar la presentación para el jurado local (18 al 20/11) y anotarse en el taller de pitch (17/11)
+
+- [ ] La IA en vivo a veces no pasa la verificación y responde con plantilla (2 de 4 intentos al grabar): ajustar las instrucciones o tener ensayada la explicación para el jurado en vivo
 
 ## Riesgos
 | Riesgo | Prob. | Impacto | Mitigación |
