@@ -51,7 +51,7 @@ export function methodPanel(host){
 <h3>Use of AI (super intelligence)</h3>
 <p><b>The idea is ours:</b> putting gravity at the center, and designing for the engineer who chooses habitat materials and ventilation, came from the team. AI helped us research, check and build it.</p>
 <p><b>Inside the dashboard:</b> Anthropic’s Claude Haiku reads questions and drafts explanations; code ranks the records and verifies every citation and number.</p>
-<p><b>While building it:</b> Claude Science extracted data from NASA documents; Claude Code cross-checked it against the original PDFs and tables, and helped build the data pipeline and the interface. OpenAI Codex supported implementation, and ChatGPT and Grok were used to review the app. The logo is an AI-generated image (Google Gemini). The team reviewed the outputs, and every number in the app is checked against its NASA source.</p>
+<p><b>While building it:</b> Claude Science extracted data from NASA documents; Claude Code cross-checked it against the original PDFs and tables, and helped build the data pipeline and the interface. OpenAI Codex supported implementation, and ChatGPT and Grok were used to review the app. The logo was traced in Canva by the team from an AI-generated concept (Google Gemini). The team reviewed the outputs, and every number in the app is checked against its NASA source.</p>
 </article>
 
 <p class="method-links"><a href="https://github.com/marcosdevin04-bit/Flight-Dynamics---NASA" target="_blank" rel="noopener">Source code and data ↗</a> · <a href="./PREDICTION.md" target="_blank" rel="noopener">Registered FM2 prediction ↗</a> · <a href="./data/curva_gravedad.json" target="_blank" rel="noopener">Gravity-curve data (JSON) ↗</a></p>`;

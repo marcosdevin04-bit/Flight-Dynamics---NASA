@@ -116,7 +116,7 @@ Three engineering students from Montevideo, Uruguay:
 
 ## Use of AI
 
-Inside the app, Anthropic's Claude Haiku reads questions and drafts short explanations; code ranks the records and verifies every cited ID and number before anything is shown (see the [Method](https://flight-dynamics-mu.vercel.app/#method) page). While building it, the team used Claude Science and Claude Code (data extraction, cross-checking against NASA PDFs, data pipeline, interface), OpenAI Codex (implementation), and ChatGPT and Grok (reviews). The logo is an AI-generated image (Google Gemini). Every number used in the app is checked against the original NASA document, or labeled as secondary or unverified. Details are logged in [docs/sources.md](docs/sources.md).
+Inside the app, Anthropic's Claude Haiku reads questions and drafts short explanations; code ranks the records and verifies every cited ID and number before anything is shown (see the [Method](https://flight-dynamics-mu.vercel.app/#method) page). While building it, the team used Claude Science and Claude Code (data extraction, cross-checking against NASA PDFs, data pipeline, interface), OpenAI Codex (implementation), and ChatGPT and Grok (reviews). The logo was traced in Canva by the team from an AI-generated concept (Google Gemini). Every number used in the app is checked against the original NASA document, or labeled as secondary or unverified. Details are logged in [docs/sources.md](docs/sources.md).
 
 ## How to cite
 
