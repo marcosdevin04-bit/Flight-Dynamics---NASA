@@ -32,7 +32,7 @@ const rawNumber = "([0-9]+(?:[.,][0-9]+)?)";
 const oxygen = new RegExp(rawNumber+"\\s*(?:%|percent(?:age)?|por ciento)","gi");
 const speed = new RegExp(rawNumber+"\\s*(cm\\s*\\/\\s*s|mm\\s*\\/\\s*s|m\\s*\\/\\s*s)\\b","gi");
 const pressure = new RegExp(rawNumber+"\\s*(kpa|psi(?:a)?|bar)\\b","gi");
-const still = /no forced flow|quiescent|sin flujo(?: forzado)?|still air|without forced (?:air)?flow/i;
+const still = /no forced (?:air)?flow|quiescent|sin flujo(?: de aire)?(?: forzado)?|still air|without forced (?:air)?flow/i;
 
 function conditions(text:string) {
   if (/\b(?:martian|mars|marte|versus|instead of)\b|\d\s*(?:–|to|and below)\s*\d|(?:^|\s)-\s*\d|[<>≤≥]|\d\s*-\s*\d+(?:[.,]\d+)?\s*(?:%|kpa|psi|cm\/s)/i.test(text)) return null;
@@ -53,7 +53,16 @@ export function parseQuestion(text:string):Scenario|null {
   return material && fields ? {material:material.replaceAll("/"," "),...fields}:null;
 }
 export async function interpretQuestion(text:string,env:ModelEnv,signal:AbortSignal):Promise<Scenario|null>{
-  if (!configured(env)) return parseQuestion(text);
+  const local=parseQuestion(text);
+  // Skip model extraction only when every part of a complete question is accounted for.
+  if (local && local.o2_pct!=null && local.pressure_kPa!=null && local.flow_cm_s!=null) {
+    const remainder=text.toLowerCase().replace(oxygen," ").replace(speed," ").replace(pressure," ")
+      .replace(still," ").replace(/\b(?:what did the experiments show|qué mostraron los experimentos)\b/gi," ")
+      .replace(/\b(?:for|in|a|lunar|habitat|at|oxygen|and|with|para|en|un|hábitat|con|de|oxígeno|y)\b/gi," ")
+      .replace(/[¿?,.]/g," ").trim();
+    if (remainder===local.material.toLowerCase()) return local;
+  }
+  if (!configured(env)) return local;
   const fields=conditions(text);
   if(!fields)return null;
   let response:string;

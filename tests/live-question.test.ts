@@ -23,3 +23,13 @@ it("limits each client independently and expires the window",()=>{
 it.each(["Mylar at 295 K","Mylar on Earth at 21%","SIBAL or Mylar at 18%"])("asks for clarification before discarding constraints: %s",async text=>{
  expect(await interpretQuestion(text,{},AbortSignal.timeout(500))).toBeNull();
 });
+
+it.each([
+ "For Mylar in a lunar habitat at 34% oxygen and 8.2 psi with no forced flow, what did the experiments show?",
+ "Para Mylar en un hábitat lunar, con 34 % de oxígeno, 8,2 psi y sin flujo de aire forzado, ¿qué mostraron los experimentos?"
+])("uses the same habitat scenario as the controls without a model call",async question=>{
+ const provider=vi.fn();vi.stubGlobal("fetch",provider);
+ const a=await answer({question},env);
+ expect(a.scenario).toMatchObject({o2_pct:34,pressure_kPa:56.5,flow_cm_s:0});
+ expect(a.case).toBe(3);expect(provider).not.toHaveBeenCalled();
+});
