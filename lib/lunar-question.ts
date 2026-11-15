@@ -55,7 +55,7 @@ export function parseQuestion(text:string):Scenario|null {
 export async function interpretQuestion(text:string,env:ModelEnv,signal:AbortSignal):Promise<Scenario|null>{
   const local=parseQuestion(text);
   // Skip model extraction only when every part of a complete question is accounted for.
-  if (local && local.o2_pct!=null && local.pressure_kPa!=null && local.flow_cm_s!=null) {
+  if (local?.material && local.o2_pct!=null && local.pressure_kPa!=null && local.flow_cm_s!=null) {
     const remainder=text.toLowerCase().replace(oxygen," ").replace(speed," ").replace(pressure," ")
       .replace(still," ").replace(/\b(?:what did the experiments show|qué mostraron los experimentos)\b/gi," ")
       .replace(/\b(?:for|in|a|lunar|habitat|at|oxygen|and|with|para|en|un|hábitat|con|de|oxígeno|y)\b/gi," ")
