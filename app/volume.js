@@ -1,4 +1,5 @@
 import {nx,ny,nz,layer,dx} from './reactor.js';
+import {tracers} from './particles.js';
 const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
 export function viewport(canvas){
  const ctx=canvas.getContext('2d'), sprites=[];
@@ -18,7 +19,8 @@ export function viewport(canvas){
  canvas.onlostpointercapture=canvas.onpointerup=canvas.onpointercancel=e=>pts.delete(e.pointerId);
  canvas.addEventListener('wheel',e=>{e.preventDefault();zoom=clamp(zoom*Math.exp(-e.deltaY*.0014),.5,4);},{passive:false});
  canvas.onkeydown=e=>{const k=({ArrowRight:'right',ArrowLeft:'left',ArrowUp:'up',ArrowDown:'down','+':'in','=':'in','-':'out',Home:'home'})[e.key];if(k){e.preventDefault();command(k);}};
- function draw(m,mode,vectors){
+ let flow=null;
+ function draw(m,mode,vectors,particles){
  const W=Math.round(canvas.clientWidth),H=Math.round(canvas.clientHeight);if(!W||!H)return;
  const dpr=Math.min(1.6,devicePixelRatio||1);if(canvas.width!==Math.round(W*dpr)||canvas.height!==Math.round(H*dpr)){canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);}
  ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);
@@ -38,7 +40,10 @@ export function viewport(canvas){
  const level=mode==='flame'?val:val*1.4, idx=level<.09?0:level<.20?1:level<.55?2:level<1?3:4;
  ctx.globalAlpha=mode==='slice'?clamp(val*1.7,.04,1):clamp(Math.sqrt(val)*.105,.007,.18);
  ctx.drawImage(sprites[idx],px-radius,py-radius,radius*2,radius*2);}
- ctx.globalAlpha=1;ctx.globalCompositeOperation='source-over';ctx.font='11px Consolas, monospace';
+ ctx.globalAlpha=1;ctx.globalCompositeOperation='source-over';
+ // Tracer particles follow the model's velocity field; colour is the model's relative excess heat.
+ if(particles){flow??=tracers();flow.advance(m);flow.draw(ctx,project);}else flow=null;
+ ctx.font='11px Consolas, monospace';
  for(const [label,pos] of [['X',[31,1,21]],['Z',[1,1,20]],['Y',[0,24,0]]]){const [x,y]=project(...pos);ctx.fillStyle='#b4c7cd';ctx.fillText(label,x+3,y-3);}
  canvas.dataset.camera=[yaw,pitch,zoom,ox,oy].map(v=>v.toFixed(3)).join(',');
  }
